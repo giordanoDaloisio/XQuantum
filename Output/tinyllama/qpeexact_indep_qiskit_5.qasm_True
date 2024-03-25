@@ -1,9 +1,13 @@
-This high-level explanation summarizes the main components of a quantum algorithm named "Quantum Phase Estimation" as defined in Qiskit's version 1.0.2. The algorithm is designed to solve an optimization problem by optimizing the phase of a state, which can be thought of as the product of all qubits in the state.
+This high-level explanation gives an overview of the code for a quantum phase estimation algorithm using Qiskit. The code consists of 5 cubits, with each cubit performing a particular task or step in the optimization process.
 
-The code includes 5 cubits, which are basic building blocks for quantum algorithms. Cubits consist of 3 sub-cubits that represent single qubit operations such as Hadamard and Pauli X rotations. It also has a barrier to simulate classical communication between qubits. The algorithm can be broken down into two parts:
+The first cubit creates a set of registers called "qreg" and a set of registers called "psi". These are used to store and manipulate qubits (quantum bits).
 
-1. Quantum Regularization - this part optimizes the state by adding terms related to phase mismatch. This term is similar to the cost function used in classical optimization algorithms, except it involves an exponential factor instead of a linear one. 2. Variational Quantum Eigensolver (VQE) - this part performs a variational quantum eigensolver using a Qiskit's built-in algorithm called VQE.
+The second cubit performs the quantum phase estimation algorithm using a modified Qiskit library, QE, which implements the Shor's algorithm for finding the discrete Fourier transform of a given input vector. This algorithm is based on the fact that the eigenvalues of a square matrix can be expressed as a linear combination of its diagonal entries, where each entry is proportional to a cosine or sine function.
 
-The code includes several operations to prepare the state for VQE, including barriers that simulate classical communication between qubits, and hamiltonian manipulation that modifies the phase of the state. The final step is to measure all qubits in a particular basis, which determines the optimal phase.
+The third cubit converts the output of the QE algorithm into a set of amplitudes that can be measured in a specific order by measuring one or more qubits with the appropriate polarity. This is done using a Qiskit library called "quantum_instruction" to prepare and measure the qubits, as well as a set of "cubits" for the actual measurement of the output amplitudes.
 
-MQT Bench version: 1.1.0 is included in this code as a Qiskit library to provide more information about MQT Bench, including benchmarks for different quantum algorithms.
+The fourth cubit performs the barrier between the first two registers and the third register, which ensures that any errors in the phase estimation process are accounted for by measuring the outputs correctly. This is done using another Qiskit library called "quantum_instruction" to perform a set of gates on the input qubits to ensure the correct order of measurement.
+
+Finally, the fifth cubit measures the output amplitudes from each register and uses a Qiskit library called "measurement" to measure the final output of the algorithm.
+
+Overall, this code implements the quantum phase estimation algorithm using a set of Qiskit libraries, with each cubit performing a particular task or step in the optimization process.

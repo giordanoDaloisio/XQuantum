@@ -1,33 +1,15 @@
-In this Qiskit code, we have created a quantum algorithm using the Quantum Fourier Transform (QFT) technique. The QFT is an important tool in quantum computing for implementing complex operations such as Fourier transforms and convolutions, which are commonly used in various applications like signal processing and cryptography.
+This code consists of five cubits, or instructions, that perform a quantum Fourier transformation (QFT) using entanglement. The QFT is a complex numerical algorithm for generating all possible permutations of the input data, which can be used to solve certain problems in computational complexity theory. To implement this code, we will use Qiskit's QFT module and specify the entanglement as a parameter to control how much entangled states are used during the computation.
 
-The high-level explanation of this code involves several steps:
+The code begins by including "qlib" (Quantum Library), which provides functionality for quantum computing (Qiskit) and quantum algorithms (Qubits). It then defines two Qubits, q[0], q[1], q[2], q[3], and q[4]. These qubits are initialized to random states (i.e., |0⟩), while the last qubit q[4] is initialized to a random value between 0 and 1 using the "rand()/2" function.
 
-1. Defining the circuit: First, we define the circuit for the QFT, including creating a register containing the coefficients from 0 to 2^n - 1. We also include two additional registers that are used for entanglement and measurement.
+The next block of code defines two operations: a quantum register called "qreg," which contains the QFT operation, and a classical register called "meas," which counts the number of entangled states. The latter is used to measure the output of the QFT using a measurement at the end of each iteration.
 
-2. Creating a register of entanglement: We create a register called "meas" that will hold the results of measurements on each qubit. The register is initialized with the value "0".
+The QFT operation uses the quantum Fourier transform (QFT) algorithm to generate all possible permutations of the input data, where the permutation corresponds to swapping each qubit with its antipode. The first and second qubits in the output are measured in the +1 direction, while the third and fourth qubits are measured in the -1 direction. The first qubit is then used to initialize the third qubit, and so on until all possible permutations have been generated.
 
-3. Applying the QFT algorithm: Next, we apply the QFT algorithm to the circuit defined in step 1. In this case, the algorithm is applied twice, with each iteration entangling a qubit and performing measurements on both qubits before updating the register. This process is repeated for several iterations until the desired amount of entanglement has been created.
+The main loop of the code executes the QFT operation for a certain number of iterations, depending on the parameter "n." This parameter controls how many entangled states are used during the computation. The number of iterations is initially set to 10, and the value is increased by 10 at each iteration until it reaches n * 5.
 
-4. Measuring the results: Finally, we measure the register "meas" to obtain the desired results. The register's contents are then stored in a second register called "result".
+At the end of the loop, the final output state of q[4] is measured and stored in the "meas" register. The result is then displayed using a visualization library (Matplotlib).
 
-5. High-level explanation: We can see the high-level description of this code in two steps:
+The code also includes error handling for numerical instability and overflow issues. In this case, the error handling code checks whether the value of the last qubit has exceeded its range and raises an exception. This ensures that the computation doesn't crash if the input data is too large or contains unbounded values.
 
-1. Creating a register for entanglement and initializing it with value "0":
-    ```qiskit
-    q = QuantumRegister(4)  # Create 4 qubits
-    meas = MeasurementRegister()  # Create measurements register to store final results
-    ```
-
-2. Applying the QFT algorithm twice and entangling each iteration:
-    ```qiskit
-    # Perform QFT on the given circuit
-    qft = QuantumCircuit(q, meas)
-    for I in range(2):
-        qft.append(ControlledZ(0, 1), [i])  # Apply Z-gate on qubit I (if possible)
-        qft.append(CNOT(0, 1), [i])  # Controlled CNOT on qubits I and qubit II (if possible)
-    qft.measure([meas], [0])  # Measure the register "meas" to obtain final results
-
-    qft_circuit = qft.compile(simulator=simulator)  # Compile QFT circuit for simulator
-    ```
-
-The code above performs a QFT on a given quantum circuit with an additional register called "meas". It then applies two iterations of the QFT algorithm, entangles each iteration and measures the final register to obtain the desired results.
+In conclusion, this code implements a simple quantum Fourier Transform algorithm using entanglement. The QFT operation is represented using quantum registers and classical registers, while the main loop computes the desired output state of q[4] based on the specified number of iterations and entangled states. The resulting visualization shows the final output state of q[4].

@@ -1,37 +1,19 @@
-To provide a high-level explanation of this code, we can consider each line of the code as a step in a specific process or operation.
+This is a high-level explanation of the code you provided:
 
-1. "OPENQASM 2.0;" - This is the main header file that defines the Qiskit library for quantum computing. It includes necessary modules and provides the basic functionality of qubits (quantum bits), states, operators, and measurements.
+Openspecification: OpenQASM 2.0
+Includes library qeasy (for qubit initialization and entanglement) and QEasy 1.1.0
+Uses quantum engine Qiskit version 1.0.2
 
-2. "inclibe \"qeliab1.inc\";" - This includes the code for quantum libraries such as the QE (Quantum Engineering) library used in this project. It also includes necessary functions for preparing and measuring qubits.
+The program is divided into two main parts: compiling and running the algorithm. The compiling part includes generating a quantum circuit from the given specifications, while the running part uses the compiled circuit to perform the desired task on a qubit register.
 
-3. "qreg node[2];" - This line defines 2 qubits (nodes) for performing a quantum walk, where each node represents a qubit at a specific location along the path. Each node is initialized to an arbitrary value before each move by the algorithm.
+Compiling the circuit:
+- Generate the circuit using the qeasy library for qubit initialization and entanglement
+- Translate the generated circuit into Qiskit's language (qasm)
+- Compile the Qiskit program into a quantum computing engine executable
 
-4. "qreg coin[1];" - Similar to the previous step, but instead of a qubit, we are using a coin as a node in the walk. The coin represents a random variable that could be either 0 (indicating the coin is heads) or 1 (indicating the coin is tails).
+Running the algorithm:
+- Run the compiled Qiskit program with the desired parameters in the input file (usually qobj file or tvmqc.json format, which is a standard for qubit registers used in Qiskit)
 
-5. "creg meas[3];" - This line defines 3 measurement registers to count the number of heads and tails when the coin is in the coin slot (measurement register 2) as well as the position of each coin in the walk (measurement register 1).
+The name of the algorithm is "Quantum walk", which is a specific quantum algorithm based on the concept of quantum walk, where each step involves performing some unitary transformation and then taking two qubits as input and outputting them to another qubit. The algorithm can be further broken down into sub-steps with a clear purpose or task. 
 
-6. "h coin[0];" - This line flips the coin's orientation (heads or tails) and prepares it for the next move, creating a random state for the coin to transition between.
-
-7. "ccx coin[0],node[1],node[0];" - This line connects coin to node 1 on the same level as coin in the walk. Coin is now prepared for the next move and connected to its neighbor (node 1).
-
-8. "cx coin[0],node[1];" - This line flips the orientation of coin on node 1, creating a random state for the coin to transition between.
-
-9. "x node[1];" - This step selects the coin that is now in its lower position (node 1). By moving nodes and coin closer together (coincidence or not), we increase the likelihood of the coin becoming heads.
-
-10. "u2(-pi,-pi) coin[0];" - This line rotates the coin around a random angle between pi radians to create a more challenging walk, increasing the probability of tails and decreasing the chance of heads.
-
-11. "ccx coin[0],node[1],node[0];" - This line connects coin back to node 1 on the same level as it was before rotation, creating a random state for the coin to transition between.
-
-12. "cx coin[0],node[1];" - This line flips the orientation of coin on node 1, creating a random state for the coin to transition between.
-
-13. "x node[1];" - This step selects the coin that is now in its upper position (node 1). By moving nodes and coin closer together (coincidence or not), we decrease the likelihood of the coin becoming heads.
-
-14. "barrier node[0],node[1],coin[0];" - This line creates a barrier that separates the nodes and coins in order to prevent the walk from being completed.
-
-15. "measure node[0] -> meas[0];" - This step measures the state of each coin (meas[0]) on each node (meas[1]). The measurement registers are updated with the number of heads, tails, and coin positions that were visited during the walk.
-
-16. "measure node[1] -> meas[1];" - Same for the second coin (meas[2]), creating a combined measurement of both coin's states.
-
-17. "measure coin[0] -> meas[2];" - This step measures the state of each coin (meas[0], meas[1]) on each node (meas[2]). The measurement registers are updated with the number of heads and tails that were visited during the walk.
-
-18. "The name of the algorithm is: Quantum walk" - This sentence provides a brief summary of what was just done in the code, summarizing how the algorithm works by performing quantum walks on coin-flips and coin positions along a random walk path.
+The program includes 3 cubits in its compilation, which are used to perform quantum operations on qubits, such as the Quantum walk algorithm.

@@ -1,12 +1,9 @@
-The MQT Bench library provides a suite of quantum circuit simulators and optimizers for controlling the number of qubits, depth (number of circuits), duration (time taken to execute each circuit), and optimization parameters. The OPENQASM 2.0 language used in this code is an open-source quantum compiler, which enables the creation of optimized quantum circuits for various quantum algorithms.
+This is a high-level overview of the MQT Bench code for performing amplitude estimation in a quantum computer. The code is written in Qiskit, an open-source library for building quantum algorithms on top of IBM's Qiskit quantum simulation environment. It consists of three main sections:
 
-The OPENQASM 2.0 language includes a suite of Qiskit libraries that allow the user to create and execute quantum programs. In this example, we have created a program using the qreg and creg qubits, and initialized them with random values. We then perform two Hadamard gates on each qubit, followed by controlled-NOT (CNOT) gates to connect the initial state to the final state. The circuit is then optimized using MQT Bench's suite of optimization algorithms. Finally, we measure the final state and count the number of successes using Measurement Circuit (MCS) library.
+1. OpenQASM 2.0: This is a set of instructions that describe the quantum circuit language used by MQT Bench, including how to generate the circuit and control its execution.
 
-The high-level explanation of this code:
-1. We import the MQT Bench library with the Qiskit extension, which provides an optimized quantum compiler.
-2. We initialize the circuit by creating a qreg and creg for the input state and output state respectively. We set the number of qubits to be 4 in this example.
-3. We create a random initial state using Random Class from NumPy library. The initial state is given as: |100000...0000>
-4. We perform two Hadamard gates and CNOT gates between each pair of qubits to connect the initial state with the final state.
-5. We optimize the circuit using MQT Bench's suite of optimization algorithms, including Gate Optimization (GO) and Amplitude Estimation (AE).
-6. The optimized circuit is then measured using Measurement Circuit (MCS), which counts the number of successes in each qubit.
-7. Finally, we print out the measurement results to see if the program executed as expected.
+2. Qubits (Quantum Registers): The code defines two qubits, which are single-qubit circuits that store and manipulate quantum states.
+
+3. Quantum Operations: The code implements the quantum operations that can be performed on these qubits - for example, using controlled-U gate to apply a controlled measurement, or using controlled-NOT (X) gate to swap qubits.
+
+The overall goal of this code is to perform amplitude estimation, which involves finding the coefficients of a mathematical model of the input signal that best fits its known distribution. The specific algorithm used in this benchmark may differ depending on the problem domain and available hardware. However, MQT Bench provides a general framework for performing amplitude estimation in a quantum computer with minimal assumptions about the hardware or optimization techniques.
