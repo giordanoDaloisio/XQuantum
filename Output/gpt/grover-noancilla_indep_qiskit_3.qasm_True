@@ -1,0 +1,25 @@
+This code is written in the OpenQASM language and is used to implement the Grover algorithm. The algorithm is defined as a quantum circuit that operates on a quantum register called "q" consisting of two qubits and a classical register called "meas" consisting of three bits. 
+
+The code begins by including the necessary quantum gates from the qelib1 library. It then initializes the quantum registers by applying the Hadamard gate (h) to both qubits in the "q" register. It also applies the Pauli-X gate (x) to the first qubit in the "flag" register.
+
+Next, a controlled-phase gate (cp) is applied between the second qubit in the "q" register and the first qubit in the "flag" register with an angle of pi/2. This gate represents an oracle that marks the solution(s) in the quantum state.
+
+Then, a controlled-NOT gate (cx) is applied between the second qubit in the "q" register and the first qubit in the "q" register. This gate is used to propagate the marked state(s) to the first qubit.
+
+Another controlled-phase gate is applied between the first qubit in the "q" register and the first qubit in the "flag" register with an angle of -pi/2. This undoes the marking operation.
+
+Again, a controlled-NOT gate is applied between the second qubit and the first qubit in the "q" register to propagate the unmarked state(s) back to the second qubit.
+
+Then, another controlled-phase gate is applied between the first qubit in the "q" register and the first qubit in the "flag" register with an angle of pi/2. This re-marks the solution(s).
+
+Next, two single-qubit gates u2(0,0) and u1(-pi) are applied to the first and second qubits respectively.
+
+A controlled-NOT gate is then applied between the first qubit and the second qubit in the "q" register.
+
+Two more single-qubit gates u2(-pi,-pi) and u1(-pi) are applied to the first and second qubits respectively.
+
+A barrier is added to separate the preparation stage from the measurement stage.
+
+Finally, measurements are performed on the first qubit in the "q" register and the first qubit in the "flag" register, and the results are stored in the "meas" classical register.
+
+Overall, this code implements the Grover algorithm by applying a series of quantum gates to manipulate the quantum state and extract the desired solution(s) to a problem.
