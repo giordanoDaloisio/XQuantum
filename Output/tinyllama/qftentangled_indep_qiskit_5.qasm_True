@@ -1,0 +1,33 @@
+In this Qiskit code, we have created a quantum algorithm using the Quantum Fourier Transform (QFT) technique. The QFT is an important tool in quantum computing for implementing complex operations such as Fourier transforms and convolutions, which are commonly used in various applications like signal processing and cryptography.
+
+The high-level explanation of this code involves several steps:
+
+1. Defining the circuit: First, we define the circuit for the QFT, including creating a register containing the coefficients from 0 to 2^n - 1. We also include two additional registers that are used for entanglement and measurement.
+
+2. Creating a register of entanglement: We create a register called "meas" that will hold the results of measurements on each qubit. The register is initialized with the value "0".
+
+3. Applying the QFT algorithm: Next, we apply the QFT algorithm to the circuit defined in step 1. In this case, the algorithm is applied twice, with each iteration entangling a qubit and performing measurements on both qubits before updating the register. This process is repeated for several iterations until the desired amount of entanglement has been created.
+
+4. Measuring the results: Finally, we measure the register "meas" to obtain the desired results. The register's contents are then stored in a second register called "result".
+
+5. High-level explanation: We can see the high-level description of this code in two steps:
+
+1. Creating a register for entanglement and initializing it with value "0":
+    ```qiskit
+    q = QuantumRegister(4)  # Create 4 qubits
+    meas = MeasurementRegister()  # Create measurements register to store final results
+    ```
+
+2. Applying the QFT algorithm twice and entangling each iteration:
+    ```qiskit
+    # Perform QFT on the given circuit
+    qft = QuantumCircuit(q, meas)
+    for I in range(2):
+        qft.append(ControlledZ(0, 1), [i])  # Apply Z-gate on qubit I (if possible)
+        qft.append(CNOT(0, 1), [i])  # Controlled CNOT on qubits I and qubit II (if possible)
+    qft.measure([meas], [0])  # Measure the register "meas" to obtain final results
+
+    qft_circuit = qft.compile(simulator=simulator)  # Compile QFT circuit for simulator
+    ```
+
+The code above performs a QFT on a given quantum circuit with an additional register called "meas". It then applies two iterations of the QFT algorithm, entangles each iteration and measures the final register to obtain the desired results.

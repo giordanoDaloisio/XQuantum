@@ -1,0 +1,31 @@
+Here's a high-level explanation of the code for MQT Bench version 1.1.0, written in Qiskit:
+
+OPENQASM 2.0;
+incrule "qeliab1.inc";
+qreg q[10]; // create 10 qubits
+creg c[10]; // create 10 control qubits
+creg meas[10]; // create 10 measurement qubits
+h q[9]; // swap the 8th and 9th qubit (Hadamard gate)
+cp(pi/2) q[8],q[7]; // swap the 7th and 8th qubit (CNOT gate)
+cp(pi/4) q[8],q[7]; // swap the 6th and 7th qubit (CNOT gate)
+cp(pi/2) q[7],q[6]; // swap the 6th and 7th qubit (CNOT gate)
+h q[7]; // swap the 6th and 7th qubit (Hadamard gate)
+cp(pi/8) q[8],q[5]; // swap the 5th and 8th qubit (CNOT gate)
+cp(pi/4) q[8],q[5]; // swap the 3rd and 8th qubit (CNOT gate)
+cp(pi/2) q[5],q[4]; // swap the 3rd and 8th qubit (CNOT gate)
+h q[4]; // swap the 3rd and 8th qubit (Hadamard gate)
+cp(pi/16) q[9],q[2]; // swap the 2nd and 5th qubit (CNOT gate)
+cp(pi/8) q[9],q[2]; // swap the 2nd and 5th qubit (Hadamard gate)
+cp(pi/4) q[9],q[2]; // swap the 2nd and 5th qubit (Hadamard gate)
+h q[2]; // swap the 2nd and 5th qubit (Hadamard gate)
+barrier q[0],q[1],q[2],q[3],q[4],q[5],q[6],q[7],q[8],q[9];
+measure q[0] -> meas[0]; // perform measurement on output qubit 0
+measure q[1] -> meas[1]; // perform measurement on output qubit 1
+measure q[2] -> meas[2]; // perform measurement on output qubit 2
+measure q[3] -> meas[3]; // perform measurement on output qubit 3
+measure q[4] -> meas[4]; // perform measurement on output qubit 4
+measure q[5] -> meas[5]; // perform measurement on output qubit 5
+measure q[6] -> meas[6]; // perform measurement on output qubit 6
+measure q[7] -> meas[7]; // perform measurement on output qubit 7
+measure q[8] -> meas[8]; // perform measurement on output qubit 8
+measure q[9] -> meas[9];The name of the algorithm is Quantum Fourier Transform (QFT). The code includes 10 cubits.

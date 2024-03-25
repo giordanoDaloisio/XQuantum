@@ -1,0 +1,19 @@
+Here's a high-level explanation of the code you provided:
+
+- The OPENQASM 2.0 language (also known as Quantum Circuit Language) is used for defining quantum algorithms, including this one. This language provides a simple and concise way to express various quantum operations and states, which are then implemented by hardware or software devices using various qubit manipulation techniques like XOR gates and Hadamard steps.
+
+- The qreg (qubit register) declaration creates a set of qubits that will be used in the algorithm. Each row corresponds to one qubit, and each column represents an operation (XOR, Hadamard etc.).
+
+- The flag register is created with a single qubit for each iteration or measurement phase. During execution, this qubit is initialized as 0, which means it's not measured yet.
+
+- The H gates (Hadamard gates) are used to perform various operations on qubits, such as XOR and Hadamard steps. In this case, the flags are updated in each iteration of the algorithm.
+
+- The CP gate (Controlled Push) is used to push or control the state of a single qubit after it has been measured.
+
+- The Cx gate (controlled X) controls the XOR operation on two qubits by interchanging their values. This step is repeated after each measurement, as desired for this Grover algorithm.
+
+The grover algorithm is named after its inventor, Dass Gamburd, who developed it in 1995 as a way to search for elements in an array that are present only once within a large database of numbers. Grovers algorithm is also known as the search-based algorithm or the randomized search algorithm.
+
+The code itself consists of three main parts: the first is the OPENQASM language, which defines the circuit and the qubits used in it. The second part creates and populates the flag register with 1 for each iteration of the Grover algorithm. The third part uses CX gates (controlled X) to perform a controlled Push operation on the appropriate qubit after each measurement.
+
+Overall, this code provides a simple and concise way to write a Grover search algorithm using Qiskit and MQT Bench.
