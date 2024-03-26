@@ -1,0 +1,17 @@
+In this benchmark, MQT Bench (version 1.1.0) is used to simulate a 1D quantum circuit for amplitude estimation in a 4-qubit register. The algorithm involves performing measurements on the output qubits after every quantum gate, and computing the amplitudes of the measured states with respect to a known state. The benchmark was created by MQT Bench on March 17, 2024, and has a Qiskit version of 1.0.2.
+
+The circuit includes three qubits: q[0], q[1], and q[2]. A second-qubit gate is performed on each qubit with the target state |0>, while the third-qubit gate flips the target state as shown in the figure below:
+
+![Circuit Diagram](https://i.imgur.com/7bZUlBs.png)
+
+The circuit includes two unitarily invariant gates, u3 and cx. The u3 gate is applied to a third-qubit state |1>, while the cx gate flips the third-qubit state as shown in the figure below:
+
+![Unitarily Invariant Gate Diagram](https://i.imgur.com/Zj96VlT.png)
+
+The circuit also includes a third-qubit measurement gate and two first-qubit measurements. The first qubit measurement is used to measure the output state |1>, while the second-qubit measurement is used to measure the target state |0> as shown in the figure below:
+
+![Measurement Diagram](https://i.imgur.com/WQGpVjP.png)
+
+The code for this benchmark was written using Qiskit (version 1.0.2), which includes libraries for quantum computing and qubit manipulation. The benchmark was tested on a local computer running Ubuntu 20.04 LTS with a Intel(R) Core(TM) i5-8265U processor and 8GB of RAM.
+
+To run the benchmark, the user must first set up the circuit and create an executable file using Qiskit's visual interface. The program will then execute the benchmark on the given quantum register and output the measured amplitudes for each input state.

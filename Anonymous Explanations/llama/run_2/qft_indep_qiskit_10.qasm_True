@@ -1,0 +1,26 @@
+ The provided code is an implementation of a quantum circuit for the Quantum Fourier Transform (QFT) algorithm using Qiskit. Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0;` - This line sets the version of OpenQASM, a quantum circuit simulator, to 2.0.
+2. `include "qelib1.inc";` - This line includes the QEllib1 library, which provides various utility functions for working with OpenQASM circuits.
+3. `qreg q[10];` - This line declares a quantum register of size 10, called `q`.
+4. `creg c[10];` - This line declares a classical register of size 10, called `c`.
+5. `meas[10];` - This line declares an array of measurement outcomes, called `meas`, of size 10.
+6. `h q[9];` - This line creates a new quantum register called `q` with 9 qubits.
+7. `cp(pi/2) q[9],q[8];` - This line applies a controlled phase shift of angle `pi/2` to the second-last qubit in the `q` register (i.e., qubit 8) and then to the last qubit in the `q` register (i.e., qubit 9).
+8. `h q[8];` - This line creates a new quantum register called `q` with 8 qubits.
+9. `cp(pi/4) q[9],q[7];` - This line applies a controlled phase shift of angle `pi/4` to the last qubit in the `q` register (i.e., qubit 9) and then to the second-last qubit in the `q` register (i.e., qubit 7).
+10. `cp(pi/2) q[8],q[7];` - This line applies a controlled phase shift of angle `pi/2` to the last qubit in the `q` register (i.e., qubit 8) and then to the second-last qubit in the `q` register (i.e., qubit 7).
+11. `h q[7];` - This line creates a new quantum register called `q` with 7 qubits.
+12. `cp(pi/8) q[9],q[6];` - This line applies a controlled phase shift of angle `pi/8` to the last qubit in the `q` register (i.e., qubit 9) and then to the fifth qubit in the `q` register (i.e., qubit 6).
+13. `cp(pi/4) q[8],q[6];` - This line applies a controlled phase shift of angle `pi/4` to the last qubit in the `q` register (i.e., qubit 8) and then to the fifth qubit in the `q` register (i.e., qubit 6).
+14. `cp(pi/2) q[7],q[6];` - This line applies a controlled phase shift of angle `pi/2` to the last qubit in the `q` register (i.e., qubit 7) and then to the fifth qubit in the `q` register (i.e., qubit 6).
+15. `h q[6];` - This line creates a new quantum register called `q` with 6 qubits.
+16. `cp(pi/16) q[9],q[5];` - This line applies a controlled phase shift of angle `pi/16` to the last qubit in the `q` register (i.e., qubit 9) and then to the third qubit in the `q` register (i.e., qubit 5).
+17. `cp(pi/8) q[8],q[5];` - This line applies a controlled phase shift of angle `pi/8` to the last qubit in the `q` register (i.e., qubit 8) and then to the third qubit in the `q` register (i.e., qubit 5).
+18. `cp(pi/4) q[7],q[5];` - This line applies a controlled phase shift of angle `pi/4` to the last qubit in the `q` register (i.e., qubit 7) and then to the third qubit in the `q` register (i.e., qubit 5).
+19. `h q[5];` - This line creates a new quantum register called `q` with 5 qubits.
+20. `meas[10];` - This line measures the state of the last qubit in the `q` register (i.e., qubit 9) and stores the measurement outcome in the `meas` array.
+
+The Quantum Fourier Transform is a quantum algorithm used for solving certain discrete logarithm problems. It involves applying controlled phase shifts to a series of qubits, followed by measurements of the resulting states. The algorithm repeats this process multiple times, with the number of repetitions depending on the specific problem being solved.
+
+In summary, this code implements the Quantum Fourier Transform algorithm using Qiskit, with 10 cubits in total.

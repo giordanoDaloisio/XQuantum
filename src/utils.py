@@ -15,6 +15,7 @@ def parseAlgorithmCharacteristics(algo):
 
 def runPrompt(complexPrompt, base_model):
     ollama.pull(base_model)
+    # for i in range(2):
     for filename in os.listdir("../Dataset/Code"):
         if filename.endswith(".qasm"):
             print("Processing file: " + filename)
@@ -35,10 +36,10 @@ def runPrompt(complexPrompt, base_model):
             )["message"]
 
             content = response["content"]
-            os.makedirs(os.getcwd() + f"/../Output/{base_model}", exist_ok=True)
+            os.makedirs(os.getcwd() + f"/../Output/{base_model}_{2}", exist_ok=True)
             out = open(
                 os.getcwd()
-                + f"/../Output/{base_model}/"
+                + f"/../Output/{base_model}_{2}/"
                 + filename
                 + "_"
                 + str(complexPrompt),

@@ -8,5 +8,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     base_model = "llama2"
+    if args.complex:
+        print("Use complex prompt")
+    else:
+        print("Use simple prompt")
     runPrompt(args.complex, base_model)
     # runPrompt(False)

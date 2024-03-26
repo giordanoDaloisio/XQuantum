@@ -1,0 +1,19 @@
+ This code is a quantum circuit written in OpenQASM, a quantum programming language. It belongs to the Amplitude Estimation algorithm, which is used to estimate the amplitude of a quantum state.
+
+Here's a high-level explanation of the code:
+
+1. The code starts by defining the Qiskit version (1.0.2) and MQT Bench version (1.1.0).
+2. The next line defines the OPENQASM 2.0 kernel, which is the language used to write quantum circuits.
+3. The include statement includes the "qelib1.inc" file, which is a library of commonly used functions in Qiskit.
+4. The qreg and creg statements define the quantum register and classical registers used in the algorithm. In this case, there are 4 qubits (qreg[0-3]) and 5 classical registers (creg[0-4]).
+5. The u2 function creates a unitary operation that rotates a qubit by an angle given in radians. The arguments of the function are the rotation angle and the phase of the qubit.
+6. The cx function creates a controlled-NOT gate between two qubits. The first argument is the control qubit, and the second argument is the target qubit.
+7. The h function creates a Hadamard gate on a single qubit.
+8. The barrier statement implements a barrier that prevents the quantum circuit from evolving before a certain time. In this case, the barrier is implemented at t=0, pi/2, pi/4, and pi/8.
+9. The measure statements implement measurements on the quantum register. The first measure statement measures the first qubit (eval[0]), and the second measure statement measures the second qubit (eval[1]). The third measure statement measures the third qubit (eval[2]), the fourth measure statement measures the fourth qubit (eval[3]), and the fifth measure statement measures the final qubit (q[0]).
+10. The h statements implement Hadamard gates on the classical registers. In this case, the first h statement implements a Hadamard gate on eval[2], the second h statement implements a Hadamard gate on eval[3], and the third h statement implements a Hadamard gate on eval[4].
+11. The cp statements implement controlled-NOT gates between the classical registers and the quantum register. In this case, the first cp statement implements a controlled-NOT gate between eval[2] and eval[3], the second cp statement implements a controlled-NOT gate between eval[0] and eval[3], and the third cp statement implements a controlled-NOT gate between eval[0] and eval[1].
+12. The u3 function creates a unitary operation that rotates a qubit by an angle given in radians, followed by a phase shift. In this case, the angle is 0.9272952180016122, and the phase is 0.
+13. The last line of the code implements a final Hadamard gate on the quantum register (q[0]).
+
+Overall, this code defines a quantum circuit that performs Amplitude Estimation on 5 qubits. The circuit starts by preparing the initial state, then applies a series of unitary operations and controlled-NOT gates to evolve the state, followed by a barrier to prevent further evolution. After the barrier, the circuit measures the final state, and the resulting probabilities are stored in the classical registers.

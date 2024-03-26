@@ -1,0 +1,7 @@
+This code represents the implementation of the Quantum Fourier Transform (QFT) algorithm with entanglement. The algorithm is performed on a quantum computer with 5 qubits. 
+
+The code starts by initializing the qubits and creating classical registers for measurement results. Then, a series of quantum gates are applied to create entanglement and perform the QFT. 
+
+The qubits q[4] to q[0] are first put into superposition using the Hadamard gate (H). Then, controlled-not (CX) gates are used to create entanglement between the qubits. After that, controlled-phase (CP) gates with different angles are applied to each pair of qubits to perform the QFT. 
+
+Finally, swap gates are used to rearrange the qubits, a barrier is added for synchronization, and the qubits are measured and stored in the classical registers.

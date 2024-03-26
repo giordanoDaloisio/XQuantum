@@ -1,0 +1,21 @@
+This code is a quantum circuit written in the OpenQASM programming language. It represents the Quantum Phase Estimation algorithm, which is used to estimate the phase of a quantum state relative to a reference state.
+
+The code begins by importing the necessary libraries and defining the qubits and classical registers. There are 4 qubits (q[0], q[1], q[2], q[3]) and 1 ancillary qubit (psi[0]), as well as 4 classical bits (c[0], c[1], c[2], c[3]).
+
+The algorithm starts by applying a Hadamard gate (h) to each qubit. Then, a Pauli-X gate (x) is applied to the ancillary qubit psi[0].
+
+Next, a series of controlled phase gates (cp) are applied to the ancillary qubit psi[0] and the qubits q[0], q[1], q[2], and q[3]. These gates introduce phase shifts to the qubits based on the state of the ancillary qubit.
+
+After that, a series of swap gates (swap) are applied to rearrange the qubits q[1] and q[2].
+
+Then, another controlled phase gate (cp) is applied to introduce a phase shift to qubit q[3] based on the state of psi[0].
+
+Another swap gate is applied to rearrange qubits q[0] and q[3].
+
+Following that, a series of Hadamard gates (h) and controlled phase gates (cp) are applied to the qubits q[0], q[1], q[2], and q[3] to further manipulate the state.
+
+A barrier is then placed to separate the preparation of the state from the measurement.
+
+Finally, the qubits q[0], q[1], q[2], and q[3] are measured and the measurement results are stored in the classical bits c[0], c[1], c[2], and c[3].
+
+Overall, this code implements the Quantum Phase Estimation algorithm to estimate the phase of a quantum state.

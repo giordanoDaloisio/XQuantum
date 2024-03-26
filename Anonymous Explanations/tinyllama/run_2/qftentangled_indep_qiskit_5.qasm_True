@@ -1,0 +1,19 @@
+Here's a high-level explanation of this quantum algorithm, Quantum Fourier Transform with entanglement (MQT Bench):
+
+1. The program includes five qubits (quantum bits) named q[0], q[1], q[2], q[3], and q[4]. These qubits are initialized to random values in the range -pi/8 to pi/8 (inclusive).
+
+2. The MQT Bench algorithm consists of several steps, including:
+
+   a) Hitting each qubit with a phase shift by setting its state to π/4 (or -π/4) and measuring its state again. This process is repeated for all qubits.
+
+   b) Using the measured states as input for a quantum Fourier transform (QFT) algorithm, which involves finding the unique value of each bit in a given pattern (e.g., 0011... or 1011...).
+
+3. The QFT algorithm is based on the fact that the quantum Fourier transform can be viewed as a classical algorithm (i.e., a one-dimensional search) that applies only to certain patterns of bits.
+
+4. By applying a particular pattern to all five qubits at once, each bit value is mapped to a unique quantum state, which is then measured and processed in the same way as before (step a). 
+
+5. The resulting measurement values are added together (step b) to form the final output.
+
+6. The QFT algorithm is an approximate one-dimensional search that only covers certain patterns of bits. However, by using entanglement, the algorithm is transformed into a more efficient two-dimensional search that can be applied on larger quantum systems. 
+
+7. In this case, the MQT Bench program uses the QFT algorithm to find all possible permutations (i.e., patterns) of five bits in a given pattern. The resulting output values are then added together to form the final output.

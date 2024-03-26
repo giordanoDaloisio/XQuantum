@@ -1,0 +1,24 @@
+This is a quantum circuit written in the OpenQASM language. It consists of a series of commands that define the quantum circuit and its operations. Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the circuit is written in OpenQASM version 2.0, which is a popular language for writing quantum circuits.
+2. `include "qelib1.inc";`: This line includes a predefined library of functions and variables called `qelib1.inc`, which is commonly used in OpenQASM circuits.
+3. `qreg q[10];`: This line declares an array of 10 quantum registers called `q`. These registers will be used to store the qubits in the circuit.
+4. `creg c[10];`: This line declares an array of 10 classical registers called `c`. These registers will be used to store the measurement outcomes of the qubits.
+5. `meas[10];`: This line declares an array of 10 measurement outcomes called `meas`. These outcomes will be used to compute the fidelity of the circuit.
+6. `h q[9];`: This line creates a new quantum register called `q[9]`, which will be used as the target for the Hadamard gate.
+7. `cp(pi/2) q[9],q[8];`: This line applies the controlled-phase gate to the qubits in registers `q[9]` and `q[8]`. The parameter `pi/2` represents the phase shift applied to the target qubit (register `q[8]`).
+8. `h q[8];`: This line creates a new quantum register called `q[8]`, which will be used as the target for the Hadamard gate.
+9. `cp(pi/4) q[9],q[7];`: This line applies the controlled-phase gate to the qubits in registers `q[9]` and `q[7]`. The parameter `pi/4` represents the phase shift applied to the target qubit (register `q[7]`).
+10. `cp(pi/2) q[8],q[7];`: This line applies the controlled-phase gate to the qubits in registers `q[8]` and `q[7]`. The parameter `pi/2` represents the phase shift applied to the target qubit (register `q[7]`).
+11. `h q[7];`: This line creates a new quantum register called `q[7]`, which will be used as the target for the Hadamard gate.
+12. `cp(pi/8) q[9],q[6];`: This line applies the controlled-phase gate to the qubits in registers `q[9]` and `q[6]`. The parameter `pi/8` represents the phase shift applied to the target qubit (register `q[6]`).
+13. `cp(pi/4) q[8],q[6];`: This line applies the controlled-phase gate to the qubits in registers `q[8]` and `q[6]`. The parameter `pi/4` represents the phase shift applied to the target qubit (register `q[6]`).
+14. `cp(pi/2) q[7],q[6];`: This line applies the controlled-phase gate to the qubits in registers `q[7]` and `q[6]`. The parameter `pi/2` represents the phase shift applied to the target qubit (register `q[6]`).
+15. `h q[6];`: This line creates a new quantum register called `q[6]`, which will be used as the target for the Hadamard gate.
+16. `cp(pi/16) q[9],q[5];`: This line applies the controlled-phase gate to the qubits in registers `q[9]` and `q[5]`. The parameter `pi/16` represents the phase shift applied to the target qubit (register `q[5]`).
+17. `cp(pi/8) q[8],q[5];`: This line applies the controlled-phase gate to the qubits in registers `q[8]` and `q[5]`. The parameter `pi/8` represents the phase shift applied to the target qubit (register `q[5]`).
+18. `cp(pi/2) q[7],q[5];`: This line applies the controlled-phase gate to the qubits in registers `q[7]` and `q[5]`. The parameter `pi/2` represents the phase shift applied to the target qubit (register `q[5]`).
+19. `h q[5];`: This line creates a new quantum register called `q[5]`, which will be used as the target for the Hadamard gate.
+20. `measure q[5],q[6],...q[10]`: This line measures the qubits in registers `q[5]` to `q[10]`. The measurements are stored in the classical registers `c[5]` to `c[10]`.
+
+In summary, this quantum circuit applies controlled-phase gates to a series of qubits and then measures the resulting states. The fidelity of the circuit is computed by comparing the expected measurement outcomes with the actual measurement outcomes.

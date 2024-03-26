@@ -1,0 +1,20 @@
+This is a quantum circuit written in OpenQASM, a standard for representing quantum circuits. The circuit is designed to simulate the Deutsch-Jozsa algorithm, which is a simple quantum algorithm that solves the problem of factoring integers.
+
+Here's a high-level explanation of the circuit:
+
+1. The circuit starts by defining 10 qubits (labeled q[0] through q[9]) and 9 classical bits (labeled c[0] through c[8]).
+2. The qubits are initialized to |0⟩ states.
+3. A barrier is applied to the qubits, which means that the quantum circuit will wait for all of the classical bits to be measured before proceeding.
+4. Measurements are applied to each of the qubits, resulting in 10 outcomes (labeled c[0] through c[9]). These outcomes are recorded in the classical bits.
+5. The barrier is removed, and the quantum circuit continues to the next step.
+
+The Deutsch-Jozsa algorithm is a simple example of a quantum algorithm that can factor integers. It works by iteratively applying a quantum circuit that consists of two main parts:
+
+1. A quantum version of the modular multiplication operation, which takes two integers as input and produces their product as output.
+2. A quantum version of the reduction operation, which takes a binary representation of an integer and reduces it to its prime factors.
+
+The Deutsch-Jozsa algorithm repeats these two operations enough times to factor an integer. In this circuit, the quantum modular multiplication operation is implemented using the CNOT gate (which controls the phase of the second qubit) and the Hadamard gate (which applies a 90-degree rotation to the first qubit). The reduction operation is implemented using the controlled-NOT gate (which applies a 180-degree rotation to the second qubit if the first qubit is in the |1⟩ state).
+
+The circuit repeats these operations 10 times, which is why there are 10 cubits in the circuit. Each iteration of the algorithm applies the quantum modular multiplication operation to two qubits and then reduces the result to its prime factors using the reduction operation. The output of each iteration is recorded in the classical bits.
+
+Overall, this circuit simulates the Deutsch-Jozsa algorithm on a small number of qubits and demonstrates how quantum computers can be used to solve problems that are difficult or impossible for classical computers to solve.

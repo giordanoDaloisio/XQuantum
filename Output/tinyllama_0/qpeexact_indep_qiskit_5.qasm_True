@@ -1,0 +1,15 @@
+Here's a high-level explanation of the code:
+
+1. OpenQASM 2.0 (Qasm) is used for simulating quantum computers. It consists of 16 qubits, and each circuit has up to three gates. The author uses Qasm for his benchmark, which involves running multiple circuits on a quantum computer.
+
+2. The circuit includes two controlled not (CNOT) operations followed by another controlled not (CP), followed by another controlled not (H) operation. These operations are designed to prepare the target state for quantum phase estimation.
+
+3. The author uses Qubit 0 and 1 as a register, Qubit 2-4 and 6-7 as control qubits, and Qubit 8 as a measurement qubit.
+
+4. The author defines two operators, "psi[0]" and "c[0]", which correspond to Pauli X and CX operators respectively on Qubit 0. These operators are used in the quantum phase estimation algorithm.
+
+5. The author measures Qubits 1-3 using a Hadamard gate (H) after every CNOT operation. This measurement is essential for obtaining accurate results from the algorithm, which estimates the phase of an ensemble of qubits.
+
+6. The code includes a barrier between the initial state preparation and quantum phase estimation, which is used to ensure that all qubits are in the same initial state before measurement. The author also measures Qubit 3 after every CNOT operation to obtain the phase of that qubit.
+
+Overall, this code provides an efficient way to simulate quantum phase estimation on a quantum computer using a well-designed set of quantum circuits and a dedicated quantum simulator.

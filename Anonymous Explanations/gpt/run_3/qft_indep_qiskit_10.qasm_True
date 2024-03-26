@@ -1,0 +1,9 @@
+This code implements the Quantum Fourier Transform algorithm. The algorithm uses 10 qubits (labeled q[0] to q[9]) to perform a series of Hadamard and controlled phase gates to transform a quantum state into its frequency components. 
+
+The code starts by importing the necessary Qiskit library and defining the quantum and classical registers. 
+
+Next, a series of Hadamard gates are applied to the q[9] to q[0] qubits. Then, a series of controlled phase gates are applied to create the controlled rotations necessary for the Fourier Transform. 
+
+After that, additional Hadamard gates are applied to the qubits. 
+
+The qubits are then measured and the measurement results are stored in the classical register meas[0] to meas[9].

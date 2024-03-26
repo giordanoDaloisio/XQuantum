@@ -1,0 +1,11 @@
+This is a high-level overview of the benchmark code you provided. It comprises several subprograms that are separated into different parts, such as OPENQASM 2.0, Qiskit version, and MQT Bench. The OPENQASM 2.0 part contains instructions for using Qiskit to compile a program in OpenQasm language, while the Qiskit version section provides instructions for running quantum algorithms on a quantum computer.
+
+The benchmark code comprises several subprograms, including the following:
+
+1. `OPENQASM 2.0`: This part contains instructions for compiling a given OpenQasm program into a runnable script in Qiskit. The subprogram also includes instructions for creating a circuit object from the OpenQasm script, as well as initializing and configuring the circuit before running it on the quantum computer.
+
+2. `MQT Bench`: This part contains instructions for using the MQT Bench tool to perform benchmarks against various quantum algorithms in Qiskit. The subprogram includes instructions for running specific quantum algorithms, including entanglement generation and control, as well as quantum state preparation and measurement.
+
+3. `Mercator circuit`: This part contains a simple circuit designed to measure the coin flip outcome of a 2-qubit system. It comprises two Hadamard gates and a CX gate to perform an entanglement swap, followed by a controlled X gate to measure the coin state.
+
+The benchmark code is separated into various parts for easy reusability and modularity. The Qiskit version section can be adapted to any quantum algorithm of interest, while the MQT Bench portion can be used as a starting point for other implementations. This allows for quick integration of this benchmark code into existing quantum algorithms research and development.
