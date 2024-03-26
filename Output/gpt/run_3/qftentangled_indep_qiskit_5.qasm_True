@@ -1,0 +1,11 @@
+This code implements the Quantum Fourier Transform (QFT) algorithm with entanglement using the Qiskit library. The code starts by importing the necessary library and defining a quantum register with 5 qubits and a classical register with 5 bits. 
+
+The algorithm begins by applying a Hadamard gate (h) to the fourth qubit. Then, a series of controlled-not gates (cx) are applied to create entanglement between the qubits. After each cx gate, a Hadamard gate is applied to the corresponding qubit. This process continues until all qubits have been entangled.
+
+Next, the code applies controlled-phase gates (cp) to each qubit, controlled by the qubit before it in the register. The angle of the phase shift increases with each qubit.
+
+After applying all the gates, the qubits are swapped to reverse the order of the qubits.
+
+Finally, a barrier is applied to ensure that all gates have been executed before measurements are taken. The measurements are performed on each qubit, and the results are stored in the classical register.
+
+The name of the algorithm is "Quantum Fourier Transform with entanglement", and the code works with 5 qubits.

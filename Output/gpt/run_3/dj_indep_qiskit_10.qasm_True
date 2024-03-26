@@ -1,0 +1,11 @@
+This code is implementing the Deutsch-Jozsa algorithm, which is a quantum algorithm used to determine whether a given function is balanced or constant. 
+
+The code begins by initializing 10 qubits (q[0] to q[9]) and 9 classical registers (c[0] to c[8]).
+
+Next, a series of quantum gates are applied to the qubits to perform computations. These gates include u2(0,0), h, u2(-pi,-pi), and cx (controlled NOT) gates. These gates are used to manipulate the qubits and perform operations necessary for the algorithm.
+
+After the quantum gates, a barrier is inserted to separate the preparation phase from the measurement phase. 
+
+Finally, the qubits are measured and the results are stored in the classical registers. The measurements are performed on each qubit individually, and the results are stored in the corresponding classical register.
+
+The algorithm is used to determine whether the given function is balanced or constant based on the measurement results.
