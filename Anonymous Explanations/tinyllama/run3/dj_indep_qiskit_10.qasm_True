@@ -1,9 +1,0 @@
-In this code, we define a benchmark named "Deutsch-Jozsá" using the `OPENQASM` and `QLIB1` libraries. The `qreg` and `c` registers are used to represent quantum resources like qubits or clbits.
-
-The benchmark starts by creating 10 qubits as initializations, which is equivalent to creating 10 different possible states in our quantum system. We then perform a series of quantum operations, such as quantum gates and classical measurement, using the `u2` and `h` gates to control the evolution of our qubits.
-
-The benchmark includes a random initialization of each qubit, followed by several operations that generate a pattern of states. The patterns are then measured to determine the probability of each state for each qubit, which is used as input to another quantum algorithm called "Deutsch-Jozsá".
-
-In addition to these basic quantum operations, the benchmark includes several more advanced quantum gates like Hadamard and RX, as well as classical measurement. These additional gates allow us to experiment with different types of qubits and algorithms, and can be used to further optimize this benchmark for specific applications.
-
-This benchmark can serve as a useful starting point for other developers who want to implement their own quantum algorithms based on the Deutsch-Jozsá algorithm or any other algorithm in the `OPENQASM` library.

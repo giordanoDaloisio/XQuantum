@@ -1,9 +1,0 @@
-This code is written in the OpenQASM language and is used for benchmarking a quantum circuit using the MQT Bench tool. The code begins with some metadata about the benchmark and the versions of MQT Bench and Qiskit used.
-
-The code then defines a quantum register `q` with 10 qubits and a classical register `c` with 10 bits. It also defines another classical register `meas` with 10 bits, which will be used to store measurement results.
-
-The subsequent lines of code apply various quantum gates and operations to the qubits in the `q` register. These gates include Hadamard gates (`h`), controlled-phase gates (`cp`), and swap gates (`swap`). These gates are used to manipulate the state of the qubits and perform computations.
-
-After the gate operations, a barrier is applied to ensure synchronization of the qubits before measurements are made. Then, measurements are performed on each qubit in the `q` register, and the results are stored in the corresponding bits of the `meas` register.
-
-Overall, this code represents a quantum circuit with 10 qubits that performs a series of gate operations and measurements. The specific operations and their purposes may vary depending on the context and the specific benchmark being performed.

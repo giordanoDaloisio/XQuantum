@@ -1,9 +1,0 @@
-This C++ program uses Qiskit to implement a quantum Fourier transform (QFT) algorithm with entanglement. The code consists of five cubits, or qubits, which are used for encoding and decoding the data. It then performs quantum measurements on each qubit, resulting in a set of probabilities that determine the desired output values.
-
-The program starts by opening the Qiskit API, including the necessary modules such as QE, QL, and QElib1. The circuit is then defined, with three controlled-NOT operations and two CX operations for entanglement. The H gate (Hadamard) and CP operations (CP to prepare the state in a superposition of eigenstates) are used to initialize the qubits to their states, which can be read out using measurements on the appropriate qubits.
-
-The program then uses an iterative algorithm to perform the QFT, with each iteration producing new probabilities for the output states. The final output is obtained by measuring in the relevant basis. To optimize the circuit, it is optimized for entanglement using MQT Bench version 1.10 and Qiskit's QL backend, ensuring that the input and output states are in a superposition.
-
-Finally, the program outputs the probabilities obtained by measuring each qubit. The measured values are then converted to binary representations for visualization purposes.
-
-The code uses a high-level explanation of MQT Bench, Qiskit, and QL to explain how the algorithm works, providing insight into the underlying principles used in quantum algorithms.

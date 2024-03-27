@@ -1,9 +1,0 @@
-This code implements the Quantum Fourier Transform algorithm. It uses 10 qubits (labeled q[0] to q[9]) and 10 classical registers (labeled c[0] to c[9]) to store the measurement results. 
-
-The code starts by applying a Hadamard gate (H) to qubit q[9], followed by controlled phase gates (CP) between q[9] and q[8], q[8] and q[7], q[9] and q[7], and so on. This sequence of gates is repeated for qubits q[6] to q[0], with the control qubit changing in each step.
-
-After applying the gates, the code swaps the values of q[0] and q[9], q[1] and q[8], q[2] and q[7], q[3] and q[6], and q[4] and q[5]. This swapping step is followed by a barrier to ensure that all gates have completed before proceeding.
-
-Finally, the code measures the values of qubits q[0] to q[9] and stores the results in classical registers meas[0] to meas[9].
-
-Overall, this code implements the Quantum Fourier Transform algorithm using 10 qubits and measures the results.

@@ -1,9 +1,0 @@
-This is a high-level explanation of the code provided.
-
-The code begins by importing Qiskit's QRegister and QClassicalRegister classes, which are used to represent quantum registers and classical bits respectively. It creates two quantum registers `q` and `flag`, which will hold the state vectors of 2 qubits each (i.e. 4 qubits in total). It also defines the CP operation on these registers (`cp`) and its corresponding Hadamard gate (`h`), as well as the X and Y operators used to perform Hadamards on individual qubits (`x` and `y`, respectively). Finally, the code defines a U-gate between two quantum registers (`u1`) and a measurement of one of these registers (`meas[0]`), as well as a barrier between each register and a classical bit (`flag[]`).
-
-The main function starts by initializing all qubits to their |0> state using the `init_all` method. It then creates a Qiskit QuantumCircuit object from the code, which is used to define the Hamiltonian for a quantum register with two qubits and 1 classical bit (which represents whether one of the qubits has been measured). The circuit is then compiled into a QASM file using Qiskit's `compile_circuit` function.
-
-Finally, the code defines a benchmark that runs multiple instances of this quantum register with different initial states and measurement outcomes, generating measurement probabilities for each outcome as measured by the classical bits. The benchmark then plots the probability distribution of these measurement outcomes against the expected value calculated using Qiskit's `run_benchmark` function.
-
-The code also includes an example usage of the benchmark in a Python script, which generates and plots multiple instances of the benchmark as well as a summary of the results.

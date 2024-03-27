@@ -1,9 +1,0 @@
-This code is written in OpenQASM 2.0 and is performing the Deutsch-Jozsa algorithm. The algorithm is designed to solve the Deutsch-Jozsa problem which is a problem in computer science and mathematics. 
-
-The code starts by including the necessary library "qelib1.inc" and declaring a quantum register "q" with 10 qubits and a classical register "c" with 9 bits.
-
-The code then applies various quantum gates and measurements to the qubits. The gates used include the Hadamard gate (h) and the u2 gate (a general single-qubit gate with two parameters). The code also applies controlled-not (cx) gates to perform controlled operations.
-
-After applying the gates and measurements, a barrier is placed to ensure that all operations have completed before proceeding. The measurements of the qubits are then stored in the classical register "c".
-
-In summary, the code is implementing the Deutsch-Jozsa algorithm using 10 qubits and performing various quantum gates and measurements to solve a specific problem.

@@ -1,9 +1,0 @@
-This code is a quantum circuit that implements the Quantum Phase Estimation algorithm. The algorithm estimates the phase of a quantum state using a set of ancillary qubits. 
-
-The code starts by initializing the quantum registers `q` and `psi`, and the classical register `c`. The qubits in register `q` are used for the estimation, while the qubit in register `psi` is the state whose phase is being estimated.
-
-The code then applies a series of quantum gates and measurements to perform the estimation. The gates used include the Hadamard gate (`h`), the Pauli-X gate (`x`), and controlled-phase gates (`cp`). The `swap` gate is also used to exchange the qubits `q[1]` and `q[2]`.
-
-After the estimation is performed, the code adds a barrier to separate the estimation part from the measurement part. The circuit then measures the qubits in register `q` and stores the results in the classical register `c`.
-
-Overall, this code implements the Quantum Phase Estimation algorithm to estimate the phase of a quantum state.

@@ -1,9 +1,0 @@
-This code is implementing a quantum walk algorithm. 
-
-The code begins by importing the necessary libraries and defining the quantum and classical registers. The code includes 2 quantum registers, named "node" and "coin", and 3 classical registers, named "meas".
-
-Next, the code performs a series of quantum operations on the registers. These operations include applying a Hadamard gate (h) to the "coin" register, applying controlled-X gates (ccx) and CNOT gates (cx) to the "coin" and "node" registers, applying Pauli-X gates (x) to the "node" and "coin" registers, and applying u2 gates to the "coin" register.
-
-After performing these operations, the code places a barrier and measures the states of the "node" and "coin" registers. The measurement results are stored in the classical registers.
-
-Overall, this code implements a quantum walk algorithm using 2 quantum registers and 3 classical registers.

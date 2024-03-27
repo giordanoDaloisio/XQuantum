@@ -1,5 +1,0 @@
-This code is written in QASM (Quantum Assembly Language) and is for the Amplitude Estimation algorithm. The code includes the declaration and initialization of quantum registers `eval` (with 4 qubits) and `q` (with 1 qubit), and classical register `meas` (with 5 bits).
-
-The code then applies various gates and operations on the qubits. It applies u2 and u3 gates on the `eval` qubits, followed by cx gates with `q[0]`. It also applies cx gates between `eval` qubits. Then, it applies h, cp, and u gates on the `eval` qubits. Finally, it applies a barrier and measures the `eval` and `q[0]` qubits into the `meas` classical register.
-
-The purpose of this code is to estimate the amplitude of a particular state in a quantum system using the Amplitude Estimation algorithm.

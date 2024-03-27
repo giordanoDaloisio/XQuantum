@@ -1,5 +1,0 @@
-This Qiskit program benchmarks the time it takes for the quantum Fourier transform (QFT) algorithm on up to 10 qubits. The input parameters are set to a matrix of size 10x9, representing an image with black and white pixels. The code uses the MQT Bench library and Qubit class to create an array of qubits that is passed to the circuit function, which is then run using the `qiskitaq` library.
-
-The `measure` function is used to measure the output of the quantum Fourier transform on a single qubit, with its corresponding bit (1 or 0) being measured. The program uses the `Barrier` class to wait for all qubits to be measured before continuing.
-
-The benchmark was created by MQT Bench, and Qiskitaq is used to compile and run the code. The code runs on a machine with Intel Xeon W-2135 CPU @ 2.60GHz and 32GB of RAM. It takes about 8 seconds to execute for this input matrix.

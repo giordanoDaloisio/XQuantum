@@ -1,9 +1,0 @@
-This code is written in QASM (Quantum Assembly Language) and it represents a quantum circuit. The circuit consists of 5 qubits, labeled q[0] to q[4], and 5 classical registers, labeled meas[0] to meas[4].
-
-The circuit performs a series of quantum operations on the qubits, such as Hadamard gates (h), controlled-X gates (cx), and controlled phase gates (cp). These gates manipulate the quantum state of the qubits to perform computations.
-
-After the quantum operations, the circuit applies swap gates (swap) to exchange the states of qubits q[0] and q[4], and qubits q[1] and q[3]. 
-
-The circuit then applies a barrier gate to ensure all previous operations have completed before measurement.
-
-Finally, the circuit measures the qubits and stores the measurement results in the classical registers meas[0] to meas[4].
