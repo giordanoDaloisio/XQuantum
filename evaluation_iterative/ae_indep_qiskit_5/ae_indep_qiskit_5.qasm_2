@@ -1,0 +1,38 @@
+ This is a quantum circuit written in OpenQASM, a standard for describing quantum circuits. The circuit is designed to perform amplitude estimation, which is a quantum version of classical Maxwell's demon problem.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OpenQASM version 2.0.
+2. `include "qelib1.inc"`: This line includes a include file called `qelib1.inc`, which contains definitions and functions used throughout the circuit.
+3. `qreg eval[4];`: This line declares a quantum register named `eval` with 4 qubits.
+4. `qreg q[1];`: This line declares a quantum register named `q` with 1 qubit.
+5. `creg meas[5];`: This line declares a classical register named `meas` with 5 elements.
+6. `u2(0,-pi) eval[0];`: This line defines a unitary transformation that applies a 2-qubit rotation to the first qubit of the `eval` register, where 0 and -π are the rotation angles.
+7. `u2(0,-pi) eval[1];`: This line defines another unitary transformation that applies a 2-qubit rotation to the second qubit of the `eval` register.
+8. `u2(0,-pi) eval[2];`: This line defines yet another unitary transformation that applies a 2-qubit rotation to the third qubit of the `eval` register.
+9. `u2(0,-pi) eval[3];`: This line defines a final unitary transformation that applies a 2-qubit rotation to the fourth qubit of the `eval` register.
+10. `u3(0.9272952180016122,0,0) q[0];`: This line defines a 3-qubit unitary transformation that applies a rotation to the first qubit of the `q` register.
+11. `cx eval[0],q[0];`: This line performs a controlled-NOT (CNOT) operation between the first qubit of the `eval` register and the first qubit of the `q` register.
+12. `u(-0.9272952180016122,0,0) q[0];`: This line applies a 3-qubit rotation to the first qubit of the `q` register.
+13. `cx eval[0],q[0];`: This line performs another CNOT operation between the first qubit of the `eval` register and the first qubit of the `q` register.
+14. `u(-1.8545904360032244,0,0) q[0];`: This line applies a 3-qubit rotation to the first qubit of the `q` register.
+15. `cx eval[1],q[0];`: This line performs another CNOT operation between the second qubit of the `eval` register and the first qubit of the `q` register.
+16. `u(-3.7091808720064487,0,0) q[0];`: This line applies a 3-qubit rotation to the first qubit of the `q` register.
+17. `cx eval[2],q[0];`: This line performs another CNOT operation between the second qubit of the `eval` register and the first qubit of the `q` register.
+18. `u(-7.4183617440128975,0,0) q[0];`: This line applies a 3-qubit rotation to the first qubit of the `q` register.
+19. `h eval[3];`: This line defines a Hadamard gate on the third qubit of the `eval` register.
+20. `cp(-pi/2) eval[2],eval[3];`: This line applies a controlled-NOT operation between the second and third qubits of the `eval` register.
+21. `cp(-pi/4) eval[1],eval[3];`: This line applies another controlled-NOT operation between the first and third qubits of the `eval` register.
+22. `cp(-pi/8) eval[0],eval[3];`: This line applies yet another controlled-NOT operation between the first qubit of the `eval` register and the third qubit of the `eval` register.
+23. `h eval[2];`: This line defines another Hadamard gate on the second qubit of the `eval` register.
+24. `cp(-pi/2) eval[1],eval[2];`: This line applies a controlled-NOT operation between the first and second qubits of the `eval` register.
+25. `h eval[0];`: This line defines a Hadamard gate on the first qubit of the `eval` register.
+26. `u(7.4183617440128975,0,0) q[0];`: This line applies a 3-qubit rotation to the first qubit of the `q` register.
+27. `barrier eval[0],eval[1],eval[2],eval[3],q[0];`: This line applies a barrier operation to the `eval` and `q` registers, which prevents any further evolution of the quantum state.
+28. `measure eval[0]>`: This line measures the first qubit of the `eval` register.
+
+The code above defines a quantum circuit that implements a quantum algorithm for solving the unstructured linear systems of equations. The algorithm consists of two main steps: (1) preparing an initial state, and (2) evolving the state using a sequence of quantum operations. The final step is to measure the state to obtain the solution to the linear system.
+
+The code uses the Qiskit Terra platform to define the quantum circuit. The `qr` function is used to define the quantum registers, which in this case are the `eval` and `q` registers. The `uc` function is used to define the unitary operations, which are applied to the quantum states using the `h` and `cx` functions. The `cp` function is used to define controlled-NOT operations, which are used to implement the barrier operation. Finally, the `measure` function is used to measure the state of the `eval` register.
+
+Note that this is just an example code, and in practice, you may need to modify the circuit to suit your specific requirements. Additionally, running a quantum algorithm on a real quantum computer requires significant resources, including a powerful quantum processor and cryogenic cooling, as well as expertise in quantum computing.
