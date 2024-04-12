@@ -1,0 +1,28 @@
+ The provided code is an implementation of the Quantum Fourier Transform (QFT) algorithm using Qiskit. Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the code is written in OpenQASM, which is a high-level language for quantum circuits.
+2. `include "qelib1.inc";`: This line includes a precompiled header file (qelib1.inc) that provides useful functions and types for working with Quantum circuits.
+3. `qreg q[10];`: This line declares an array of 10 quantum registers, called q[i], where i ranges from 0 to 9. These registers will be used to store the qubits in the quantum circuit.
+4. `creg c[10];`: This line declares an array of 10 classical registers, called c[i], where i ranges from 0 to 9. These registers will be used to store the measurement outcomes.
+5. `meas[10];`: This line declares an array of 10 measurement outcomes, called meas[i], where i ranges from 0 to 9. These outcomes will be stored in the c[i] registers.
+6. `h q[9];`: This line creates a quantum register named q[9].
+7. `cp(pi/2) q[9],q[8];`: This line applies a controlled phase gate (cp) to the qubits q[9] and q[8], with the angle of pi/2. This is used to prepare the QFT state.
+8. `h q[8];`: This line creates another quantum register named q[8].
+9. `cp(pi/4) q[9],q[7];`: This line applies a controlled phase gate (cp) to the qubits q[9] and q[7], with the angle of pi/4.
+10. `cp(pi/2) q[8],q[7];`: This line applies a controlled phase gate (cp) to the qubits q[8] and q[7], with the angle of pi/2.
+11. `h q[7];`: This line creates another quantum register named q[7].
+12. `cp(pi/4) q[9],q[6];`: This line applies a controlled phase gate (cp) to the qubits q[9] and q[6], with the angle of pi/4.
+13. `cp(pi/2) q[8],q[6];`: This line applies a controlled phase gate (cp) to the qubits q[8] and q[6], with the angle of pi/2.
+14. `h q[6];`: This line creates another quantum register named q[6].
+15. `cp(pi/16) q[9],q[5];`: This line applies a controlled phase gate (cp) to the qubits q[9] and q[5], with the angle of pi/16.
+16. `cp(pi/8) q[8],q[5];`: This line applies a controlled phase gate (cp) to the qubits q[8] and q[5], with the angle of pi/8.
+17. `cp(pi/4) q[7],q[5];`: This line applies a controlled phase gate (cp) to the qubits q[7] and q[5], with the angle of pi/4.
+18. `cp(pi/2) q[6],q[5];`: This line applies a controlled phase gate (cp) to the qubits q[6] and q[5], with the angle of pi/2.
+19. `h q[5];`: This line creates another quantum register named q[5].
+20. `cp(pi/32) q[9],q[4];`: This line applies a controlled phase gate (cp) to the qubits q[9] and q[4], with the angle of pi/32.
+21. `h q[4];`: This line creates another quantum register named q[4].
+22. `measure q[i],c[i];`: This line measures the qubits q[i] and stores the measurement outcome in the c[i] classical registers.
+
+The Quantum Fourier Transform algorithm is a quantum circuit that applies a series of controlled phase gates to prepare the state for quantum teleportation. The algorithm consists of two main parts: the first part prepares the quantum state by applying a series of controlled phase gates, and the second part applies a series of Hadamard gates to the qubits to perform the Fourier transform.
+
+In this code, the algorithm is implemented using Qiskit's OpenQASM language, which provides a high-level abstraction for programming quantum circuits. The code includes 10 cubits (quantum registers) and 10 measurement outcomes, which are stored in classical registers c[i].

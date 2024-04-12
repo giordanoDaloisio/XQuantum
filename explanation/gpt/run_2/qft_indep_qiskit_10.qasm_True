@@ -1,0 +1,9 @@
+This code implements the Quantum Fourier Transform algorithm using 10 qubits. 
+
+The code starts by importing the necessary libraries and initializing the qubits and classical registers. 
+
+Next, a series of Hadamard gates (h) and controlled phase gates (cp) are applied to each qubit in a cascading manner, resulting in a sequence of controlled rotations. These gates are used to perform the main computation of the Quantum Fourier Transform. 
+
+After the computation, a series of swap gates are applied to rearrange the qubits. 
+
+Finally, a barrier is added to separate the computation from the measurement, and measurements are performed on each qubit and stored in the classical registers.

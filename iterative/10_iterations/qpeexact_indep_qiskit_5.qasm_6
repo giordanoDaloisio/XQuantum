@@ -1,0 +1,28 @@
+ The provided code is a Quantum Algorithm written in OpenQASM, which is a high-level language for describing quantum circuits. The algorithm is called "Quantum Phase Estimation" and it uses 5 cubits (quantum registers).
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the code is written in OpenQASM version 2.0, which is a quantum circuit description language.
+2. `include "qelib1.inc"`: This line includes a library of predefined quantum gates and other useful functions.
+3. `qreg q[4]; qreg psi[1]; creg c[4];`: These lines define four qubits (quantum registers) called `q`, one quantum register called `psi` that will store the phase estimation result, and four classical registers called `c`.
+4. `h q[0]; h q[1]; h q[2]; h q[3];`: These lines define four Hadamard gates (quantum gates that apply a Hadamard transformation to a qubit) called `q[0]`, `q[1]`, `q[2]`, and `q[3]`.
+5. `x psi[0];`: This line applies a phase shift to the quantum register `psi` by multiplying it with a complex number (in this case, 7*pi/8).
+6. `cp(-7*pi/8) psi[0],q[0];`: This line applies a controlled phase shift operation to the quantum registers `psi[0]` and `q[0]`. The control qubit is `psi[0]`, and the target qubit is `q[0]`.
+7. `cp(pi/4) psi[0],q[1];`: This line applies a controlled phase shift operation to the quantum registers `psi[0]` and `q[1]`. The control qubit is `psi[0]`, and the target qubit is `q[1]`.
+8. `cp(pi/2) psi[0],q[2];`: This line applies a controlled phase shift operation to the quantum registers `psi[0]` and `q[2]`. The control qubit is `psi[0]`, and the target qubit is `q[2]`.
+9. `swap q[1],q[2];`: This line swaps the values of the qubits `q[1]` and `q[2]`.
+10. `cp(pi) psi[0],q[3];`: This line applies a controlled phase shift operation to the quantum registers `psi[0]` and `q[3]`. The control qubit is `psi[0]`, and the target qubit is `q[3]`.
+11. `swap q[0],q[3];`: This line swaps the values of the qubits `q[0]` and `q[3]`.
+12. `h q[0];`: This line applies a Hadamard gate to the qubit `q[0]`.
+13. `cp(-pi/2) q[1],q[0];`: This line applies a controlled phase shift operation to the qubits `q[1]` and `q[0]`. The control qubit is `q[1]`, and the target qubit is `q[0]`.
+14. `h q[1];`: This line applies a Hadamard gate to the qubit `q[1]`.
+15. `cp(-pi/4) q[2],q[0];`: This line applies a controlled phase shift operation to the qubits `q[2]` and `q[0]`. The control qubit is `q[2]`, and the target qubit is `q[0]`.
+16. `h q[2];`: This line applies a Hadamard gate to the qubit `q[2]`.
+17. `cp(-pi/8) q[3],q[0];`: This line applies a controlled phase shift operation to the qubits `q[3]` and `q[0]`. The control qubit is `q[3]`, and the target qubit is `q[0]`.
+18. `barrier q[0],q[1],q[2],q[3],psi[0];`: This line applies a barrier operation to the quantum registers `q[0]` through `q[3]` and the quantum register `psi[0]`. The barrier stops the evolution of the quantum algorithm.
+19. `measure q[0] -> c[0];`: This line measures the qubit `q[0]` and stores the result in a classical register called `c[0]`.
+20. `measure q[1] -> c[1];`: This line measures the qubit `q[1]` and stores the result in a classical register called `c[1]`.
+21. `measure q[2] -> c[2];`: This line measures the qubit `q[2]` and stores the result in a classical register called `c[2]`.
+22. `measure q[3] -> c[3];`: This line measures the qubit `q[3]` and stores the result in a classical register called `c[3]`.
+
+The algorithm is Quantum Phase Estimation, which is a quantum algorithm that can be used to estimate the eigenvalues of a unitary operator. In this case, the input state is a superposition of the states |0⟩, |1⟩, and |2⟩, and the goal is to compute the eigenvalues of the Pauli operator σ_z, which is a linear combination of the Pauli matrices X, Y, and Z. The algorithm uses 5 cubits and performs a series of controlled phase shifts and Hadamard gates to evolve the input state into a superposition of the states |0⟩, |1⟩, |2⟩, and |3⟩. Then, it measures the state |0⟩ and stores the result in the classical register c[0]. The remaining measurements are performed in a similar way.

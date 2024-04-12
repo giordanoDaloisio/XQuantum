@@ -1,0 +1,15 @@
+ This is a quantum circuit written in the OPENQASM language, which is a standard format for describing quantum algorithms. The circuit is a simple implementation of the Deutsch-Jozsa algorithm, which is a quantum algorithm for solving the problem of factoring large numbers.
+
+Here's a high-level explanation of the circuit:
+
+1. The circuit starts by declaring several quantum registers: `q`, `c`, and `h`. `q` is a register of 10 qubits, `c` is a register of 9 classical bits, and `h` is a register of 1 bit.
+2. The next line, `OPENQASM 2.0;`, indicates that the circuit is written in version 2.0 of the OPENQASM language.
+3. The following lines import various quantum libraries, including `qelib1.inc`, which is a standard library for quantum algorithms.
+4. The next line declares the qubits and classical registers used in the circuit. In this case, there are 10 qubits in the `q` register, labeled `0`-`9`, and 9 classical bits in the `c` register, labeled `0`-`8`.
+5. The following lines define the quantum gates used in the algorithm. In particular, there are four `u2` gates (which represent the universal controlled-NOT gate) and two `h` gates (which represent the Hadamard gate). There is also a single `cx` gate (which represents the controlled-NOT gate with control qubit 0).
+6. The next line defines the measurement settings for the final barrier. In this case, the barrier measures the state of the first qubit in the `q` register (labeled `0`) and outputs the corresponding classical bit in the `c` register.
+7. The following lines define the quantum circuit itself. The circuit consists of a sequence of gates that apply the Deutsch-Jozsa algorithm to the input state. Specifically, the circuit applies four `u2` gates to the state, followed by a single `h` gate and then another four `u2` gates. Finally, it applies a `cx` gate to the state.
+8. The `barrier` line defines a barrier that blocks any further execution of the circuit until all measurements have been performed. In this case, the barrier measures the state of the first 10 qubits in the `q` register and outputs the corresponding classical bits in the `c` register.
+9. The `measure` lines define the measurement settings for each qubit in the `q` register. Specifically, each line measures the state of the corresponding qubit (labeled `i`) and outputs the corresponding classical bit in the `c` register (labeled `j`).
+
+Overall, this circuit implements a simple version of the Deutsch-Jozsa algorithm for factoring large numbers. The algorithm works by applying a series of quantum gates to an initial state that encodes the factors of the number to be factored, and then measuring the state to extract the factors.

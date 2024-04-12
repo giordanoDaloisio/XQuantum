@@ -1,0 +1,28 @@
+This is a quantum circuit written in Qiskit's OPENQASM language. The code defines a quantum algorithm that performs a quantum walk on a two-dimensional lattice, with three cubits (quantum bits) representing the position of the walker.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies the version of OPENQASM that the circuit is written in.
+2. `include "qelib1.inc";`: This line includes the `qelib1.inc` file, which contains definitions for common quantum gates and other quantum circuits.
+3. `qreg node[2];`: This line defines two qubits, represented by the variables `node[0]` and `node[1]`. These qubits will be used to represent the position of the walker in the lattice.
+4. `qreg coin[1];`: This line defines a single qubit, represented by the variable `coin[0]`. This qubit will be used to represent the phase of the walker.
+5. `creg meas[3];`: This line defines three continuous variables, represented by the variables `meas[0)`, `meas[1)`, and `meas[2)`. These variables will be used to measure the position and phase of the walker.
+6. `h coin[0];`: This line defines a Hadamard gate on the qubit `coin[0]`. This gate is used to prepare the qubit in a superposition of both states.
+7. `ccx coin[0],node[1],node[0];`: This line implements the quantum walk by applying a controlled phase shift (CX) gate to the qubits `coin[0]` and `node[1]`, using the qubit `node[0]` as a control. The CX gate is used to evolve the walker's position in the lattice.
+8. `cx coin[0],node[1];`: This line implements another CX gate, this time between the qubits `coin[0]` and `node[1]`. This gate is used to implement the quantum walk on a smaller lattice.
+9. `x node[1];`: This line applies a phase shift to the qubit `node[1]`, representing the position of the walker in the lattice.
+10. `x coin[0];`: This line applies a phase shift to the qubit `coin[0]`.
+11. `ccx coin[0],node[1],node[0];`: This line implements another CX gate, this time between the qubits `coin[0]` and `node[1]`, using the qubit `node[0]` as a control.
+12. `cx coin[0],node[1];`: This line implements another CX gate, this time between the qubits `coin[0]` and `node[1]`.
+13. `x node[1];`: This line applies a phase shift to the qubit `node[1]`, representing the position of the walker in the lattice.
+14. `u2(-pi,-pi) coin[0];`: This line applies a U2 rotation to the qubit `coin[0]$, which is used to evolve the walker's phase in the lattice.
+15. `ccx coin[0],node[1],node[0];`: This line implements another CX gate, this time between the qubits `coin[0]` and `node[1]`, using the qubit `node[0]` as a control.
+16. `cx coin[0],node[1];`: This line implements another CX gate, this time between the qubits `coin[0]` and `node[1]`.
+17. `x node[1];`: This line applies a phase shift to the qubit `node[1]`, representing the position of the walker in the lattice.
+18. `x coin[0];`: This line applies a phase shift to the qubit `coin[0]`.
+19. `barrier node[0],node[1],coin[0];`: This line implements a barrier between the qubits `node[0]`, `node[1]`, and `coin[0]`, which is used to prevent the walker from moving beyond a certain distance.
+20. `measure node[0] -> meas[0];`: This line measures the qubit `node[0]` and stores the result in the variable `meas[0]`.
+21. `measure node[1] -> meas[1];`: This line measures the qubit `node[1]` and stores the result in the variable `meas[1]`.
+22. `measure coin[0] -> meas[2];`: This line measures the qubit `coin[0]` and stores the result in the variable `meas[2]`.
+
+In summary, this quantum circuit implements a quantum walk on a two-dimensional lattice, with three cubits representing the position of the walker. The walker's phase is evolved using controlled phase shifts (CX gates) and U2 rotations, while the walker's position is measured using continuous variables.

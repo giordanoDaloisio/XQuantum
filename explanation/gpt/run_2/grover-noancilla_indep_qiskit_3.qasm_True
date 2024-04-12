@@ -1,0 +1,21 @@
+This code is written in QASM (Quantum Assembly Language) and is for the Grover algorithm. 
+
+The code starts by importing the necessary libraries and defining the number of qubits and classical registers to be used. 
+
+The algorithm begins by applying Hadamard gates (H) to both qubits (q[0] and q[1]) and applying an X gate to the flag qubit (flag[0]). 
+
+Next, a controlled-phase gate (CP) is applied, with the angle being pi/2, between q[1] and flag[0]. This is followed by a CNOT gate (CX) between q[1] and q[0]. 
+
+Then, another controlled-phase gate is applied, with the angle being -pi/2, between q[0] and flag[0]. Another CNOT gate is then applied between q[1] and q[0]. 
+
+After that, another controlled-phase gate is applied, with the angle being pi/2, between q[0] and flag[0]. 
+
+Next, a U2 gate is applied with angles 0 and 0 to q[0], and a U1 gate is applied with angle -pi to q[1]. 
+
+Another CNOT gate is applied, this time between q[0] and q[1]. 
+
+Then, a U2 gate is applied with angles -pi and -pi to q[0], and a U1 gate is applied with angle -pi to q[1]. 
+
+A barrier is then applied to all qubits. 
+
+Finally, measurements are performed on q[0], q[1], and flag[0], and the results are stored in the classical registers meas[0], meas[1], and meas[2] respectively.

@@ -1,0 +1,17 @@
+This code is written in the QASM language and is used to perform a quantum computation. 
+
+The code begins by importing the necessary libraries and declaring the quantum and classical registers. In this case, there are four quantum registers named q and one quantum register named psi, as well as a classical register named c with four bits.
+
+The code then applies Hadamard gates (h) to each qubit in the q quantum register, followed by an X gate applied to the psi quantum register.
+
+Next, controlled phase gates (cp) are applied to the psi qubit and each qubit in the q quantum register. The angles of the phase gates are specified in terms of pi.
+
+After that, swap gates are applied to exchange the second and third qubits in the q quantum register.
+
+Following the swap gates, another controlled phase gate is applied to the psi qubit and the fourth qubit in the q quantum register. Then, another swap gate is applied to exchange the first and fourth qubits in the q quantum register.
+
+The code continues with a series of Hadamard gates and controlled phase gates applied to the qubits in the q quantum register.
+
+A barrier is then applied to separate the preparation of the qubits from the measurement.
+
+Finally, measurements are performed on each qubit in the q quantum register, and the results are stored in the corresponding bits of the c classical register.

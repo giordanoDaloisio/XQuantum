@@ -1,0 +1,30 @@
+ The Quantum Fourier Transform (QFT) is a quantum algorithm that performs a discrete logarithm computation. It is a widely used quantum algorithm in various fields such as cryptography, coding theory, and combinatorial optimization.
+
+The code you provided is the OpenQASM 2.0 implementation of the QFT algorithm. Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the code is written in OpenQASM 2.0, which is a quantum programming language and software development kit (SDK) for quantum computing.
+2. `include "qelib1.inc";`: This line includes the QELib1 header file, which provides a set of macros and functions for working with quantum circuits in OpenQASM.
+3. `qreg q[10]; creg c[10]; creg meas[10]; h q[9];`: These lines define the quantum register (`qreg`) `q`, the classical register (`creg`) `c`, and the measurement register (`creg`) `meas`. The `h` register `q` is defined with 9 qubits.
+4. `cp(pi/2) q[9],q[8];`: This line applies a controlled phase (CP) operation to the 9th and 8th qubits, which means that the phase of the 9th qubit is copied to the phase of the 8th qubit.
+5. `cp(pi/4) q[9],q[7];`: This line applies a CP operation to the 9th and 7th qubits, which means that the phase of the 9th qubit is copied to the phase of the 7th qubit.
+6. `cp(pi/2) q[8],q[7];`: This line applies a CP operation to the 8th and 7th qubits, which means that the phase of the 8th qubit is copied to the phase of the 7th qubit.
+7. `h q[7];`: This line applies a Hadamard gate to the 7th qubit.
+8. `cp(pi/4) q[9],q[6];`: This line applies a CP operation to the 9th and 6th qubits, which means that the phase of the 9th qubit is copied to the phase of the 6th qubit.
+9. `cp(pi/8) q[9],q[5];`: This line applies a CP operation to the 9th and 5th qubits, which means that the phase of the 9th qubit is copied to the phase of the 5th qubit.
+10. `cp(pi/2) q[6],q[5];`: This line applies a CP operation to the 6th and 5th qubits, which means that the phase of the 6th qubit is copied to the phase of the 5th qubit.
+11. `h q[5];`: This line applies a Hadamard gate to the 5th qubit.
+12. `cp(pi/32) q[9],q[4];`: This line applies a CP operation to the 9th and 4th qubits, which means that the phase of the 9th qubit is copied to the phase of the 4th qubit.
+13. `cp(pi/16) q[8],q[4];`: This line applies a CP operation to the 8th and 4th qubits, which means that the phase of the 8th qubit is copied to the phase of the 4th qubit.
+14. `cp(pi/4) q[7],q[4];`: This line applies a CP operation to the 7th and 4th qubits, which means that the phase of the 7th qubit is copied to the phase of the 4th qubit.
+15. `cp(pi/2) q[6],q[4];`: This line applies a CP operation to the 6th and 4th qubits, which means that the phase of the 6th qubit is copied to the phase of the 4th qubit.
+16. `measure q[9]` : This line measures the phase of the 9th qubit.
+17. `measure q[8]` : This line measures the phase of the 8th qubit.
+18. `measure q[7]` : This line measures the phase of the 7th qubit.
+19. `measure q[6]` : This line measures the phase of the 6th qubit.
+20. `measure q[5]` : This line measures the phase of the 5th qubit.
+21. `measure q[4]` : This line measures the phase of the 4th qubit.
+22. `measure q[3]` : This line measures the phase of the 3rd qubit.
+23. `measure q[2]` : This line measures the phase of the 2nd qubit.
+24. `measure q[1]` : This line measures the phase of the 1st qubit.
+
+The QFT algorithm is a discrete logarithm computation that can be used for various cryptographic applications, such as key distribution and encryption. The algorithm takes advantage of the properties of the discrete logarithm to perform a quantum computation that is exponentially faster than any known classical algorithm for this task.

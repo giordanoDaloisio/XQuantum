@@ -1,0 +1,36 @@
+ This is a quantum circuit written in OpenQASM, a quantum programming language. The code defines a quantum circuit that implements an amplitude estimation algorithm. The algorithm uses 5 cubits (smallest units of quantum information) and measures the amplitude of the first qubit (q[0]) at the end of the circuit.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OpenQASM version 2.0.
+2. `include "qelib1.inc";`: This line includes the QELib1 library, which provides a set of basic quantum gates and other functions used in the circuit.
+3. `qreg eval[4];`: This line defines a qubit register called `eval` with 4 elements.
+4. `qreg q[1];`: This line defines a single qubit called `q`.
+5. `creg meas[5];`: This line defines a controlled register called `meas` with 5 elements.
+6. `u2(0,-pi) eval[0];`: This line creates a 2-qubit state with the first qubit in the `eval` register and the second qubit in the `q` register, both in the |0⟩ state.
+7. `u2(0,-pi) eval[1];`: This line creates a 2-qubit state with the first qubit in the `eval` register and the second qubit in the `q` register, both in the |0⟩ state.
+8. `u2(0,-pi) eval[2];`: This line creates a 2-qubit state with the first qubit in the `eval` register and the second qubit in the `q` register, both in the |0⟩ state.
+9. `u2(0,-pi) eval[3];`: This line creates a 2-qubit state with the first qubit in the `eval` register and the second qubit in the `q` register, both in the |0⟩ state.
+10. `u3(0.9272952180016122,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+11. `cx eval[0],q[0];`: This line performs a controlled-NOT (CX) operation between the first qubit in the `eval` register and the first qubit in the `q` register.
+12. `u(-0.9272952180016122,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+13. `cx eval[0],q[0];`: This line performs a controlled-NOT (CX) operation between the first qubit in the `eval` register and the first qubit in the `q` register.
+14. `u3(1.8545904360032244,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+15. `cx eval[1],q[0];`: This line performs a controlled-NOT (CX) operation between the second qubit in the `eval` register and the second qubit in the `q` register.
+16. `u(-1.8545904360032244,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+17. `cx eval[1],q[0];`: This line performs a controlled-NOT (CX) operation between the second qubit in the `eval` register and the second qubit in the `q` register.
+18. `u3(2.574004435173138,-pi,-pi) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+19. `cx eval[2],q[0];`: This line performs a controlled-NOT (CX) operation between the second qubit in the `eval` register and the second qubit in the `q` register.
+20. `u(-3.7091808720064487,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+21. `cx eval[2],q[0];`: This line performs a controlled-NOT (CX) operation between the second qubit in the `eval` register and the second qubit in the `q` register.
+22. `h eval[3];`: This line applies a Hadamard gate to the third qubit in the `eval` register.
+23. `cp(-pi/2) eval[2],eval[3];`: This line applies a controlled-NOT (CX) operation between the second qubit in the `eval` register and the third qubit in the `eval` register.
+24. `cp(-pi/4) eval[1],eval[3];`: This line applies a controlled-NOT (CX) operation between the first qubit in the `eval` register and the third qubit in the `eval` register.
+25. `u(-0.92729521800161,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+26. `cx eval[0],q[0];`: This line performs a controlled-NOT (CX) operation between the first qubit in the `eval` register and the first qubit in the `q` register.
+27. `u(-1.85459043600322,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+28. `cx eval[1],q[0];`: This line performs a controlled-NOT (CX) operation between the second qubit in the `eval` register and the second qubit in the `q` register.
+29. `u(-3.70918087200645,0,0) q[0];`: This line creates a 3-qubit state with the first qubit in the `q` register and the other two qubits in the |0⟩ state.
+30. `measure q[0];`: This line measures the state of the third qubit in the `q` register.
+
+The circuit is designed to simulate a quantum computation that consists of a series of controlled-NOT (CX) operations between qubits, followed by a Hadamard gate and a series of measurements. The circuit is implemented using the IBM Quantum Experience platform, which provides a cloud-based quantum computing environment for running quantum circuits and algorithms.

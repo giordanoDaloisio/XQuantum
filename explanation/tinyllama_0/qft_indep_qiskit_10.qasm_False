@@ -1,0 +1,13 @@
+This program, called "Benchmark" from MQT Bench on Qiskit version 1.0.2, is a high-level benchmark for quantum circuit execution time using the MQT Bench compiler and the QELIB1 library for quantum circuits. It simulates a system with two qubits (Q[9] and Q[8]), four control qubits (C[1], C[2], C[3], and C[4]), and four measurement qubits (M[0], M[1], M[2], and M[3]).
+
+The benchmark includes several quantum gates: H (Hadamard) for Q[9] and C[7], CP(pi/8) for Q[9], C[6], C[4], C[5], and M[0], CP(pi/16) for Q[9], C[3], C[4], C[5], and M[2], H (Hadamard) for C[7] and C[4], CP(pi/8) for C[6], C[3], C[4], and M[0], CP(pi/16) for C[3], C[4], and M[2].
+
+The benchmark is designed to provide insights into the execution time of quantum circuits using Qiskit's compilation environment. It includes three optimization levels: baseline (the default), advanced, and extreme. The baseline optimizes the circuit for classical computing only, while the advanced optimizes the circuit for quantum computing only.
+
+The benchmark includes several configurations to simulate different hardware systems: a classical computer with four qubits (Q[9] and C[1], C[2], C[3], and C[4]) and one physical qubit (M[0]), a superconducting quantum processor with two qubits (Q[7], Q[8]), and three parallel qubits (C[6], C[5], M[1]).
+
+The benchmark measures the execution time for each configuration in microseconds. The results are compared to each other and the baseline configuration, which is a classical computer with four qubits and one physical qubit.
+
+The output of the program shows that the benchmark's optimization level has no significant impact on the performance of quantum circuits. However, advanced optimizations improve the circuit's performance for parallel processing, while baseline optimizations are sufficient for classical computing only.
+
+In summary, this high-level benchmark provides insights into the execution time of quantum circuits using Qiskit's compilation environment and hardware systems. The benchmark's optimization levels can be adjusted to simulate different hardware configurations, and results can be compared with baseline and advanced configurations.

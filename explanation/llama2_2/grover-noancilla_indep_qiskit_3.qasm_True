@@ -1,0 +1,23 @@
+ This is a quantum circuit written in Qiskit's OpenQASM format, which is a high-level language for describing quantum circuits. The circuit is designed to implement the Grover algorithm, a well-known quantum search algorithm. Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OpenQASM version 2.0.
+2. `include "qelib1.inc";`: This line includes a library file called `qelib1.inc`, which contains various quantum circuits and functions used throughout the code.
+3. `qreg q[2]; qreg flag[1]; creg meas[3];`: These lines define the qubits (q) and the flag qubit (flag). The `qreg` command creates a quantum register with two qubits, and the `qreg` command creates another quantum register with one qubit.
+4. `h q[0]; h q[1];`: These lines create two auxiliary qubits (q[0] and q[1]).
+5. `x flag[0];`: This line applies a bit flip operation to the flag qubit (flag).
+6. `cp(pi/2) q[1],flag[0];`: This line applies a controlled phase rotation operation to the qubits (q[1]) and the flag qubit (flag), with an angle of pi/2 radians.
+7. `cx q[1],q[0];`: This line applies a controlled-NOT operation to the qubits (q[1]) and (q[0]).
+8. `cp(-pi/2) q[0],flag[0];`: This line applies a controlled phase rotation operation to the qubits (q[0]) and the flag qubit (flag), with an angle of -pi/2 radians.
+9. `cx q[1],q[0];`: This line applies a controlled-NOT operation to the qubits (q[1]) and (q[0]).
+10. `cp(pi/2) q[0],flag[0];`: This line applies a controlled phase rotation operation to the qubits (q[0]) and the flag qubit (flag), with an angle of pi/2 radians.
+11. `u2(0,0) q[0];`: This line applies a unitary operation to the qubits (q[0]), with parameters (0, 0).
+12. `u1(-pi) q[1];`: This line applies a single-qubit rotation operation to the qubit (q[1]), with an angle of -pi radians.
+13. `cx q[0],q[1];`: This line applies a controlled-NOT operation to the qubits (q[0]) and (q[1]).
+14. `u2(-pi,-pi) q[0];`: This line applies a unitary operation to the qubit (q[0]), with parameters (-pi, -pi).
+15. `u1(-pi) q[1];`: This line applies a single-qubit rotation operation to the qubit (q[1]), with an angle of -pi radians.
+16. `barrier q[0],q[1],flag[0];`: This line applies a barrier operation to the qubits (q[0]) and (q[1]), as well as the flag qubit (flag).
+17. `measure q[0] -> meas[0];`: This line measures the state of the qubit (q[0]).
+18. `measure q[1] -> meas[1];`: This line measures the state of the qubit (q[1]).
+19. `measure flag[0] -> meas[2];`: This line measures the state of the flag qubit (flag).
+
+In summary, this code implements the Grover algorithm, which is a quantum search algorithm that can search an unsorted database of size $N$ in $\sqrt{N}$ steps on average. The algorithm uses a quantum circuit with three cubits to perform a quantum search on a sorted database of size $N$.

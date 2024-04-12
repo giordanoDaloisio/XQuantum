@@ -1,0 +1,9 @@
+This code is written in QASM (Quantum Assembly Language) and represents a quantum algorithm called Amplitude Estimation. The code uses the Qiskit library version 1.0.2. 
+
+The code starts with a declaration of qubits and classical registers. It creates 4 qubits named eval[4] and 1 qubit named q[1]. It also creates a classical register named meas[5] to store measurement results.
+
+The code then applies a series of quantum gates and operations on the qubits. It uses various gates such as u2, u3, cx, h, and cp, to manipulate the qubit states.
+
+After the gates and operations, the code measures the qubits and stores the measurement results in the classical register meas.
+
+The code ends with the declaration of the algorithm name and the number of qubits used in the code.

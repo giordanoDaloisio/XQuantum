@@ -1,0 +1,18 @@
+This is a quantum circuit written in Qiskit's OpenQASM format. It defines a quantum algorithm for a quantum walk, which is a quantum version of a classical random walk on a one-dimensional lattice. The algorithm uses three cubits (qubits) and performs the following operations:
+
+1. `OPENQASM 2.0`: This line indicates that the code is written in OpenQASM version 2.0, which is a quantum circuit language.
+2. `include "qelib1.inc"`: This line includes the QELib1 library, which provides various quantum gates and operations.
+3. `qreg node[2]; qreg coin[1]; creg meas[3];`: These lines define the qubits (node) and the classical registers (meas) used in the algorithm. The `qreg` command creates a qubit register, while the `creg` command creates a classical register.
+4. `h coin[0];`: This line creates a Hadamard gate on the first qubit (coin[0]).
+5. `ccx coin[0],node[1],node[0];`: This line performs a controlled-NOT gate between the first qubit (coin[0]) and the second qubit (node[1]), and then another controlled-NOT gate between the first qubit (coin[0]) and the third qubit (node[0]).
+6. `cx coin[0],node[1];`: This line performs a controlled-X gate between the first qubit (coin[0]) and the second qubit (node[1]).
+7. `x node[1]; x coin[0];`: These lines perform a bit flip operation on the second qubit (node[1]) and the first qubit (coin[0]), respectively.
+8. `ccx coin[0],node[1],node[0];`: This line performs another controlled-NOT gate between the first qubit (coin[0]) and the second qubit (node[1]), and then another controlled-NOT gate between the first qubit (coin[0]) and the third qubit (node[0]).
+9. `cx coin[0],node[1];`: This line performs another controlled-X gate between the first qubit (coin[0]) and the second qubit (node[1]).
+10. `u2(-pi,-pi) coin[0];`: This line applies a 2-qubit rotation to the first qubit (coin[0]), with angles `-pi` and `-pi`.
+11. `ccx coin[0],node[1],node[0];`: This line performs another controlled-NOT gate between the first qubit (coin[0]) and the second qubit (node[1]), and then another controlled-NOT gate between the first qubit (coin[0]) and the third qubit (node[0]).
+12. `cx coin[0],node[1];`: This line performs another controlled-X gate between the first qubit (coin[0]) and the second qubit (node[1]).
+13. `barrier node[0],node[1],coin[0];`: This line applies a barrier to the quantum circuit, which prevents the evolution of the quantum state beyond this point.
+14. `measure node[0] -> meas[0]; measure node[1] -> meas[1]; measure coin[0] -> meas[2];`: These lines perform measurements on the three registers (node, node[1], and coin[0]) to collapse their states into the corresponding classical outcomes.
+
+In summary, this quantum circuit implements a quantum walk algorithm on a one-dimensional lattice, which consists of a series of controlled-NOT and controlled-X gates between the qubits, followed by a barrier and measurements on the registers.

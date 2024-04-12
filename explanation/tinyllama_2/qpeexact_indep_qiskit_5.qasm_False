@@ -1,0 +1,7 @@
+This code is a quantum simulation of the Ising model, where it simulates a magnetic field and temperature at different levels. The simulation uses the QuantumEgg library (MQT Bench) and the Qiskit library (Qiskit version 1.0.2), and performs measurements on the register q which includes all qubits involved in the simulation.
+
+The code begins by opening the Qiskit environment, including creating a quantum register for the spin-1/2 system q, an ancilla register ps, and an initial state for the spins. Next, the Ising model Hamiltonian H is defined as a rotation about the x-axis (pi/4) and a parallel magnetization of 1 along the y-axis (pi). The Hamiltonian includes terms corresponding to the spin-up (0) or spin-down (-1) states and is written in terms of Pauli operators. Finally, the Qiskit simulator is invoked to perform a series of quantum operations on the register q and ancilla ps, with control over the temperature T and the magnetic field B for each level.
+
+The code also defines the computational basis and projective measurements that are performed as part of the simulation. The measured qubits in the circuit are specified by their label c[0-3] using the QuantumEgg library, which generates a list of measurement outcomes for each qubit. These are then processed by the Qiskit simulator to produce the final counts for each level.
+
+Overall, this code provides a simple and practical way to simulate the Ising model in a quantum register using Qiskit and MQT Bench. The results can be visualized using various plotting tools available in Qiskit.

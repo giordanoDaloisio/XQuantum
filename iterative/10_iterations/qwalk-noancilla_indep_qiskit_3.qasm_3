@@ -1,0 +1,23 @@
+This is a Quantum Algorithm (QA) written in OPENQASM, a high-level language for describing quantum algorithms. The QA is designed to simulate a quantum walk on a one-dimensional lattice, which is a fundamental model in quantum computing and quantum information theory.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies the version of OpenQASM being used to write the QA.
+2. `include "qelib1.inc";`: This line includes the `qelib1.inc` file, which is a library of common quantum circuit elements and operations.
+3. `qreg node[2]; qreg coin[1]; creg meas[3];`: These lines define the qubits (node[2]) and classical register (meas[3]) used in the QA.
+4. `h coin[0];`: This line creates a Hadamard gate on the first qubit (`coin[0]`).
+5. `ccx coin[0],node[1],node[0];`: This line applies a controlled-NOT (CX) gate to the first qubit (`coin[0]`) and two nodes (`node[1]` and `node[0]`), effectively flipping the state of the second node when the first qubit is in the |+⟩ state.
+6. `cx coin[0],node[1];`: This line applies a controlled-NOT (CX) gate to the first qubit (`coin[0]`) and one node (`node[1]`), effectively flipping the state of the node when the first qubit is in the |+⟩ state.
+7. `x node[1];`: This line applies a bit flip operation on the second node (`node[1]`), effectively changing the state of the node to the opposite of its original state.
+8. `x coin[0];`: This line applies a bit flip operation on the first qubit (`coin[0]`, effectively changing its state to the opposite of its original state.
+9. `ccx coin[0],node[1],node[0];`: This line applies another CX gate to the first qubit (`coin[0]`) and two nodes (`node[1]` and `node[0]`), effectively flipping the state of the second node when the first qubit is in the |+⟩ state.
+10. `cx coin[0],node[1];`: This line applies another CX gate to the first qubit (`coin[0]`) and one node (`node[1]`), effectively flipping the state of the node when the first qubit is in the |+⟩ state.
+11. `x node[1];`: This line applies another bit flip operation on the second node (`node[1]`), effectively changing its state to the opposite of its original state.
+12. `u2(-pi,-pi) coin[0];`: This line applies a U2 gate with arguments `-π` and `-π` to the first qubit (`coin[0]`) , effectively rotating the state of the qubit by π radians.
+13. `ccx coin[0],node[1],node[0];`: This line applies another CX gate to the first qubit (`coin[0]`) and two nodes (`node[1]` and `node[0]`), effectively flipping the state of the second node when the first qubit is in the |+⟩ state.
+14. `cx coin[0],node[1];`: This line applies another CX gate to the first qubit (`coin[0]`) and one node (`node[1]`), effectively flipping the state of the node when the first qubit is in the |+⟩ state.
+15. `x node[1];`: This line applies another bit flip operation on the second node (`node[1]`), effectively changing its state to the opposite of its original state.
+16. `barrier node[0],node[1],coin[0];`: This line introduces a barrier between the nodes (`node[0]`, `node[1]`) and the first qubit (`coin[0]`), effectively preventing any further evolution of the quantum walk beyond this point.
+17. `measure node[0] -> meas[0]; measure node[1] -> meas[1]; measure coin[0] -> meas[2];`: These lines measure the state of the nodes (`node[0]`, `node[1]`) and the first qubit (`coin[0]`), respectively, and store their results in the classical register `meas`.
+
+In summary, this QA simulates a quantum walk on a one-dimensional lattice by applying a sequence of quantum gates that effectively rotate the state of the qubits and nodes. The algorithm includes 3 cubits and measures the state of the nodes at three different points during the evolution of the quantum walk.

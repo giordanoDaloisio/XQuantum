@@ -1,0 +1,21 @@
+This code is a quantum circuit for the Grover algorithm, which is a quantum search algorithm that can search an unsorted database of size $N$ in $O(\sqrt{N})$ time. The algorithm works by applying a series of quantum operations to a qubit that represents the position of the target element in the database.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the code is written in the OpenQASM format, which is a quantum circuit description language.
+2. `include "qelib1.inc";`: This line includes the Qelib1 library, which provides various mathematical functions used in the algorithm.
+3. `qreg q[2];`: This line declares two qubits, $q[0]$ and $q[1]$, that will be used to represent the position of the target element in the database.
+4. `qreg flag[1];`: This line declares a single qubit, $flag$, that will be used to keep track of the position of the target element.
+5. `creg meas[3];`: This line declares three counters, $meas[0]$, $meas[1]$, and $meas[2]$, that will be used to store the measurement outcomes of the qubits.
+6. `h q[0]; h q[1];`: These lines define two Hadamard gates, $H$, applied to the qubits $q[0]$ and $q[1]$. The Hadamard gate is a quantum operation that transforms a qubit into a superposition of both states.
+7. `x flag[0];`: This line applies a bit flip operation to the qubit $flag[0]$, which sets the state of the qubit to either 0 or 1 randomly.
+8. `cp(pi/2) q[1],flag[0];`: This line applies a controlled phase shift operation to the qubits $q[1]$ and $flag[0]$, where the phase shift is $\pi/2$. This operation rotates the state of the qubit $q[1]$ by $\pi/2$ in the complex plane, while keeping the state of the qubit $flag[0]$ unchanged.
+9. `cx q[1],q[0];`: This line applies a controlled exchange operation between the qubits $q[1]$ and $q[0]$. The exchange operation swaps the states of the two qubits, while keeping the state of the qubit $flag[0]$ unchanged.
+10. `cp(-pi/2) q[0],flag[0];`: This line applies a controlled phase shift operation to the qubits $q[0]$ and $flag[0]$, where the phase shift is $-{\pi}/{2}$. This operation rotates the state of the qubit $q[0]$ by $-{\pi}/{2}$ in the complex plane, while keeping the state of the qubit $flag[0]$ unchanged.
+11. `cx q[1],q[0];`: This line applies a controlled exchange operation between the qubits $q[1]$ and $q[0]$, which swaps their states again.
+12. `u2(0,0) q[0]; u1(-pi) q[1];`: These lines apply two quantum operations: (i) a unitary rotation by $(0,0)$ to the qubit $q[0]$, and (ii) a quantum measurement of the qubit $q[1]$ in the negative $x$ direction. The quantum measurement collapses the superposition state of the qubit $q[1]$ to one of the two basis states, $(0,0)$ or $(-{\pi},-{\pi})$.
+13. `u2(-pi,-pi) q[0]; u1(-pi) q[1];`: These lines apply two quantum operations: (i) a unitary rotation by $(-{\pi},-{\pi})$ to the qubit $q[0]$, and (ii) a quantum measurement of the qubit $q[1]$ in the negative $x$ direction. The quantum measurement collapses the superposition state of the qubit $q[1]$ to one of the two basis states, $(-{\pi},-{\pi})$ or $(0,0)$.
+14. `barrier q[0],q[1],flag[0];`: This line applies a barrier operation to the qubits $q[0]$, $q[1]$, and $flag[0]$, which prevents any further evolution of the quantum state until the end of the circuit.
+15. `measure q[0] -> meas[0]; measure q[1] -> meas[1]; measure flag[0] -> meas[2];`: These lines apply quantum measurements to the qubits $q[0]$, $q[1]$, and $flag[0]$, which collapse their superposition states to one of the three basis states, $(0,0)$, $(-{\pi},-{\pi})$, or $(0,{\pi})$. The measurement outcomes are stored in the counters $meas[0]$, $meas[1]$, and $meas[2]$.
+
+The Grover algorithm starts with a superposition of all elements in the database and applies a series of quantum operations to evolve the state to a superposition of only the target element. The algorithm repeats this process multiple times, using the evolution of the quantum state to search for the target element in the database. In each iteration, the algorithm applies a combination of Hadamard gates, controlled phase shifts, controlled exchange operations, and quantum measurements to evolve the state towards the target element. By repeating this process enough times, the algorithm can find the target element in the database with high probability.

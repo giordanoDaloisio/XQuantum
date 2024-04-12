@@ -1,0 +1,36 @@
+ This is a quantum circuit written in Qiskit's OPENQASM language, which is a high-level quantum programming language. The circuit is designed to perform amplitude estimation, which is a quantum algorithm used for state tomography of a quantum system.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OPENQASM version 2.0, which is a quantum programming language for quantum computers.
+2. `include "qelib1.inc";`: This line includes the QELib1 library, which provides various utility functions and types used throughout the Qiskit framework.
+3. `qreg eval[4];`: This line declares an array of 4 qubits, `eval`, which will be used to store the amplitudes of the quantum state being measured.
+4. `qreg q[1];`: This line declares a single qubit, `q`, which will be used to store the target state for the amplitude estimation.
+5. `creg meas[5];`: This line declares an array of 5 classical registers, `meas`, which will be used to store the measurement outcomes.
+6. `u2(0,-pi) eval[0];`: This line defines a unitary transformation that maps the vacuum state (where all amplitudes are zero) to the state `|0⟩` with amplitude `1`. This is the reference state for the amplitude estimation.
+7. `u2(0,-pi) eval[1];`: This line defines another unitary transformation that maps the reference state to the state `|1⟩` with amplitude `1`.
+8. `u2(0,-pi) eval[2];`: This line defines a third unitary transformation that maps the reference state to the state `|2⟩` with amplitude `1`.
+9. `u2(0,-pi) eval[3];`: This line defines a fourth unitary transformation that maps the reference state to the state `|3⟩` with amplitude `1`.
+10. `u3(0.9272952180016122,0,0) q[0];`: This line defines a unitary transformation that maps the target state to the state `|q⟩` with amplitude `0.927...`.
+11. `cx eval[0],q[0];`: This line performs a controlled-NOT (CNOT) operation between the reference state and the target state.
+12. `u(-0.9272952180016122,0,0) q[0];`: This line applies a phase shift to the target state with amplitude `-0.927...`.
+13. `cx eval[0],q[0];`: This line performs another CNOT operation between the reference state and the target state.
+14. `u3(1.8545904360032244,0,0) q[0];`: This line applies a unitary transformation to the target state with amplitude `1.854...`.
+15. `cx eval[1],q[0];`: This line performs another CNOT operation between the reference state and the target state.
+16. `u(-7.4183617440128975,0,0) q[0];`: This line applies a phase shift to the target state with amplitude `-7.418...`.
+17. `cx eval[2],q[0];`: This line performs another CNOT operation between the reference state and the target state.
+18. `u(-3.7091808720064487,0,0) q[0];`: This line applies a phase shift to the target state with amplitude `-3.709...`.
+19. `cx eval[3],q[0];`: This line performs another CNOT operation between the reference state and the target state.
+20. `h eval[3];`: This line computes the Hermitian conjugate of the target state, which is used in the amplitude estimation.
+21. `cp(-pi/2) eval[2],eval[3];`: This line applies a controlled-NOT operation between the second and third cubits with phase shift `-pi/2`.
+22. `cp(-pi/4) eval[1],eval[3];`: This line applies a controlled-NOT operation between the first and third cubits with phase shift `-pi/4`.
+23. `cp(-pi/8) eval[0],eval[3];`: This line applies a controlled-NOT operation between the first and third cubits with phase shift `-pi/8`.
+24. `h eval[2];`: This line computes the Hermitian conjugate of the second cubit, which is used in the amplitude estimation.
+25. `barrier eval[0],eval[1],eval[2],eval[3],q[0];`: This line applies a barrier operation to the circuit, which prevents any further evolution of the state after the measurement.
+26. `measure eval[0] -> meas[0];`: This line performs a measuremnt of the first cubit, storing the outcome in the `meas` array.
+27. `measure eval[1] -> meas[1];`: This line performs a measurement of the second cubit, storing the outcome in the `meas` array.
+28. `measure eval[2] -> meas[2];`: This line performs a measurement of the third cubit, storing the outcome in the `meas` array.
+29. `measure eval[3] -> meas[3];`: This line performs a measurement of the fourth cubit, storing the outcome in the `meas` array.
+30. `q[0]` : This line stores the final state of the target qubit.
+
+The resulting probability distribution is stored in the `meas` array, which can be analyzed to extract the amplitude of the target state. The reference state is assumed to have a non-zero amplitude in all cases, and the goal of the protocol is to estimate the amplitude of the target state with high precision.

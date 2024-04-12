@@ -1,0 +1,9 @@
+This code is a simple quantum circuit to demonstrate the basic operations of two qubits, controlled-not (CN) gates and quantum entanglement. It simulates an implementation using the Qiskit quantum library on an IBM Quantum Experience device.
+
+The circuit comprises two qubits (`q[0]` and `q[1]`) with six control qubits (`c[0]` to `c[6]`), all initialized to zero states. The CN gate is used for controlling one of the qubits, while the entanglement between them is demonstrated using the quantum state `c[0] * c[1]`.
+
+The circuit consists of two sets of gates: u2 gates to perform Pauli X rotation (rotation of each qubit around its respective axis) and CN gates. The CN gate can be used to entangle two qubits by applying the controlled-NOT (`CN`) operation with respect to the first qubit, followed by a Hadamard (`H`) gate on the second qubit.
+
+The circuit simulates this process using an array of entangled qubits and a network of control-qubit-target (CQT) gates. The resulting quantum state can be measured in order to extract the entanglement and perform operations on the two qubits involved.
+
+To run the circuit, you need to compile it with `qiskit` and then execute it using `qobj`. The circuit will take a few seconds to simulate depending on the size of your system.

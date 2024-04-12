@@ -1,0 +1,30 @@
+ The given code is a quantum circuit written in Qiskit, a popular software framework for quantum computing. Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0;`: This line indicates that the code is written in OpenQASM, a language for describing quantum circuits. Version 2.0 is the latest version of OpenQASM at the time of writing this code.
+2. `include "qelib1.inc";`: This line includes a pre-defined library called `qelib1.inc`, which provides a set of commonly used quantum gates and other functions.
+3. `qreg q[5];`: This line defines 5 qubits (quantum bits) in the quantum register `q`.
+4. `creg meas[5];`: This line defines 5 classical registers called `meas` that will be used to store the measurement outcomes.
+5. `h q[4];`: This line creates a Hadamard gate on the last 4 qubits in the quantum register `q`.
+6. `cx q[4],q[3];`: This line performs a controlled-NOT (CX) gate between the 4th and 3rd qubits in the quantum register `q`.
+7. `cx q[3],q[2];`: This line performs a CX gate between the 3rd and 2nd qubits in the quantum register `q`.
+8. `cx q[2],q[1];`: This line performs a CX gate between the 2nd and 1st qubits in the quantum register `q`.
+9. `cx q[1],q[0];`: This line performs a CX gate between the 1st and 0th qubits in the quantum register `q`.
+10. `h q[4];`: This line applies a Hadamard gate to the last 4 qubits in the quantum register `q`.
+11. `cp(pi/2) q[4],q[3];`: This line applies a controlled phase (CP) gate with argument pi/2 to the last 2 qubits in the quantum register `q`.
+12. `h q[3];`: This line applies a Hadamard gate to the 3rd qubit in the quantum register `q`.
+13. `cp(pi/4) q[4],q[2];`: This line applies a CP gate with argument pi/4 to the last 2 qubits in the quantum register `q`.
+14. `cp(pi/2) q[3],q[2];`: This line applies a CP gate with argument pi/2 to the 3rd and 2nd qubits in the quantum register `q`.
+15. `h q[2];`: This line applies a Hadamard gate to the 2nd qubit in the quantum register `q`.
+16. `cp(pi/8) q[4],q[1];`: This line applies a CP gate with argument pi/8 to the last 2 qubits in the quantum register `q`.
+17. `cp(pi/4) q[3],q[1];`: This line applies a CP gate with argument pi/4 to the 3rd and 1st qubits in the quantum register `q`.
+18. `h q[1];`: This line applies a Hadamard gate to the 1st qubit in the quantum register `q`.
+19. `swap q[0],q[4];`: This line swaps the values of the 0th and last qubits in the quantum register `q`.
+20. `swap q[1],q[3];`: This line swaps the values of the 1st and 3rd qubits in the quantum register `q`.
+21. `barrier q[0],q[1],q[2],q[3],q[4];`: This line applies a barrier gate to the 5 qubits in the quantum register `q`, which prevents any further evolution of the quantum state until the measurement is performed.
+22. `measure q[0] -> meas[0];`: This line measures the 0th qubit in the quantum register `q` and stores the outcome in the classical register `meas[0]`.
+23. `measure q[1] -> meas[1];`: This line measures the 1st qubit in the quantum register `q` and stores the outcome in the classical register `meas[1]`.
+24. `measure q[2] -> meas[2];`: This line measures the 2nd qubit in the quantum register `q` and stores the outcome in the classical register `meas[2]`.
+25. `measure q[3] -> meas[3];`: This line measures the 3rd qubit in the quantum register `q` and stores the outcome in the classical register `meas[3]`.
+26. `measure q[4] -> meas[4];`: This line measures the 4th qubit in the quantum register `q` and stores the outcome in the classical register `meas[4]`.
+
+In summary, this code implements a Quantum Fourier Transform (QFT) with entanglement. The QFT is a quantum algorithm that transforms a function into another function by applying a series of quantum gates. In this case, the QFT is applied to a function that encodes the information about a circle, and the resulting state is measured to obtain the circle's properties.

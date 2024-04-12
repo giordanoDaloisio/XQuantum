@@ -1,0 +1,33 @@
+ This is a quantum circuit written in the OpenQASM language, which is a standardized format for describing quantum algorithms. The code defines a quantum circuit that performs a quantum Fourier transform (QFT) on 5 qubits, with entanglement between the qubits.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies the version of OpenQASM being used to describe the quantum circuit.
+2. `include "qelib1.inc";`: This line includes the Qelib1 library, which is a set of predefined functions and data types for working with OpenQASM.
+3. `qreg q[5];`: This line defines 5 qubits, represented by the `qreg` command. The `q` subscript indicates that these are quantum registers.
+4. `creg meas[5];`: This line defines 5 classical registers, represented by the `creg` command. The `meas` subscript indicates that these are classical measurement outcomes.
+5. `h q[4];`: This line defines a Hadamard gate on 4 qubits, represented by the `h` command.
+6. `cx q[4],q[3];`: This line performs a controlled-NOT (CX) operation between the 4th and 5th qubits, and then between the 3rd and 4th qubits. The `cx` command indicates that this is a controlled operation.
+7. `cx q[3],q[2];`: This line performs another CX operation between the 3rd and 4th qubits, and then between the 2nd and 3rd qubits.
+8. `cx q[2],q[1];`: This line performs yet another CX operation between the 2nd and 3rd qubits, and then between the 1st and 2nd qubits.
+9. `cx q[1],q[0];`: This line performs the final CX operation between the 1st and 0th qubits.
+10. `h q[4];`: This line applies a Hadamard gate to the 4th qubit.
+11. `cp(pi/2) q[4],q[3];`: This line applies a controlled-phase operation to the 4th and 5th qubits, with an argument of pi/2.
+12. `h q[3];`: This line applies a Hadamard gate to the 3rd qubit.
+13. `cp(pi/4) q[4],q[2];`: This line applies another controlled-phase operation to the 4th and 5th qubits, with an argument of pi/4.
+14. `cp(pi/2) q[3],q[2];`: This line applies yet another controlled-phase operation to the 3rd and 4th qubits, with an argument of pi/2.
+15. `h q[2];`: This line applies a Hadamard gate to the 2nd qubit.
+16. `cp(pi/8) q[4],q[1];`: This line applies a controlled-phase operation to the 4th and 1st qubits, with an argument of pi/8.
+17. `cp(pi/4) q[3],q[1];`: This line applies another controlled-phase operation to the 3rd and 1st qubits, with an argument of pi/4.
+18. `cp(pi/2) q[2],q[1];`: This line applies yet another controlled-phase operation to the 2nd and 1st qubits, with an argument of pi/2.
+19. `h q[1];`: This line applies a Hadamard gate to the 1st qubit.
+20. `swap q[0],q[4];`: This line swaps the contents of the 0th and 4th qubits.
+21. `swap q[1],q[3];`: This line swaps the contents of the 1st and 3rd qubits.
+22. `barrier q[0],q[1],q[2],q[3],q[4];`: This line applies a barrier operation to all 5 qubits, which ensures that the quantum circuit halts after executing this instruction sequence.
+23. `measure q[0] -> meas[0];`: This line measures the state of the 0th qubit and stores the result in the `meas` register.
+24. `measure q[1] -> meas[1];`: This line measures the state of the 1st qubit and stores the result in the `meas` register.
+25. `measure q[2] -> meas[2];`: This line measures the state of the 2nd qubit and stores the result in the `meas` register.
+26. `measure q[3] -> meas[3];`: This line measures the state of the 3rd qubit and stores the result in the `meas` register.
+27. `measure q[4] -> meas[4];`: This line measures the state of the 4th qubit and stores the result in the `meas` register.
+
+In summary, this quantum circuit performs a quantum Fourier transform on 5 qubits with entanglement between them. The circuit first applies a series of controlled-phase operations to the qubits, followed by a Hadamard gate on each qubit. Then, it measures the state of each qubit and stores the result in a classical register.

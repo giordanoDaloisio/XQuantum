@@ -1,0 +1,33 @@
+This code is written in QASM (Quantum Assembly Language) and is meant to be run on a quantum computer. It defines a quantum circuit with 5 qubits and 5 classical registers.
+
+The code begins by including the "qelib1.inc" library, which provides standard quantum gates like Hadamard (H) and controlled-X (CX). 
+
+Next, the code initializes the 5 qubits in the qreg q[5] and the classical registers in creg meas[5]. 
+
+The following lines apply a series of quantum gates to manipulate the qubits:
+- The Hadamard gate (H) is applied to qubit q[4].
+- The controlled-X (CX) gate is applied between q[4] and q[3].
+- The CX gate is applied between q[3] and q[2].
+- The CX gate is applied between q[2] and q[1].
+- The CX gate is applied between q[1] and q[0].
+- The Hadamard gate (H) is applied to q[4].
+- The controlled-phase gate (CP) with a phase of pi/2 is applied between q[4] and q[3].
+- The Hadamard gate (H) is applied to q[3].
+- The CP gate with a phase of pi/4 is applied between q[4] and q[2].
+- The CP gate with a phase of pi/2 is applied between q[3] and q[2].
+- The Hadamard gate (H) is applied to q[2].
+- The CP gate with a phase of pi/8 is applied between q[4] and q[1].
+- The CP gate with a phase of pi/4 is applied between q[3] and q[1].
+- The CP gate with a phase of pi/2 is applied between q[2] and q[1].
+- The Hadamard gate (H) is applied to q[1].
+- The CP gate with a phase of pi/16 is applied between q[4] and q[0].
+- The CP gate with a phase of pi/8 is applied between q[3] and q[0].
+- The CP gate with a phase of pi/4 is applied between q[2] and q[0].
+- The CP gate with a phase of pi/2 is applied between q[1] and q[0].
+- The Hadamard gate (H) is applied to q[0].
+
+Then, the qubits q[0] and q[4] are swapped, and qubits q[1] and q[3] are swapped.
+
+A barrier is inserted to separate the preparation of the qubits from the measurement.
+
+Finally, the state of each qubit is measured and stored in the corresponding classical register. The measurement results of q[0] to q[4] are stored in meas[0] to meas[4], respectively.

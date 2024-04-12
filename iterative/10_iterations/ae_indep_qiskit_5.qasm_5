@@ -1,0 +1,31 @@
+ This is a quantum circuit written in Q# (a high-level programming language for quantum computing) that implements an amplitude estimation algorithm. The algorithm takes a quantum state as input and estimates the amplitude of the state by applying a series of controlled operations to the state.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OPENQASM, which is a quantum assembly language for writing quantum circuits.
+2. `include "qelib1.inc";`: This line includes the QELib1 library, which provides functions for working with quantum states and operations.
+3. `qreg eval[4];`: This line declares an array of 4 quantum registers called `eval`. These registers will be used to store the estimated amplitudes of the input state.
+4. `qreg q[1];`: This line declares a single quantum register called `q`. This register will be used to store the input state.
+5. `creg meas[5];`: This line declares an array of 5 classical registers called `meas`. These registers will be used to store the measured amplitudes of the output state.
+6. `u2(0,-pi) eval[0];`: This line defines a unitary operator that takes the input state and applies a phase shift of 0 or -π to the first qubit. The operator is defined using the `u2` function, which takes two arguments: the angle of rotation and the reference frame.
+7. `u2(0,-pi) eval[1];`: This line defines another unitary operator that applies a phase shift of 0 or -π to the second qubit.
+8. `u2(0,-pi) eval[2];`: This line defines yet another unitary operator that applies a phase shift of 0 or -π to the third qubit.
+9. `u2(0,-pi) eval[3];`: This line defines the final unitary operator that applies a phase shift of 0 or -π to the fourth qubit.
+10. `qreg q[0];`: This line declares a single quantum register called `q[0]`. This register will be used to store the input state.
+11. `cx eval[0],q[0];`: This line applies a controlled-NOT operation between the first classical register `eval[0]` and the quantum register `q[0]`. This operation flips the second qubit of the input state if the first classical register is 0, and leaves it unchanged otherwise.
+12. `u(-0.9272952180016122,0,0) q[0];`: This line applies a quantum operation that rotates the state by an angle of -0.9272952180016122 radians around the x-axis.
+13. `cx eval[0],q[0];`: This line applies another controlled-NOT operation between the first classical register `eval[0]` and the quantum register `q[0]`. This operation flips the second qubit of the input state if the first classical register is 0, and leaves it unchanged otherwise.
+14. `u(-1.8545904360032244,0,0) q[0];`: This line applies a quantum operation that rotates the state by an angle of -1.8545904360032244 radians around the x-axis.
+15. `cx eval[1],q[0];`: This line applies another controlled-NOT operation between the first classical register `eval[1]` and the quantum register `q[0]`. This operation flips the second qubit of the input state if the first classical register is 0, and leaves it unchanged otherwise.
+16. `u(-3.7091808720064487,0,0) q[0];`: This line applies a quantum operation that rotates the state by an angle of -3.7091808720064487 radians around the x-axis.
+17. `cx eval[2],q[0];`: This line applies another controlled-NOT operation between the first classical register `eval[2]` and the quantum register `q[0]`. This operation flips the second qubit of the input state if the first classical register is 0, and leaves it unchanged otherwise.
+18. `u(-7.4183617440128975,0,0) q[0];`: This line applies a quantum operation that rotates the state by an angle of -7.4183617440128975 radians around the x-axis.
+19. `cp(-pi/2) eval[2],eval[3];`: This line applies a controlled-NOT operation between the second classical register `eval[2]` and the third classical register `eval[3]`. This operation flips the second qubit of the input state if the second classical register is 0, and leaves it unchanged otherwise.
+20. `cp(-pi/4) eval[1],eval[3];`: This line applies another controlled-NOT operation between the first classical register `eval[1]` and the third classical register `eval[3]`. This operation flips the second qubit of the input state if the first classical register is 0, and leaves it unchanged otherwise.
+21. `cp(-pi/8) eval[0],eval[3];`: This line applies another controlled-NOT operation between the first classical register `eval[0]` and the third classical register `eval[3]`. This operation flips the second qubit of the input state if the first classical register is 0, and leaves it unchanged otherwise.
+22. `qreg q[0];`: This line declares a single quantum register called `q[0]`. This register will be used to store the output state.
+23. `u(0,0,1) q[0];`: This line applies a quantum operation that rotates the state by an angle of π/2 radians around the x-axis, y-axis, and z-axis simultaneously.
+24. `measured_amplitudes = measured_amplitudes + np.abs(q[0])**2;`: This line calculates the squared magnitude of the output state and stores it in a variable called `measured_amplitudes`.
+25. `print(measured_amplitudes);`: This line prints the value of `measured_amplitudes` to the console.
+
+The program then runs through each of these steps, applying the appropriate quantum operations and measuring the squared magnitude of the output state at each step. The final value of `measured_amplitudes` represents the probability distribution of the output state, which can be compared to the expected probabilities calculated using the Born rule to verify the accuracy of the program.

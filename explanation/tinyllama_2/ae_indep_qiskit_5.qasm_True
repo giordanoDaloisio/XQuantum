@@ -1,0 +1,9 @@
+This is a high-level overview of the MQT Bench code for performing amplitude estimation in a quantum computer. The code is written in Qiskit, an open-source library for building quantum algorithms on top of IBM's Qiskit quantum simulation environment. It consists of three main sections:
+
+1. OpenQASM 2.0: This is a set of instructions that describe the quantum circuit language used by MQT Bench, including how to generate the circuit and control its execution.
+
+2. Qubits (Quantum Registers): The code defines two qubits, which are single-qubit circuits that store and manipulate quantum states.
+
+3. Quantum Operations: The code implements the quantum operations that can be performed on these qubits - for example, using controlled-U gate to apply a controlled measurement, or using controlled-NOT (X) gate to swap qubits.
+
+The overall goal of this code is to perform amplitude estimation, which involves finding the coefficients of a mathematical model of the input signal that best fits its known distribution. The specific algorithm used in this benchmark may differ depending on the problem domain and available hardware. However, MQT Bench provides a general framework for performing amplitude estimation in a quantum computer with minimal assumptions about the hardware or optimization techniques.

@@ -1,0 +1,14 @@
+ This is a Quantum Circuit written in OpenQASM, a quantum programming language. It appears to be an amplitude estimation algorithm, which is a quantum algorithm used for estimating the absolute square of a complex number.
+
+Here's a high-level explanation of the code:
+
+1. The code starts by importing two important libraries: `qelib1.inc` and `u2.inc`. The former provides various utility functions, while the latter defines the `u2` type, which is used to represent 2-dimensional vectors in the quantum circuit.
+2. The next line declares four qubits (`qreg eval`) and five classical bits (`creg meas`). The qubits are assigned names `q[0]` through `q[3]`, while the classical bits are named `meas[0]` through `meas[4]`.
+3. The following line defines a set of parameters for the quantum circuit: `u(-0.9272952180016122, 0, 0)` and `u(0.9272952180016122, 0, 0)`. These parameters are used to define the quantum circuit's evolution.
+4. The next line defines a series of quantum gates: `cx eval[0], q[0];`, `u(-0.9272952180016122, 0, 0) q[0];`, `cx eval[0], q[0];`, and `u(0.9272952180016122, 0, 0) q[0]`. These gates are used to perform a quantum operation on the qubits.
+5. The following line defines another set of quantum gates: `u(-pi/2, 0, 0) q[0];`, `cx eval[2], q[0];`, `u(-pi/4, 0, 0) q[0];`, and `cx eval[3], q[0]`. These gates are used to perform a quantum operation on the qubits.
+6. The next line defines a barrier (`barrier eval[2], eval[3];`) that prevents the quantum circuit from evolving further until the measurement is performed.
+7. The following line defines a set of measurements: `measure eval[0] -> meas[0];`, `measure eval[1] -> meas[1];`, `measure eval[2] -> meas[2];`, `measure eval[3] -> meas[3];` and `measure q[0] -> meas[4]`. These measurements are used to extract information from the quantum state.
+8. The final line defines a set of classical variables (`h eval[3]`), which are used to store the result of the measurement.
+
+Overall, this code appears to be implementing an amplitude estimation algorithm, which is a quantum algorithm used for estimating the absolute square of a complex number. The quantum circuit evolves the qubits using a series of quantum gates, and then performs measurements on the qubits to extract information about the quantum state.

@@ -1,0 +1,17 @@
+This program is a Python script that creates a Qiskit simulator to simulate quantum circuits on an quantum computer. It uses the MQT Bench library, which provides tools for performing simulations of quantum circuits in quantum computers. The MQT Bench library allows users to create and execute quantum algorithms using a high-level language, and this program is a Qiskit simulator that can be used with the MQT Bench library.
+
+Here's how the program works:
+
+1. First, the user defines an input circuit in Qiskit using the Qiskit simulator. The circuit should include basic quantum gates such as H (Hadamard) and CNOT (control-not), as well as a measurement to obtain the final state of the system.
+
+2. Next, the program reads the input circuit from a text file or enters it directly into Qiskit using the "qc.QasmInput()" function.
+
+3. The program then defines a set of simulator settings, such as the quantum computer used and the number of qubits to simulate. It uses the `qc.Qobj()` method to create a quantum object from the input circuit, which contains information about the qubits and gate operations.
+
+4. The user specifies the backend (i.e., the quantum computer) using the Qiskit simulator. The `qc.backend_specify()` method is used to set up the backend, specifying the number of qubits, the type of backend (i.e., classical or quantum), and any other necessary settings.
+
+5. Next, the program compiles the input circuit into a QASM (Quantum Asymmetric Superflow) format. The QASM format is used to write a text file containing the compiled circuit, which can then be executed on a real quantum computer.
+
+6. Finally, the user selects how they want to execute the compiled circuit: either by running it directly using the `qc.execute()` method or by calling other functions in the Qiskit simulator that take input circuits as arguments and execute them.
+
+7. The program will output various measurements, such as the final state of each qubit and the results of all gates applied to the system during execution.
