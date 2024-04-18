@@ -1,0 +1,22 @@
+This is a Quantum Algorithm (QA) written in OpenQASM, a standard for representing quantum circuits. The code is creating a quantum walk algorithm, which is a simple example of a quantum algorithm that can be implemented on current quantum hardware.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OpenQASM version 2.0.
+2. `include "qelib1.inc"`: This line includes the Qelib1 library, which provides a set of predefined quantum gates and other useful functions for working with OpenQASM.
+3. `qreg node[2]; qreg coin[1]; creg meas[3]` : These lines define three types of qubits: `node`, `coin`, and `meas`. The first two are quantum registers, which can hold qubits, while the third is a classical register, which can hold measurements.
+4. `h coin[0];`: This line creates a Hadamard gate on the first `coin` qubit.
+5. `ccx coin[0],node[1],node[0];`: This line creates a controlled-NOT (CX) gate between the first `coin` qubit and both `node[1]` and `node[0]`. The CX gate swaps the states of the two qubits it is applied to, but only if they are in the same state (i.e., both 0 or both 1).
+6. `cx coin[0],node[1];`: This line creates a controlled-NOT gate between the first `coin` qubit and the `node[1]` qubit.
+7. `x node[1]; x coin[0];`: These lines apply a bit flip operation to the `node[1]` qubit, and then repeat the same operation on the `coin[0]` qubit.
+8. `ccx coin[0],node[1],node[0];`: This line creates another CX gate between the first `coin` qubit and both `node[1]` and `node[0]`.
+9. `cx coin[0],node[1];`: This line creates another controlled-NOT gate between the first `coin` qubit and the `node[1]` qubit.
+10. `x node[1]; x coin[0];`: These lines apply the bit flip operation again to the `node[1]` qubit, and then repeat the same operation on the `coin[0]` qubit.
+11. `u2(-pi,-pi) coin[0];`: This line applies a 2-qubit rotation gate to the first `coin` qubit, rotating it by `-π` in both x and y directions.
+12. `ccx coin[0],node[1],node[0];`: This line creates another CX gate between the first `coin` qubit and both `node[1]` and `node[0]`.
+13. `cx coin[0],node[1];`: This line creates another controlled-NOT gate between the first `coin` qubit and the `node[1]` qubit.
+14. `x node[1]; x coin[0];`: These lines apply the bit flip operation again to the `node[1]` qubit, and then repeat the same operation on the `coin[0]` qubit.
+15. `barrier node[0],node[1],coin[0];`: This line applies a barrier gate to the quantum circuit, which halts the computation until the next measurement is made.
+16. `measure node[0] -> meas[0]; measure node[1] -> meas[1]; measure coin[0] -> meas[2];`: These lines define the measurements that will be performed on the quantum system at the end of the computation. The first two measurements are on the `node[0]` and `node[1]` qubits, while the third measurement is on the `coin[0]` qubit.
+
+In summary, this code defines a simple quantum walk algorithm that applies a series of quantum gates to create a quantum walk on a 2D lattice. The walk consists of three cubits, each representing a position on the lattice. The gates are carefully designed to implement the quantum walk in a way that is easy to implement on current quantum hardware.

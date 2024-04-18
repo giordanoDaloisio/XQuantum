@@ -1,0 +1,33 @@
+ The Quantum Fourier Transform (QFT) is a quantum algorithm that performs a discrete logarithm of a function. In this code, we are implementing the QFT on 10 cubits (qubits). Here's a high-level explanation of what the code does:
+
+1. `OPENQASM 2.0`: This line defines the version of OpenQASM being used in the code.
+2. `include "qelib1.inc";`: This line includes the QEllib library, which provides a set of common functions and types for quantum computing.
+3. `qreg q[10];`: This line declares an array of 10 qubits (quantum registers) named `q`.
+4. `creg c[10];`: This line declares an array of 10 classical registers named `c`.
+5. `meas[10];`: This line declares an array of 10 measurement registers named `meas`.
+6. `h q[9];`: This line creates a complex number `q` with 9 components.
+7. `cp(pi/2) q[9],q[8];`: This line applies the controlled-phase gate to the qubits at indices 9 and 8, with the control qubit at index 9.
+8. `h q[8];`: This line creates another complex number `q` with 8 components.
+9. `cp(pi/4) q[9],q[7];`: This line applies the controlled-phase gate to the qubits at indices 9 and 7, with the control qubit at index 9.
+10. `cp(pi/2) q[8],q[7];`: This line applies the controlled-phase gate to the qubits at indices 8 and 7, with the control qubit at index 8.
+11. `h q[7];`: This line creates another complex number `q` with 7 components.
+12. `cp(pi/8) q[9],q[6];`: This line applies the controlled-phase gate to the qubits at indices 9 and 6, with the control qubit at index 9.
+13. `cp(pi/4) q[8],q[6];`: This line applies the controlled-phase gate to the qubits at indices 8 and 6, with the control qubit at index 8.
+14. `cp(pi/2) q[7],q[6];`: This line applies the controlled-phase gate to the qubits at indices 7 and 6, with the control qubit at index 7.
+15. `h q[6];`: This line creates another complex number `q` with 6 components.
+16. `cp(pi/16) q[9],q[5];`: This line applies the controlled-phase gate to the qubits at indices 9 and 5, with the control qubit at index 9.
+17. `cp(pi/8) q[8],q[5];`: This line applies the controlled-phase gate to the qubits at indices 8 and 5, with the control qubit at index 8.
+18. `cp(pi/4) q[7],q[5];`: This line applies the controlled-phase gate to the qubits at indices 7 and 5, with the control qubit at index 7.
+19. `cp(pi/2) q[6],q[5];`: This line applies the controlled-phase gate to the qubits at indices 6 and 5, with the control qubit at index 6.
+20. `h q[5];`: This line creates another complex number `q` with 5 components.
+21. `cp(pi/32) q[9],q[4];`: This line applies the controlled-phase gate to the qubits at indices 9 and 4, with the control qubit at index 9.
+22. `cp(pi/16) q[8],q[4];`: This line applies the controlled-phase gate to the qubits at indices 8 and 4, with the control qubit at index 8.
+23. `cp(pi/8) q[7],q[4];`: This line applies the controlled-phase gate to the qubits at indices 7 and 4, with the control qubit at index 7.
+24. `h q[4];`: This line creates another complex number `q` with 4 components.
+25. `measure q[10],c[10];`: This line measures the quantum state `q` on 10 cubits and stores the measurement outcome in the classical register `c`.
+
+The QFT algorithm takes a binary input (which is represented as a complex number) and applies a sequence of controlled-phase gates to it. The output of the algorithm is the discrete logarithm of the input, which can be computed classically using the following formula:
+
+$$\log_2(x) = \frac{1}{2} \sum_{k=0}^{9} \sigma^k(x)$$
+
+Here, $\sigma$ is the Frobenius map, and $x$ is the input binary string. The QFT algorithm can be used for various quantum computing applications, such as quantum simulation, quantum optimization, and quantum machine learning.

@@ -1,0 +1,59 @@
+The quantum walk algorithm is a simple example of a quantum algorithm that can be implemented on current quantum hardware. The algorithm consists of three main steps, each of which is implemented using a series of quantum gates.
+
+Step 1: Hadamard gate and controlled-NOT (CX) gates are applied to the first coin qubit and both node qubits. This step creates a superposition of states on all qubits and introduces non-trivial entanglement between them.
+
+High-level description: The Hadamard gate on the first coin qubit creates a superposition of states where the coin is in a mixed state of 0 and 1. The CX gates between the coin and both node qubits entangle their states, creating a superposition of states where the node qubits are in a mixed state of 0 and 1, depending on the state of the coin.
+
+Code line: `h coin[0];`
+
+Step 2: Another CX gate is applied between the first coin qubit and both node qubits. This step entangles the states of all qubits even further, creating a more complex superposition of states.
+
+High-level description: The second CX gate entangles the states of all qubits even further, creating a more complex superposition of states where the coin and node qubits are in a mixed state of 0 and 1, depending on each other.
+
+Code line: `ccx coin[0],node[1],node[0];`
+
+Step 3: A series of bit flip operations are applied to the node qubits, followed by another CX gate between the first coin qubit and both node qubits. This step introduces a periodic modulation in the superposition of states, mimicking the walk on a 2D lattice.
+
+High-level description: The bit flip operations on the node qubits introduce a periodic modulation in their superposition of states, causing them to oscillate between 0 and 1. The second CX gate entangles the states of all qubits even further, creating a more complex superposition of states where the coin and node qubits are in a mixed state of 0 and 1, depending on each other.
+
+Code lines: `x node[1]; x coin[0];` `u2(-pi,-pi) coin[0];` `ccx coin[0],node[1],node[0];`
+
+The barrier gate at the end of the algorithm halts the computation until the next measurement is made, allowing us to observe the evolved state of the quantum walk. The measurements on the node and coin qubits will reveal the position of the walk on the 2D lattice.// Benchmark was created by MQT Bench on 2024-03-19
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
+
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg node[2];
+qreg coin[1];
+creg meas[3];
+h coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+u2(-pi,-pi) coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+u2(-pi,-pi) coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+barrier node[0],node[1],coin[0];
+measure node[0] -> meas[0];
+measure node[1] -> meas[1];
+measure coin[0] -> meas[2];

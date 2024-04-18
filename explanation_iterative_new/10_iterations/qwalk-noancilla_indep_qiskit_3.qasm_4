@@ -1,0 +1,24 @@
+This is a Quantum Circuit written in Qiskit's OPENQASM syntax, which is a high-level language for describing quantum circuits. The circuit is designed to simulate a Quantum Walk algorithm, which is a quantum version of a classical random walk.
+
+Here is a breakdown of the code:
+
+1. `OPENQASM 2.0`: This line specifies the version of OPENQASM being used in the circuit.
+2. `include "qelib1.inc"`: This line includes the QElib library, which is a collection of quantum gates and operations commonly used in quantum algorithms.
+3. `qreg node[2]`: This line defines two qubits called `node[0]` and `node[1]`.
+4. `qreg coin[1]`: This line defines one qubit called `coin[0]`.
+5. `creg meas[3]`: This line defines three classical registers called `meas[0)`, `meas[1)`, and `meas[2)`.
+6. `h coin[0]` : This line creates a Hadamard gate on the qubit `coin[0]`.
+7. `ccx coin[0],node[1],node[0];`: This line creates a controlled phase shift operation on the qubits `node[1]` and `node[0]`, using the qubit `coin[0]` as the control bit. The phase shift is applied to the target qubits based on the state of the control bit.
+8. `cx coin[0],node[1];`: This line creates a controlled exchange operation between the qubits `node[1]` and `coin[0]`.
+9. `x node[1];`: This line applies a phase shift to the qubit `node[1]` by π radians.
+10. `x coin[0];`: This line applies a phase shift to the qubit `coin[0]` by -π radians.
+11. `ccx coin[0],node[1],node[0];`: This line creates another controlled phase shift operation on the qubits `node[1]` and `node[0]`, using the qubit `coin[0]` as the control bit.
+12. `cx coin[0],node[1];`: This line creates another controlled exchange operation between the qubits `node[1]` and `coin[0]`.
+13. `x node[1];`: This line applies another phase shift to the qubit `node[1]`, this time by -π radians.
+14. `x coin[0];`: This line applies a final phase shift to the qubit `coin[0]` of -π radians.
+15. `barrier node[0],node[1],coin[0];`: This line applies a barrier operation on the qubits `node[0]`, `node[1]`, and `coin[0]`. The barrier prevents any further evolution of the quantum state until it is lifted.
+16. `measure node[0] -> meas[0];`: This line measures the state of the qubit `node[0]` and stores the outcome in the classical register `meas[0]`.
+17. `measure node[1] -> meas[1];`: This line measures the state of the qubit `node[1]` and stores the outcome in the classical register `meas[1]`.
+18. `measure coin[0] -> meas[2];`: This line measures the state of the qubit `coin[0]` and stores the outcome in the classical register `meas[2]`.
+
+The Quantum Walk algorithm simulated by this circuit is a quantum version of a classical random walk on a one-dimensional lattice. The walker moves left or right with a probability that depends on the state of the coin, and the measurement outcomes are stored in the classical registers `meas[0)`, `meas[1)`, and `meas[2]`.

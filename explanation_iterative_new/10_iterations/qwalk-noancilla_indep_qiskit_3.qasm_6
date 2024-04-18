@@ -1,0 +1,27 @@
+This is a quantum circuit written in Qiskit's OpenQASM format, which is a high-level language for describing quantum circuits. The circuit implements a quantum walk algorithm on a 2D lattice, with the goal of computing the probability of being in a particular state after a number of steps.
+
+Here's a breakdown of the code:
+
+* `OPENQASM 2.0`: This line indicates that the code is written in OpenQASM format version 2.0.
+* `include "qelib1.inc";`: This line includes the Qelib1 library, which provides a set of functions for working with quantum circuits.
+* `qreg node[2];`: This line defines two qubits (node[0] and node[1]) that will be used to represent the state of the system.
+* `qreg coin[1];`: This line defines a single qubit (coin[0]) that will be used to represent the coin flip.
+* `creg meas[3];`: This line defines three registers (meas[0], meas[1], and meas[2]) that will be used to store the measurement outcomes.
+* `h coin[0];`: This line creates a Hadamard gate on the coin qubit (coin[0]).
+* `ccx coin[0],node[1],node[0];`: This line implements a controlled-NOT gate between the coin qubit and both node qubits (node[1] and node[0]), which is used to manipulate the state of the system.
+* `cx coin[0],node[1];`: This line implements a controlled-X gate between the coin qubit and the node qubit (node[1]), which is used to flip the coin.
+* `x node[1];`: This line applies a bit flip operation on the node qubit (node[1]).
+* `x coin[0];`: This line applies a bit flip operation on the coin qubit (coin[0]).
+* `ccx coin[0],node[1],node[0];`: This line implements another controlled-NOT gate between the coin qubit and both node qubits (node[1] and node[0]), which is used to manipulate the state of the system again.
+* `cx coin[0],node[1];`: This line implements another controlled-X gate between the coin qubit and the node qubit (node[1]), which is used to flip the coin again.
+* `x node[1];`: This line applies another bit flip operation on the node qubit (node[1]).
+* `u2(-pi,-pi) coin[0];`: This line applies a U2 rotation on the coin qubit (coin[0]), which is used to undo the effect of the previous controlled-X gate.
+* `ccx coin[0],node[1],node[0];`: This line implements another controlled-NOT gate between the coin qubit and both node qubits (node[1] and node[0]), which is used to manipulate the state of the system again.
+* `cx coin[0],node[1];`: This line implements another controlled-X gate between the coin qubit and the node qubit (node[1]), which is used to flip the coin again.
+* `x node[1];`: This line applies another bit flip operation on the node qubit (node[1]).
+* `barrier node[0],node[1],coin[0];`: This line implements a barrier operator that blocks the propagation of the quantum state beyond a certain point in the circuit.
+* `measure node[0] -> meas[0];`: This line measures the state of the system at the node qubit (node[0]), and stores the measurement outcome in the register `meas[0]`.
+* `measure node[1] -> meas[1];`: This line measures the state of the system at the node qubit (node[1]), and stores the measurement outcome in the register `meas[1]`.
+* `measure coin[0] -> meas[2];`: This line measures the state of the coin qubit (coin[0]), and stores the measurement outcome in the register `meas[2]`.
+
+The algorithm implemented by this circuit is a quantum walk on a 2D lattice, which is a simple example of a quantum algorithm that can be used to model quantum systems. The coin flip gate (cx) is used to implement the random walk on the lattice, while the Hadamard gate (h) and controlled-NOT gates (ccx) are used to manipulate the state of the system. The barrier operator is used to block the propagation of the quantum state beyond a certain point in the circuit, which allows us to measure the state of the system at different points in the walk.

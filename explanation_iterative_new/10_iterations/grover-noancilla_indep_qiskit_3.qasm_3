@@ -1,0 +1,20 @@
+ This is a quantum circuit written in Qiskit's OPENQASM format, which is a standardized language for describing quantum algorithms. The circuit is designed to simulate the Grover algorithm, a well-known quantum algorithm for searching an unsorted database of size $N$.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies that the code is written in OPENQASM version 2.0, which is the latest standardized language for describing quantum algorithms.
+2. `include "qelib1.inc";`: This line includes a pre-defined library of quantum gates and operations called QELib1. This library provides a set of basic gates and operations that are commonly used in quantum circuit design.
+3. `qreg q[2]; qreg flag[1]; creg meas[3];`: These lines define the qubits (quantum registers) and classical register (creg) that will be used in the simulation. `q[0]` and `q[1]` are the two qubits that will store the quantum state, while `flag[0]` is a single-qubit register that will be used to keep track of the measurement outcomes. `meas[0]` through `meas[2]` are the three classical registers that will store the measurement outcomes.
+4. `h q[0]; h q[1];`: These lines define two Hadamard gates, which are quantum gates that apply a uniform superposition of states to a qubit.
+5. `x flag[0];`: This line applies a bit flip operation on the `flag[0]` register, which will be used to keep track of the measurement outcomes.
+6. `cp(pi/2) q[1],flag[0];`: This line applies a controlled phase shift operation on the `q[1]` qubit, using the `flag[0]` register as the control qubit. The phase shift is equal to $\pi/2$.
+7. `cx q[1],q[0];`: This line applies a controlled teleportation operation on the `q[1]` qubit, using the `q[0]` qubit as the target qubit.
+8. `cp(-pi/2) q[0],flag[0];`: This line applies a controlled phase shift operation on the `q[0]` qubit, using the `flag[0]` register as the control qubit. The phase shift is equal to $-{\pi}/{2}$.
+9. `cx q[1],q[0];`: This line applies a controlled teleportation operation on the `q[1]` qubit, using the `q[0]` qubit as the target qubit.
+10. `cp(pi/2) q[0],flag[0];`: This line applies a controlled phase shift operation on the `q[0]` qubit, using the `flag[0]` register as the control qubit. The phase shift is equal to $\pi/2$.
+11. `u2(0,0) q[0]; u1(-pi) q[1];`: These lines define two quantum operations: a uniform superposition of states on the `q[0]` qubit, and a rotation operation on the `q[1]` qubit by an angle of `-{\pi}/{2}$.
+12. `u2(-pi,-pi) q[0]; u1(-pi) q[1];`: These lines define two quantum operations: a uniform superposition of states on the `q[0]` qubit, and a rotation operation on the `q[1]` qubit by an angle of `-{\pi}/{2}$.
+13. `barrier q[0],q[1],flag[0];`: This line applies a barrier operation to the `q[0]`, `q[1]`, and `flag[0]` registers, which will prevent any further quantum operations from being applied until the barrier is lifted.
+14. `measure q[0] -> meas[0]; measure q[1] -> meas[1]; measure flag[0] -> meas[2];`: These lines define three measurement operations: one on the `q[0]` qubit, one on the `q[1]` qubit, and one on the `flag[0]` register. The measurement outcomes will be stored in the corresponding classical registers `meas[0)`, `meas[1)`, and `meas[2)`.
+
+The Grover algorithm is a quantum search algorithm that can search an unsorted database of size $N$ in $O(\sqrt{N})$ iterations. The algorithm uses a quantum circuit similar to the one shown above, where the qubits are evolved through a series of quantum operations that apply a superposition of states and rotate the qubits by an angle of $\pi/2$. The measurement outcomes are used to keep track of the search progress, and the algorithm terminates when the target state is found.
