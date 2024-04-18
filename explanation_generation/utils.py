@@ -22,7 +22,7 @@ def genPrompt(previousPrompt, previousExplanation):
     )
     prompt += "and it gave me the following explanation:\n" + previousExplanation
     prompt += "Give me one prompt that would be able to generate a better explanation describing:\n"
-    prompt += "A general description of what’s happening\n A high-level description of each step\n A relation between these high-level steps and the relevant code line\n and put it in quotations."
+    prompt += "A general description of what’s happening\n A high-level description of each step\n A relation between these high-level steps and the relevant code line\n and put it in double quotations."
 
     response = ollama.chat(
         model="llama2",

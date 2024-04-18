@@ -1,0 +1,46 @@
+ This is a quantum circuit written in OpenQASM, a quantum programming language. The code appears to be an implementation of an amplitude estimation algorithm, which is a quantum algorithm used to estimate the amplitude of a quantum state.
+
+Here's a high-level explanation of the code:
+
+1. The code starts by declaring several variables and constants:
+	* `OPENQASM 2.0`: This line indicates that the code is written in OpenQASM version 2.0.
+	* `include "qelib1.inc"`: This line includes a header file named `qelib1.inc`, which provides some basic quantum circuit operations and other definitions.
+	* `qreg eval[4];`: This declares an array of four quantum registers called `eval`.
+	* `qreg q[1];`: This declares a single quantum register called `q`.
+	* `creg meas[5];`: This declares an array of five classical registers called `meas`.
+	* `u2(0,-pi) eval[0];`: This defines a quantum circuit operation that applies a 2-qubit rotation to the first element of the `eval` array, where the angle of rotation is zero.
+	* `u2(0,-pi) eval[1];`: This defines a quantum circuit operation that applies a 2-qubit rotation to the second element of the `eval` array, where the angle of rotation is zero.
+	* `u2(0,-pi) eval[2];`: This defines a quantum circuit operation that applies a 2-qubit rotation to the third element of the `eval` array, where the angle of rotation is zero.
+	* `u2(0,-pi) eval[3];`: This defines a quantum circuit operation that applies a 2-qubit rotation to the fourth element of the `eval` array, where the angle of rotation is zero.
+	* `u3(0.9272952180016122,0,0) q[0];`: This defines a quantum circuit operation that applies a 3-qubit rotation to the `q` register, where the angles of rotation are given by the values in parentheses.
+	* `cx eval[0],q[0];`: This defines a quantum circuit operation that applies a controlled-NOT (CNOT) gate between the first element of the `eval` array and the `q` register.
+	* `u(-0.9272952180016122,0,0) q[0];`: This defines a quantum circuit operation that applies a 3-qubit rotation to the `q` register, where the angles of rotation are given by the values in parentheses.
+	* `cx eval[0],q[0];`: This defines a quantum circuit operation that applies a CNOT gate between the first element of the `eval` array and the `q` register.
+	* `u(-1.8545904360032244,0,0) q[0];`: This defines a quantum circuit operation that applies a 3-qubit rotation to the `q` register, where the angles of rotation are given by the values in parentheses.
+	* `cx eval[1],q[0];`: This defines a quantum circuit operation that applies a CNOT gate between the second element of the `eval` array and the `q` register.
+	* `u(-3.7091808720064487,0,0) q[0];`: This defines a quantum circuit operation that applies a 3-qubit rotation to the `q` register, where the angles of rotation are given by the values in parentheses.
+	* `cx eval[2],q[0];`: This defines a quantum circuit operation that applies a CNOT gate between the third element of the `eval` array and the `q` register.
+	* `u(-7.4183617440128975,0,0) q[0];`: This defines a quantum circuit operation that applies a 3-qubit rotation to the `q` register, where the angles of rotation are given by the values in parentheses.
+	* `h eval[3];`: This defines a quantum circuit operation that applies a Hadamard gate to the third element of the `eval` array.
+	* `cp(-pi/2) eval[2],eval[3];`: This defines a classical bit flip operation between the second and third elements of the `eval` array.
+	* `cp(-pi/4) eval[1],eval[3];`: This defines a classical bit flip operation between the first and third elements of the `eval` array.
+	* `cp(-pi/8) eval[0],eval[3];`: This defines a classical bit flip operation between the first and third elements of the `eval` array.
+	* `h eval[2];`: This defines a quantum circuit operation that applies a Hadamard gate to the second element of the `eval` array.
+	* `cp(-pi/2) eval[1],eval[2];`: This defines a classical bit flip operation between the first and second elements of the `eval` array.
+	* `h eval[0];`: This defines a quantum circuit operation that applies a Hadamard gate to the first element of the `eval` array.
+	* `u(7.4183617440128975,0,0) q[0];`: This defines a quantum circuit operation that applies a 3-qubit rotation to the `q` register, where the angles of rotation are given by the values in parentheses.
+	* `AmplitudeModulation(q[0],eval[0])`: This defines an amplitude modulation (AM) operation between the `q` register and the first element of the `eval` array.
+	* `q[0]` is the register that contains the signal to be modulated.
+	* `eval[0]` is the register that contains the reference signal.
+	* `AmplitudeModulation(q[0],eval[0])` performs an AM operation between the `q` register and the first element of the `eval` array, where the amplitude of the modulated signal is proportional to the amplitude of the reference signal.
+	* `q[0]` is the register that contains the modulated signal.
+
+The code also defines a function called `AmplitudeModulation`, which takes two arguments: the first is the register that contains the signal to be modulated, and the second is the register that contains the reference signal. The function performs an AM operation between the two registers, where the amplitude of the modulated signal is proportional to the amplitude of the reference signal.
+
+The code then runs the quantum circuit on the `q` register, which is initialized to a random state. The output of the quantum circuit is stored in the `out` register.
+
+The code also defines a function called `runQubitCircuit`, which takes two arguments: the first is the register that contains the quantum circuit, and the second is the register that contains the input state (which is assumed to be a random state). The function runs the quantum circuit on the input state and stores the output in the `out` register.
+
+The code then calls the `runQubitCircuit` function with the `q` register as the input state, and the `out` register as the output register.
+
+Overall, the code defines a quantum circuit that performs amplitude modulation on a 3-qubit signal, and runs the quantum circuit on a random input state to generate an output state.

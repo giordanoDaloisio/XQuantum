@@ -1,6 +1,5 @@
 from utils import runPrompt
 from argparse import ArgumentParser
-import argparse
 
 if __name__ == "__main__":
     parser = ArgumentParser()
