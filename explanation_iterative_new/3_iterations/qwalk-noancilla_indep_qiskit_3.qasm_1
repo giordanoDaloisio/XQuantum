@@ -1,0 +1,21 @@
+This is a quantum circuit written in Qiskit Opensource Quantum Assembly Language (OPENQASM) format. The code defines a quantum circuit that performs a quantum walk, which is an example of a quantum algorithm that exhibits non-trivial quantum behavior.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies the version of OPENQASM being used in the code.
+2. `include "qelib1.inc";`: This line includes a library file (qelib1.inc) that provides various utility functions for working with quantum circuits.
+3. `qreg node[2]; qreg coin[1]; creg meas[3];`: These lines define the qubits and registers in the circuit. `node` is a 2-qubit register, and `coin` is a 1-qubit register. There are also 3 classical registers (`meas`) that will be used to store the measurement outcomes.
+4. `h coin[0];`: This line applies a Hadamard gate to the first qubit in the `coin` register.
+5. `ccx coin[0],node[1],node[0];`: This line applies a controlled-NOT (CNOT) gate between the first two qubits in the `node` register and the first qubit in the `coin` register.
+6. `cx coin[0],node[1];`: This line applies a controlled-X (CX) gate between the first qubit in the `coin` register and the first qubit in the `node` register.
+7. `x node[1]; x coin[0];`: These lines apply a phase flip gate to the first qubit in the `node` register and the first qubit in the `coin` register, respectively.
+8. `ccx coin[0],node[1],node[0];`: This line applies another CNOT gate between the first two qubits in the `node` register and the first qubit in the `coin` register.
+9. `cx coin[0],node[1];`: This line applies another CX gate between the first qubit in the `coin` register and the first qubit in the `node` register.
+10. `u2(-pi,-pi) coin[0];`: This line applies a U2 rotation gate to the first qubit in the `coin` register, with angles `-pi` and `-pi`.
+11. `ccx coin[0],node[1],node[0];`: This line applies another CNOT gate between the first two qubits in the `node` register and the first qubit in the `coin` register.
+12. `cx coin[0],node[1];`: This line applies another CX gate between the first qubit in the `coin` register and the first qubit in the `node` register.
+13. `x node[1]; x coin[0];`: These lines apply phase flip gates to the first qubit in the `node` register and the first qubit in the `coin` register, respectively.
+14. `barrier node[0],node[1],coin[0];`: This line applies a barrier gate to the circuit, which prevents any further evolution of the qubits after the measurement is made.
+15. `measure node[0] -> meas[0]; measure node[1] -> meas[1]; measure coin[0] -> meas[2];`: These lines define the measurement outcomes for each qubit in the circuit. The measurements are stored in the `meas` registers.
+
+Overall, this quantum circuit implements a quantum walk on a 2D lattice, which is an example of a quantum algorithm that exhibits non-trivial quantum behavior due to the entanglement between the qubits. The circuit consists of a series of CNOT and CX gates that create a superposition of different configurations of the qubits, followed by a barrier gate that prevents any further evolution of the qubits after the measurement is made. The measurement outcomes are stored in the `meas` registers.
