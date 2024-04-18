@@ -1,0 +1,28 @@
+ This is a quantum circuit written in OpenQASM, a standard for representing quantum circuits. The circuit implements the Grover algorithm, which is a well-known quantum search algorithm that can solve a search problem exponentially faster than classical algorithms on average.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the circuit is written in OpenQASM version 2.0, which is the latest version of the standard at the time of writing (as of March 2024).
+2. `include "qelib1.inc";`: This line includes a file called `qelib1.inc`, which is likely a library of commonly used quantum circuits and functions.
+3. `qreg q[2];`: This line defines two qubits, denoted by `q[0]` and `q[1]`. These are the qubits that will be used to perform the Grover search.
+4. `qreg flag[1];`: This line defines a second register called `flag[0]`. The purpose of this register is not immediately clear from the code, but it may be used to store a flag that indicates whether a particular qubit has been measured or not.
+5. `creg meas[3];`: This line defines three registers called `meas[0]`, `meas[1]`, and `meas[2]`. These registers will be used to store the results of the measurement of the qubits.
+6. `h q[0];`: This line creates a Hadamard gate on the first qubit, denoted by `q[0]`.
+7. `h q[1];`: This line creates a Hadamard gate on the second qubit, denoted by `q[1]`.
+8. `x flag[0];`: This line applies an X gate to the register `flag[0]`, which is likely used to flip the state of the flag qubit.
+9. `cp(pi/2) q[1],flag[0];`: This line applies a controlled phase shift gate on the second qubit, `q[1]`, and the flag qubit, `flag[0]`. The phase shift is equal to `pi/2`.
+10. `cx q[1],q[0];`: This line applies a controlled bit flip gate on the second qubit, `q[1]$, and the first qubit, `q[0]`.
+11. `cp(-pi/2) q[0],flag[0];`: This line applies a controlled phase shift gate on the first qubit, `q[0]`, and the flag qubit, `flag[0]`. The phase shift is equal to `-pi/2`.
+12. `cx q[1],q[0];`: This line applies a controlled bit flip gate on the second qubit, `q[1]$, and the first qubit, `q[0]`.
+13. `cp(pi/2) q[0],flag[0];`: This line applies a controlled phase shift gate on the first qubit, `q[0]`, and the flag qubit, `flag[0]`. The phase shift is equal to `pi/2`.
+14. `u2(0,0) q[0];`: This line applies a quantum teleportation gate on the first qubit, `q[0]`.
+15. `u1(-pi) q[1];`: This line applies a unary logic gate on the second qubit, `q[1]`, with an argument of `-pi`. The exact operation of this gate depends on the specific quantum computer architecture being used.
+16. `cx q[0],q[1];`: This line applies a controlled bit flip gate on the first qubit, `q[0]$, and the second qubit, `q[1]`.
+17. `u2(-pi,-pi) q[0];`: This line applies a quantum teleportation gate on the first qubit, `q[0]`.
+18. `u1(-pi) q[1];`: This line applies a unary logic gate on the second qubit, `q[1]`, with an argument of `-pi`. The exact operation of this gate depends on the specific quantum computer architecture being used.
+19. `barrier q[0],q[1],flag[0];`: This line applies a barrier gate on the first two qubits, `q[0]` and `q[1]`, and the flag qubit, `flag[0]`. The barrier gate prevents the qubits from evolving further until the measurement of the flag qubit is performed.
+20. `measure q[0] -> meas[0];`: This line measures the state of the first qubit, `q[0]`, and stores the result in the register `meas[0]`.
+21. `measure q[1] -> meas[1];`: This line measures the state of the second qubit, `q[1]`, and stores the result in the register `meas[1]`.
+22. `measure flag[0] -> meas[2];`: This line measures the state of the flag qubit, `flag[0]`, and stores the result in the register `meas[2]`.
+
+In summary, this code implements the Grover algorithm, which is a quantum search algorithm that can solve a search problem exponentially faster than classical algorithms on average. The algorithm uses two qubits to represent the state of the search problem, and applies a sequence of quantum gates to evolve the state of the qubits in a way that increases the probability of finding the desired solution. The code includes 3 cubits, which are used to store the state of the qubits during the evolution.

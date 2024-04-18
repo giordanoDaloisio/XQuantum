@@ -1,4 +1,9 @@
-Can you give a high-level explanation of this code?// Benchmark was created by MQT Bench on 2024-03-18
+The Quantum Fourier Transform (QFT) is an important quantum algorithm that performs a discrete Fourier transform on a quantum state. The QFT algorithm takes as input a quantum state represented as a superposition of basis states, and applies a sequence of controlled-phase gates to transform the state into a new superposition representing the Fourier coefficients of the original state.
+
+Here's a high-level description of each step in the QFT algorithm implemented in the code:
+
+1. `OPENQASM 2.0;`: This line declares that the code will be executed using OpenQASM, a high-level language for quantum computing.
+2. `include // Benchmark was created by MQT Bench on 2024-03-18
 // For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
 // MQT Bench version: 1.1.0
 // Qiskit version: 1.0.2
@@ -78,5 +83,4 @@ measure q[5] -> meas[5];
 measure q[6] -> meas[6];
 measure q[7] -> meas[7];
 measure q[8] -> meas[8];
-measure q[9] -> meas[9];The name of the algorithm is: Quantum Fourier Transform
-The code includes 10 cubits
+measure q[9] -> meas[9];
