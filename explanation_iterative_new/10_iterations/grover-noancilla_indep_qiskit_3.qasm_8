@@ -1,0 +1,26 @@
+ This is a quantum circuit written in Qiskit's OpenQASM language, which is a standardized format for describing quantum circuits. The circuit is designed to simulate the Grover algorithm, a well-known quantum algorithm for searching an unsorted database of size $N$.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line indicates that the circuit is written in OpenQASM version 2.0, which is the most recent version of the standard at the time of writing (March 2024).
+2. `include "qelib1.inc"`: This line includes a pre-defined library of quantum gates called `qelib1.inc`, which contains basic gates like Hadamard gates, Pauli-X and Pauli-Y gates, and also the `barrier` gate used in this circuit.
+3. `qreg q[2];`: This line defines two qubits, denoted by $q[0]$ and $q[1]$, which will be used to store the quantum state during the simulation.
+4. `qreg flag[1];`: This line defines a single qubit called `$flag[0]$`, which will be used to store the result of the measurement.
+5. `creg meas[3];`: This line defines three counters, denoted by `$meas[0]$, `$meas[1]$, and `$meas[2]$, which will be used to store the measurement outcomes.
+6. `h q[0]; h q[1];`: These lines define two Hadamard gates, $H_q[0]$ and $H_q[1]$, which are applied to the qubits $q[0]$ and $q[1]$, respectively.
+7. `x flag[0];`: This line applies a bit flip operation on the qubit `$flag[0]$, which is used to store the result of the measurement.
+8. `cx q[1],q[0];`: This line applies a controlled-NOT (CNOT) gate between the qubits $q[0]$ and $q[1]$, which is an essential part of the Grover algorithm.
+9. `cp(-pi/2) q[0],flag[0];`: This line applies a phase shift operation to the qubit `$q[0]$, which is used to control the measurement outcome.
+10. `cx q[1],q[0];`: This line applies another CNOT gate between the qubits $q[0]$ and $q[1]$.
+11. `cp(pi/2) q[0],flag[0];`: This line applies another phase shift operation to the qubit `$q[0]$, which is used to control the measurement outcome.
+12. `u2(0,0) q[0];`: This line applies a quantum teleportation operation between the qubits $q[0]$ and $q[0]$, which is used to ensure that the state of the qubits is well-defined after the measurement.
+13. `u1(-pi) q[1];`: This line applies a quantum rotation operation on the qubit `$q[1]$, which is used to prepare the state for the next iteration of the algorithm.
+14. `cx q[0],q[1];`: This line applies another CNOT gate between the qubits $q[0]$ and $q[1]$.
+15. `u2(-pi,-pi) q[0];`: This line applies a quantum teleportation operation between the qubits $q[0]$ and $q[0]$, which is used to ensure that the state of the qubits is well-defined after the measurement.
+16. `u1(-pi) q[1];`: This line applies another quantum rotation operation on the qubit `$q[1]$, which is used to prepare the state for the next iteration of the algorithm.
+17. `barrier q[0],q[1],flag[0];`: This line applies a barrier gate between the qubits $q[0]$ and $q[1]$, which is used to prevent the state from evolving during the measurement.
+18. `measure q[0] -> meas[0];`: This line measures the state of the qubit `$q[0]$, which is stored in the counter `$meas[0]$.
+19. `measure q[1] -> meas[1];`: This line measures the state of the qubit `$q[1]$, which is stored in the counter `$meas[1]`.
+20. `measure flag[0] -> meas[2];`: This line measures the state of the qubit `$flag[0]$, which is stored in the counter `$meas[2]$.
+
+In summary, this code implements the Grover algorithm, a quantum algorithm for searching an unsorted database of size $N$ with high probability. The algorithm uses a quantum circuit that consists of 3 cubits (qubits), and applies a series of quantum gates to evolve the state of the qubits during each iteration of the algorithm. The measurement outcomes are stored in counters, and the algorithm repeats the measurement process multiple times to achieve high probability of finding the marked state.

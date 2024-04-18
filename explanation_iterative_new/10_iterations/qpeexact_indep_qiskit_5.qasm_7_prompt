@@ -1,0 +1,54 @@
+The Quantum Phase Estimation (QPE) algorithm is a quantum computational procedure used to estimate the eigenvalue of a unitary operator. The algorithm is as follows:
+
+1. Initialize the qubits in a superposition of states, with each qubit representing a possible phase of the eigenvalue to be estimated.
+2. Apply a sequence of controlled phase shift operations to the qubits, where each operation modifies the phases of the qubits by a fixed amount. The number of phase shift operations is chosen such that the final state of the qubits represents a superposition of all possible phases of the eigenvalue.
+3. Measure the state of one of the qubits, which collapses the superposition into a classical outcome representing the estimated eigenvalue.
+4. Repeat steps 1-3 multiple times, each time applying a different sequence of controlled phase shift operations to the qubits. The final measurement outcomes are used to estimate the eigenvalue of the unitary operator.
+
+In the given quantum circuit code, each line can be described as follows:
+
+1. `q[0] = q[0] + π/4`: This line applies a controlled phase shift operation to the qubit at index 0 (i.e., `q[0]`), where the phase shift is pi/4. This step is part of the overall QPE algorithm, as it helps prepare the initial state of the qubits for the estimation process.
+2. `h q[1];`: This line creates a Hadamard gate, which applies the Hadamard transformation to the qubit at index 1 (i.e., `q[1]`). The Hadamard transformation is used in QPE to modulate the phases of the qubits during the estimation process.
+3. `h q[2];`: This line creates another Hadamard gate, which applies the Hadamard transformation to the qubit at index 2 (i.e., `q[2]`).
+4. `h q[3];`: This line creates yet another Hadamard gate, which applies the Hadamard transformation to the qubit at index 3 (i.e., `q[3]`).
+5. `x psi[0];`: This line applies a bit flip operation to the qubit labeled as `psi[0]`. The bit flip operation is used in QPE to transform the initial superposition of states into a new state that represents a projection onto the desired eigenvalue subspace.
+6. `cp(-7*π/8) psi[0],q[0];`: This line applies a controlled phase shift operation to the qubits `psi[0]` and `q[0]`. The phase shift is negative 7 times pi/8, which helps modulate the phases of the qubits during the estimation process.
+7. `cp(π/4) psi[0],q[1];`: This line applies another controlled phase shift operation to the qubits `psi[0]` and `q[1]`. The phase shift is pi/4, which helps further modulate the phases of the qubits.
+8. `cp(π/2) psi[0],q[2];`: This line applies yet another controlled phase shift operation to the qubits `psi[0]` and `q[2]`. The phase shift is pi/2, which helps further modulate the phases of the qubits.
+9. `measure q[0];`: This line measures the state of the qubit at index 0 (i.e., `q[0]`) and collapses the superposition of states into a classical outcome representing the estimated eigenvalue.
+10. Repeat steps 1-9 multiple times, each time applying a different sequence of controlled phase shift operations to the qubits. The final measurement outcomes are used to estimate the eigenvalue of the unitary operator.// Benchmark was created by MQT Bench on 2024-03-18
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
+
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[4];
+qreg psi[1];
+creg c[4];
+h q[0];
+h q[1];
+h q[2];
+h q[3];
+x psi[0];
+cp(-7*pi/8) psi[0],q[0];
+cp(pi/4) psi[0],q[1];
+cp(pi/2) psi[0],q[2];
+swap q[1],q[2];
+cp(pi) psi[0],q[3];
+swap q[0],q[3];
+h q[0];
+cp(-pi/2) q[1],q[0];
+h q[1];
+cp(-pi/4) q[2],q[0];
+cp(-pi/2) q[2],q[1];
+h q[2];
+cp(-pi/8) q[3],q[0];
+cp(-pi/4) q[3],q[1];
+cp(-pi/2) q[3],q[2];
+h q[3];
+barrier q[0],q[1],q[2],q[3],psi[0];
+measure q[0] -> c[0];
+measure q[1] -> c[1];
+measure q[2] -> c[2];
+measure q[3] -> c[3];

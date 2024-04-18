@@ -1,0 +1,30 @@
+ Sure, I'd be happy to explain the high-level logic of this quantum circuit!
+
+This is a Quantum Circuit written in OpenQASM, which is a standard format for representing quantum algorithms. The circuit consists of several components:
+
+1. `OPENQASM 2.0`: This line specifies the version of OpenQASM being used to represent the circuit.
+2. `include "qelib1.inc";`: This line includes a library file named `qelib1.inc`, which is likely a collection of predefined quantum gates and other useful functions for working with OpenQASM.
+3. `qreg q[2];`: This line declares two qubits, denoted by `q[0]` and `q[1]`. These are the qubits that will be manipulated by the circuit.
+4. `qreg flag[1];`: This line declares a single qubit called `flag[0]`. The reason for this extra qubit is explained later.
+5. `creg meas[3];`: This line declares three classical registers called `meas[0)`, `meas[1)`, and `meas[2)`. These will be used to store the results of measurements on the qubits.
+6. `h q[0];`: This line defines a Hadamard gate for qubit `q[0]`. The `h` symbol denotes a Hadamard gate.
+7. `h q[1];`: This line defines a Hadamard gate for qubit `q[1]`.
+8. `x flag[0];`: This line applies a bit flip operation to the extra qubit `flag[0]`. The `x` symbol denotes a bit flip operation.
+9. `cp(pi/2) q[1],flag[0];`: This line applies a controlled phase shift operation on qubit `q[1]` and the extra qubit `flag[0]`. The parameter `pi/2` represents the phase shift amount.
+10. `cx q[1],q[0];`: This line applies a controlled bit flip operation on qubits `q[1]` and `q[0]`.
+11. `cp(-pi/2) q[0],flag[0];`: This line applies a controlled phase shift operation on qubit `q[0]` and the extra qubit `flag[0]`.
+12. `cx q[1],q[0];`: This line applies another controlled bit flip operation on qubits `q[1]` and `q[0]`.
+13. `cp(pi/2) q[0],flag[0];`: This line applies a final controlled phase shift operation on qubit `q[0]` and the extra qubit `flag[0]`.
+14. `u2(0,0) q[0];`: This line applies a uniform superposition of state on qubit `q[0]`.
+15. `u1(-pi) q[1];`: This line applies a quantum operation that rotates the state of qubit `q[1]` by 90 degrees in the complex plane.
+16. `cx q[0],q[1];`: This line applies a controlled bit flip operation on qubits `q[0]` and `q[1]`.
+17. `u2(-pi,-pi) q[0];`: This line applies another uniform superposition of state on qubit `q[0]`.
+18. `u1(-pi) q[1];`: This line repeats the previous quantum operation on qubit `q[1]`.
+19. `barrier q[0],q[1],flag[0];`: This line applies a barrier operation that blocks the flow of information between the qubits and the extra qubit `flag[0]`.
+20. `measure q[0] -> meas[0];`: This line measures the state of qubit `q[0]` and stores the result in classical register `meas[0]`.
+21. `measure q[1] -> meas[1];`: This line measures the state of qubit `q[1]` and stores the result in classical register `meas[1]`.
+22. `measure flag[0] -> meas[2];`: This line measures the state of the extra qubit `flag[0]` and stores the result in classical register `meas[2]`.
+
+The reason for having an extra qubit `flag[0]` is that Grover's algorithm requires a way to distinguish between the final states of the qubits after the algorithm has been run. By measuring the state of the extra qubit `flag[0]`, the algorithm can determine whether the final state of the qubits is the desired solution or not.
+
+In summary, this quantum circuit implements Grover's algorithm for searching an unsorted database of size $N$. The algorithm starts by applying a Hadamard gate to both qubits, then applies several controlled phase shift and controlled bit flip operations to evolve the state of the qubits. After running the algorithm, the final state of the qubits is measured, and the result is compared to the desired solution to determine whether the algorithm has found the solution or not.

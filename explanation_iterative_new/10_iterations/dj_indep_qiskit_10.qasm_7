@@ -1,0 +1,20 @@
+ This is a quantum circuit written in Qiskit's OPENQASM syntax, which is a standardized notation for describing quantum circuits. The circuit is designed to perform a Deutsch-Jozsa algorithm, which is a simple quantum algorithm that can solve the linear systems of equations x * y = b, where x and y are qubits and b is a constant integer.
+
+Here's a high-level explanation of the code:
+
+1. The first line, `OPENQASM 2.0`, specifies the version of OPENQASM being used.
+2. The next line, `include "qelib1.inc";`, includes a library file (qelib1.inc) that provides some basic quantum gates and operations.
+3. The following lines define the qubits and cregs in the circuit:
+	* `q[0]` and `q[9]` are the qubits that will be used to represent the linear system of equations.
+	* `c[0]` through `c[9]` are the classical registers that will store the coefficients of the linear system.
+	* `u2(0,0)` gates are used to create a 2-qubit register at the beginning of the circuit.
+4. The next lines define the quantum gates and operations in the circuit:
+	* `h` gates are used to apply the Hadamard transformation to the qubits.
+	* `cx` gates are used to perform a controlled-X operation on the qubits, which flips the state of one qubit based on the state of another qubit.
+	* `barrier` gates are used to wait for all the qubits to reach their final states before moving on to the next step.
+5. The final lines measure the output of each qubit in the circuit:
+	* `measure q[0] -> c[0]` measures the state of qubit 0 and stores it in classical register c[0].
+	* ...
+	* `measure q[9] -> c[9]` measures the state of qubit 9 and stores it in classical register c[9].
+
+The Deutsch-Jozsa algorithm is a simple quantum algorithm that can solve linear systems of equations by applying a series of quantum gates to a set of qubits. The algorithm works by iteratively applying a controlled-X operation on the qubits, which flips the state of one qubit based on the state of another qubit. By carefully controlling the states of the qubits, the algorithm can solve linear systems of equations in a finite number of steps.

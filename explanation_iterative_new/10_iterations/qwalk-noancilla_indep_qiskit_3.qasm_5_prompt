@@ -1,0 +1,51 @@
+The Quantum Walk algorithm is a simplified example of a quantum algorithm that can be implemented on current quantum hardware. The algorithm simulates a random walk on a one-dimensional lattice, where the position of the walker is encoded in the state of a coin. Each step of the walk consists of a Hadamard gate (step 6) or a controlled phase shift operation (steps 11 and 15), which introduces randomness into the walk. The walker's position is measured at the end of each step (step 18), resulting in a probability distribution over the lattice.
+
+High-level description of each step:
+
+* Step 6: Applies a Hadamard gate to the coin qubit, which randomly sets the state of the coin to either 0 or 1.
+* Steps 11 and 15: Performs controlled phase shift operations on the target qubits based on the state of the coin qubit. The phase shift introduces randomness into the walk.
+* Step 18: Measures the state of the coin qubit, which collapses the superposition of states and produces a probability distribution over the lattice.
+
+Relation between high-level steps and code lines:
+
+* Line 6: Applies the Hadamard gate to the coin qubit, setting its state to either 0 or 1 randomly.
+* Lines 11 and 15: Perform controlled phase shift operations on the target qubits based on the state of the coin qubit. The phase shift introduces randomness into the walk.
+* Line 18: Measures the state of the coin qubit, collapsing the superposition of states and producing a probability distribution over the lattice.// Benchmark was created by MQT Bench on 2024-03-19
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
+
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg node[2];
+qreg coin[1];
+creg meas[3];
+h coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+u2(-pi,-pi) coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+u2(-pi,-pi) coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+ccx coin[0],node[1],node[0];
+cx coin[0],node[1];
+x node[1];
+x coin[0];
+barrier node[0],node[1],coin[0];
+measure node[0] -> meas[0];
+measure node[1] -> meas[1];
+measure coin[0] -> meas[2];

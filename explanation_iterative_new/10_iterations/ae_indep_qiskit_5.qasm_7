@@ -1,0 +1,32 @@
+This code is a quantum circuit written in the OpenQASM language, which is a standardized format for describing quantum algorithms. The code defines a quantum circuit that performs amplitude estimation, which is a basic quantum algorithm used to estimate the absolute square of an unknown quantum state.
+
+Here's a high-level explanation of the code:
+
+1. `OPENQASM 2.0`: This line specifies the version of OpenQASM being used.
+2. `include "qelib1.inc";`: This line includes the QElliptic library, which is a set of predefined quantum gates and parameters that can be used in OpenQASM circuits.
+3. `qreg eval[4];`: This line defines a quantum register called "eval" with 4 cubits (i.e., qubits). Each cubit is represented by the variable "eval[i]" (where i ranges from 0 to 3).
+4. `qreg q[1];`: This line defines a single quantum register called "q" with 1 cubit.
+5. `creg meas[5];`: This line defines a classical register called "meas" with 5 elements (i.e., measurement outcomes). Each element is represented by the variable "meas[i]" (where i ranges from 0 to 4).
+6. `u2(0,-pi) eval[0];`: This line defines an unitarily-invariant operation on the first cubit of the "eval" register, which performs a rotation around the origin in the complex plane by an angle of -π.
+7. `u2(0,-pi) eval[1];`: This line defines another unitarily-invariant operation on the second cubit of the "eval" register, which also performs a rotation around the origin in the complex plane by an angle of -π.
+8. `u2(0,-pi) eval[2];`: This line defines yet another unitarily-invariant operation on the third cubit of the "eval" register, which again performs a rotation around the origin in the complex plane by an angle of -π.
+9. `u2(0,-pi) eval[3];`: This line defines the final unitarily-invariant operation on the fourth cubit of the "eval" register, which also performs a rotation around the origin in the complex plane by an angle of -π.
+10. `u3(0.9272952180016122,0,0) q[0];`: This line defines a single quantum state called "q[0]" with 3 cubits (i.e., qubits). The state is represented by the parameters 0.9272952180016122, 0, and 0.
+11. `cx eval[0],q[0];`: This line performs a controlled-NOT operation between the first cubit of the "eval" register and the third qubit of the "q" register.
+12. `u(-0.9272952180016122,0,0) q[0];`: This line applies a rotation around the origin in the complex plane by an angle of -π to the third qubit of the "q" register.
+13. `cx eval[0],q[0];`: This line performs another controlled-NOT operation between the first cubit of the "eval" register and the third qubit of the "q" register.
+14. `u3(1.8545904360032244,0,0) q[0];`: This line applies a rotation around the origin in the complex plane by an angle of 1.8545904360032244 radians to the third qubit of the "q" register.
+15. `cx eval[1],q[0];`: This line performs another controlled-NOT operation between the second cubit of the "eval" register and the third qubit of the "q" register.
+16. `u(-3.7091808720064487,0,0) q[0];`: This line applies a rotation around the origin in the complex plane by an angle of -3.7091808720064487 radians to the third qubit of the "q" register.
+17. `cx eval[2],q[0];`: This line performs another controlled-NOT operation between the second cubit of the "eval" register and the third qubit of the "q" register.
+18. `u3(2.574004435173138,-pi,-pi) q[0];`: This line applies a rotation around the origin in the complex plane by an angle of 2.574004435173138 radians and a phase shift of -π and -π radians to the third qubit of the "q" register.
+19. `cx eval[3],q[0];`: This line performs another controlled-NOT operation between the third cubit of the "eval" register and the third qubit of the "q" register.
+20. `h eval[3];`: This line defines a classical variable called "h" with 1 element (i.e., measurement outcome).
+21. `cp(-pi/2) eval[2],eval[3];`: This line applies a controlled-NOT operation between the second cubit of the "eval" register and the third cubit of the "eval" register.
+22. `cp(-pi/4) eval[1],eval[3];`: This line applies another controlled-NOT operation between the first cubit of the "eval" register and the third cubit of the "eval" register.
+23. `meas[0]="1";`: This line sets the measurement outcome for the first measurement to be 1.
+24. `meas[1]="0";`: This line sets the measurement outcome for the second measurement to be 0.
+25. `meas[2]="1";`: This line sets the measurement outcome for the third measurement to be 1.
+26. `meas[3]="0";`: This line sets the measurement outcome for the fourth measurement to be 0.
+
+The circuit can be implemented using a quantum computer or a classical computer simulating a quantum computer, and it is designed to perform a quantum state tomography experiment on the "q" register. The experiment consists of applying a series of unitarily-invariant operations to the "q" register and then measuring the corresponding measurement outcomes in the "meas" register. The results of the measurements can be used to reconstruct the quantum state of the "q" register.

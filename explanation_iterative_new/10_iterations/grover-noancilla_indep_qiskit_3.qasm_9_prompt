@@ -1,0 +1,42 @@
+Grover's algorithm is a quantum search algorithm that solves the unsorted search problem by amplifying the probability of finding the marked state. The algorithm works by applying a series of quantum operations to a superposition of states, which amplifies the probability of finding the desired solution in the database. Here is a high-level description of each step of the algorithm:
+
+1. Initialize the qubits in a superposition of states. This line initializes the qubits in a linear combination of basis states, where each qubit is in a complex coefficient representing the amplitude of the state.
+2. Apply Hadamard gates to the qubits. The Hadamard gate applies a phase shift to the qubits, which helps to distribute the probability of finding the marked state more evenly among all qubits.
+3. Apply controlled-NOT (CNOT) gates between the qubits. The CNOT gate is used to flip the state of one qubit based on the state of another qubit, which is essential for the algorithm's operation.
+4. Apply phase shift operations to the qubits. The phase shift operations are used to control the measurement outcome and ensure that the algorithm runs correctly.
+5. Repeat steps 2-4 multiple times. Each iteration of the algorithm applies the quantum gates and measurements, which helps to amplify the probability of finding the marked state.
+
+In terms of the code lines, each step of the algorithm can be described as follows:
+
+* `OPENQASM 2.0`: This line indicates that the circuit is written in OpenQASM version 2.0, which is the most recent version of the standard at the time of writing.
+* `q[0] = Hadamard(q[0]); q[1] = Hadamard(q[1]);`: These lines apply Hadamard gates to the qubits $q[0]$ and $q[1]$.
+* `CNOT(q[0], q[1]);`: This line applies a CNOT gate between the qubits $q[0]$ and $q[1]$.
+* `phasorotate(q[0], pi/2); phasorotate(q[1], -pi/2);`: These lines apply phase shift operations to the qubits $q[0]$ and $q[1]$, which helps to control the measurement outcome.
+* `barrier(q[0], q[1], flag[0]);`: This line applies a barrier gate between the qubits $q[0]$ and $q[1]$, which is used to prevent the state from evolving during the measurement process.
+* `measure(q[0]); measure(q[1]); measure(flag[0]);`: These lines measure the state of the qubits $q[0]$, $q[1]$, and $flag[0]$, respectively.// Benchmark was created by MQT Bench on 2024-03-19
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
+
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[2];
+qreg flag[1];
+creg meas[3];
+h q[0];
+h q[1];
+x flag[0];
+cp(pi/2) q[1],flag[0];
+cx q[1],q[0];
+cp(-pi/2) q[0],flag[0];
+cx q[1],q[0];
+cp(pi/2) q[0],flag[0];
+u2(0,0) q[0];
+u1(-pi) q[1];
+cx q[0],q[1];
+u2(-pi,-pi) q[0];
+u1(-pi) q[1];
+barrier q[0],q[1],flag[0];
+measure q[0] -> meas[0];
+measure q[1] -> meas[1];
+measure flag[0] -> meas[2];

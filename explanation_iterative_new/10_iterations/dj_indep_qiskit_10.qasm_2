@@ -1,0 +1,23 @@
+This is a quantum circuit written in OpenQASM, which is a high-level language for describing quantum circuits. The circuit is designed to simulate the Deutsch-Jozsa algorithm, a quantum version of the famous "mirrored" version of the Deutsch problem.
+
+Here's a high-level explanation of the circuit:
+
+1. The first line `OPENQASM 2.0;` specifies that the code is written in OpenQASM version 2.0.
+2. The next line `include "qelib1.inc";` includes a library file called `qelib1.inc`, which contains definitions and functions used throughout the circuit.
+3. The third line `qreg q[10];` defines an array of qubits called `q`, with size 10. Each element of the array represents a qubit.
+4. The fourth line `creg c[9];` defines an array of classical registers called `c`, with size 9. These registers will be used to store the outcome of the measurement in each qubit.
+5. The fifth line `u2(0,0) q[0];` creates a unitary operator `u2(0,0)` acting on the first qubit (indexed as `q[0]`). This is a identity operation, which means that the state of the qubit is not changed.
+6. The sixth line `u2(0,0) q[1];` creates another identity operation on the second qubit (indexed as `q[1]`).
+7. The seventh line `h q[2];` applies a Hadamard gate to the second qubit (indexed as `q[2]`). This gate converts a single qubit into a superposition of both states.
+8. The eighth line `u2(0,0) q[3];` creates another identity operation on the third qubit (indexed as `q[3]`).
+9. The ninth line `h q[4];` applies a Hadamard gate to the fourth qubit (indexed as `q[4]`).
+10. The tenth line `u2(0,0) q[5];` creates another identity operation on the fifth qubit (indexed as `q[5]`).
+11. The eleventh line `u2(0,0) q[6];` creates another identity operation on the sixth qubit (indexed as `q[6]`).
+12. The twelfth line `h q[7];` applies a Hadamard gate to the seventh qubit (indexed as `q[7]`).
+13. The thirteenth line `u2(0,0) q[8];` creates another identity operation on the eighth qubit (indexed as `q[8]`).
+14. The fourteenth line `u2(-pi,-pi) q[9];` applies a controlled-NOT gate to the ninth qubit (indexed as `q[9]`) with control qubits 0 and 1 (indexed as `q[0]` and `q[1]`. This gate flips the state of the ninth qubit if the control qubits are in the state |0⟩.
+15. The final line `barrier q[0],q[1],q[2],q[3],q[4],q[5],q[6],q[7],q[8],q[9];` applies a barrier operator to all qubits, which means that the circuit halts and no further operations can be performed.
+
+After the barrier, the measurement is performed on each qubit, and the outcome of the measurement is stored in the corresponding classical register `c`. The measurement is performed using the `measure` instruction, which takes the index of the qubit to measure as an argument.
+
+In summary, this quantum circuit simulates the Deutsch-Jozsa algorithm, which is a quantum version of the famous "mirrored" version of the Deutsch problem. The circuit has 10 cubits and uses a combination of identity operations and controlled-NOT gates to simulate the algorithm.

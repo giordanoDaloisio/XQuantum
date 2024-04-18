@@ -1,0 +1,16 @@
+ This is a quantum circuit written in Qiskit's OpenQASM format, which is designed to run on a quantum computer. The circuit implements a quantum algorithm called Grover's algorithm, which is a quantum search algorithm that can solve the unstructured search problem exponentially faster than any known classical algorithm.
+
+Here's a high-level explanation of the circuit:
+
+1. The `OPENQASM 2.0` line specifies that the circuit will be executed on a quantum computer using OpenQASM version 2.0.
+2. The `include "qelib1.inc"` line includes a library file called `qelib1.inc`, which provides various mathematical functions and constants used in the circuit.
+3. The `qreg` lines define two qubits, `q[0]` and `q[1]`, which will be used to store the quantum state of the algorithm.
+4. The `creg` line defines a register called `meas` that will be used to store the measurement outcomes of the algorithm.
+5. The `h` lines define two hours, `q[0]` and `q[1]`, which are used to perform a Hadamard gate on each qubit.
+6. The `cp` lines use the controlled-phase operation to apply a phase shift to one of the qubits based on the state of another qubit. In this case, the phase shift is applied to `q[1]` based on the state of `flag[0]`. This is repeated twice more using the `cx` and `u2` lines, which perform a controlled-NOT and a universal gate operation, respectively.
+7. The `barrier` line implements a barrier that blocks the flow of quantum information between the different regions of the circuit.
+8. The `measure` lines use the `measure` operation to collapse the quantum state into one of the measurement outcomes. In this case, the measurements are performed on qubits `q[0]` and `q[1]`, and the outcome of the measurement on `flag[0]` is stored in the `meas[2]` register.
+
+The algorithm implemented by this circuit is Grover's algorithm, which is a quantum search algorithm that can solve the unstructured search problem exponentially faster than any known classical algorithm. The algorithm works by applying a series of quantum operations to a fixed number of qubits, called the "search space," in order to find a particular solution among a set of possibilities. In this case, the search space consists of 2^3 = 8 possible solutions, and the algorithm finds the solution corresponding to the bit string "110".
+
+Overall, this circuit is an example of how quantum computing can be used to solve complex problems exponentially faster than classical computers, thanks to the principles of quantum parallelism and interference.

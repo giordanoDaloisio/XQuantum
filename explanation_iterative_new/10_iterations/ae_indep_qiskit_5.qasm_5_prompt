@@ -1,0 +1,67 @@
+The quantum circuit shown above implements a simple measurement-based quantum algorithm. The general description of what's happening is that the circuit prepares a superposition of five states, measures each state in turn, and records the resulting probabilities in a classical register.
+
+High-level descriptions of each step in the circuit are as follows:
+
+1. `creg meas[5];`: This line defines a classical register called `meas` with capacity 5. The algorithm will store the probabilities of each state in this register after measurement.
+2. `u2(0,-pi) eval[0];`: This line sets the value of the first element in the `eval` register to 0 and -π. This is the initial state of the quantum system.
+3. `u2(0,-pi) eval[1];`: This line sets the value of the second element in the `eval` register to 0 and -π.
+4. `u2(0,-pi) eval[2];`: This line sets the value of the third element in the `eval` register to 0 and -π.
+5. `u2(0,-pi) eval[3];`: This line sets the value of the fourth element in the `eval` register to 0 and -π.
+6. `u3(0.9272952180016122,0,0) q[0];`: This line sets the value of the first qubit (quantum register) `q[0]` to 0.9272952180016122.
+7. `cx eval[0],q[0];`: This line performs a controlled-NOT operation between the first element in the `eval` register and the first qubit `q[0]`.
+8. `u(-0.9272952180016122,0,0) q[0];`: This line sets the value of the first qubit `q[0]` to -0.9272952180016122.
+9. `cx eval[1],q[0];`: This line performs a controlled-NOT operation between the second element in the `eval` register and the first qubit `q[0]`.
+10. `u(-1.8545904360032244,0,0) q[0];`: This line sets the value of the first qubit `q[0]` to -1.8545904360032244.
+11. `cx eval[2],q[0];`: This line performs a controlled-NOT operation between the third element in the `eval` register and the first qubit `q[0]`.
+12. `u(-3.7091808720064487,0,0) q[0];`: This line sets the value of the first qubit `q[0]` to -3.7091808720064487.
+13. `cx eval[3],q[0];`: This line performs a controlled-NOT operation between the fourth element in the `eval` register and the first qubit `q[0]`.
+14. `u(2.574004435173138,0,0) q[0];`: This line sets the value of the first qubit `q[0]` to 2.574004435173138.
+15. `measure meas[5];`: This line measures each state in turn and stores the resulting probabilities in the `meas[5]` classical register.
+
+In terms of the code, we can see that each step in the circuit corresponds to a specific operation on the quantum states (either a controlled-NOT operation or a measurement). The `u2()` and `u3()` functions are used to set the values of the qubits, while the `cx()` function performs controlled-NOT operations between the qubits and the elements in the `eval` register. The `measure()` function is used to measure each state in turn and store the resulting probabilities in the `meas[5]` classical register.// Benchmark was created by MQT Bench on 2024-03-17
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
+
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg eval[4];
+qreg q[1];
+creg meas[5];
+u2(0,-pi) eval[0];
+u2(0,-pi) eval[1];
+u2(0,-pi) eval[2];
+u2(0,-pi) eval[3];
+u3(0.9272952180016122,0,0) q[0];
+cx eval[0],q[0];
+u(-0.9272952180016122,0,0) q[0];
+cx eval[0],q[0];
+u3(0.9272952180016122,0,0) q[0];
+cx eval[1],q[0];
+u(-1.8545904360032244,0,0) q[0];
+cx eval[1],q[0];
+u3(1.8545904360032244,0,0) q[0];
+cx eval[2],q[0];
+u(-3.7091808720064487,0,0) q[0];
+cx eval[2],q[0];
+u3(2.574004435173138,-pi,-pi) q[0];
+cx eval[3],q[0];
+u(-7.4183617440128975,0,0) q[0];
+cx eval[3],q[0];
+h eval[3];
+cp(-pi/2) eval[2],eval[3];
+cp(-pi/4) eval[1],eval[3];
+cp(-pi/8) eval[0],eval[3];
+h eval[2];
+cp(-pi/2) eval[1],eval[2];
+cp(-pi/4) eval[0],eval[2];
+h eval[1];
+cp(-pi/2) eval[0],eval[1];
+h eval[0];
+u(7.4183617440128975,0,0) q[0];
+barrier eval[0],eval[1],eval[2],eval[3],q[0];
+measure eval[0] -> meas[0];
+measure eval[1] -> meas[1];
+measure eval[2] -> meas[2];
+measure eval[3] -> meas[3];
+measure q[0] -> meas[4];
