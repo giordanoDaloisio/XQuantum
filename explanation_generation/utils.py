@@ -4,7 +4,7 @@ import os
 
 
 def parseAlgorithmCharacteristics(algo):
-    data = pd.ExcelFile(os.getcwd() + "/Dataset/Characteristics.xlsx")
+    data = pd.ExcelFile(os.getcwd() + "/quantum_code/Characteristics.xlsx")
     df = pd.read_excel(data)
     filtered_df = df[df["File"].str.contains(algo)]
     algorithmName = filtered_df["Algorithm"].values[0]
@@ -14,14 +14,15 @@ def parseAlgorithmCharacteristics(algo):
 
 
 def genPrompt(previousPrompt, previousExplanation):
-    ollama.pull("llama2")
+    # ollama.pull("llama2")
 
     prompt = (
         "I gave llama2 the following prompt to generate an explanation for code:\n"
         + previousPrompt
     )
     prompt += "and it gave me the following explanation:\n" + previousExplanation
-    prompt += "Give me one prompt that would be able to generate a better explanation and put it in quotations."
+    prompt += "Give me one prompt that would be able to generate a better explanation describing:\n"
+    prompt += "A general description of what’s happening\n A high-level description of each step\n A relation between these high-level steps and the relevant code line\n and put it in quotations."
 
     response = ollama.chat(
         model="llama2",
@@ -36,13 +37,13 @@ def genPrompt(previousPrompt, previousExplanation):
 def runPrompt(complexPrompt, iterative, iterations, base_model):
     ollama.pull(base_model)
 
-    for filename in os.listdir(os.getcwd() + "/Dataset/Code"):
+    for filename in os.listdir(os.getcwd() + "/quantum_code/Code"):
         if filename.endswith(".qasm"):
             print("Processing file: " + filename)
             for i in range(0, iterations):
                 print("Iteration " + str(i))
                 inFile = open(
-                    os.path.join(os.getcwd() + "/Dataset/Code", filename),
+                    os.path.join(os.getcwd() + "/quantum_code/Code", filename),
                     "r",
                     encoding="utf-8",
                 )
@@ -74,9 +75,14 @@ def runPrompt(complexPrompt, iterative, iterations, base_model):
                     + str(complexPrompt)
                 )
                 if iterative:
+                    os.makedirs("explanation_iterative_new", exist_ok=True)
+                    os.makedirs(
+                        "explanation_iterative_new/" + str(iterations) + "_iterations",
+                        exist_ok=True,
+                    )
                     path = (
                         os.getcwd()
-                        + f"/explanation/iterative/"
+                        + f"/explanation_iterative_new/"
                         + str(iterations)
                         + "_iterations/"
                         + filename
@@ -87,7 +93,7 @@ def runPrompt(complexPrompt, iterative, iterations, base_model):
                     prompt_out.write(prompt)
 
                 os.makedirs(
-                    os.getcwd() + f"/../explanation/{base_model}_{2}", exist_ok=True
+                    os.getcwd() + f"/explanation/{base_model}_{2}", exist_ok=True
                 )
                 out = open(
                     path,
