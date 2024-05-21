@@ -1,0 +1,14 @@
+This is a quantum circuit written in OpenQASM 2.0, a programming language for quantum computing. The code defines a simple circuit that performs the following operations:
+
+1. Creates two qubits (q[0] and q[1]) and a flag qubit (flag[0]).
+2. Applies a controlled phase rotation (cp) of π/2 to q[1], followed by a control-NOT (cx) operation between q[1] and q[0].
+3. Applies another cp rotation of -π/2 to q[0], followed by another cx operation between q[0] and q[1].
+4. Applies another cp rotation of π/2 to both q[0] and q[1].
+5. Applies a u2 (unitary transformation) operation on q[0] with parameters (0, 0), which is a 1-parameter unitary transformation that rotates the qubits by 90 degrees in the x-y plane.
+6. Applies a u1 (single-qubit rotation) operation on q[1] with parameter -π, which rotates q[1] by 180 degrees in the z-axis.
+7. Applies another barrier to ensure that the computation is executed in a single shot.
+8. Measures the state of q[0], q[1], and flag[0] using the u3 (measurement) operation. The measurements are stored in the meas array, with meas[0] containing the state of q[0], meas[1] containing the state of q[1], and meas[2] containing the state of flag[0].
+
+The code is written in a modular fashion, using include statements to import external files (e.g., qelib1.inc) and macro definitions (e.g., OPENQASM 2.0;). The qreg and creg declarations define the qubits and the flag qubit as quantum registers, while the h and cg declarations define the Hamiltonian and the control-NOT gates, respectively.
+
+Overall, this code defines a simple quantum circuit that performs a series of operations on two qubits and a flag qubit, including phase rotations, control-NOT operations, and measurements.

@@ -1,0 +1,21 @@
+This is a high-level explanation of the code used in the benchmark provided by MQT Bench on 2024-03-18. The code is based on Qiskit version 1.0.2 and includes the following steps:
+
+1. Creating a quantum register containing qubits labeled "4", "3", "2", "1", and "0".
+
+2. Applying a Hadamard gate to each qubit in this register, which is equivalent to applying a π/2 angle (π/4) on all qubits. This ensures that the quantum state of the system remains uniform over all qubits.
+
+3. Applying a CNOT gate between any two adjacent qubits, which is equivalent to exchanging qubits one and two in this register. This operation is important because it allows for measurement of the state of the first qubit (q[0]) using measurements on the second qubit (q[1]), followed by measurements on the third qubit (q[2]), etc., to measure the state of all qubits.
+
+4. Applying a CNOT gate between any two adjacent qubits, which is equivalent to exchanging qubits one and two in this register. This operation is important because it allows for measurement of the state of the first qubit (q[0]) using measurements on the second qubit (q[1]), followed by measurements on the third qubit (q[2]), etc., to measure the state of all qubits.
+
+5. Applying a Hadamard gate to any other adjacent qubits, which is equivalent to applying a π/8 angle (π/4) on all qubits. This operation ensures that the quantum state remains uniform over all qubits.
+
+6. Applying a CNOT gate between any two adjacent qubits, which is equivalent to exchanging qubits one and two in this register. This operation is important because it allows for measurement of the state of the first qubit (q[0]) using measurements on the second qubit (q[1]), followed by measurements on the third qubit (q[2]), etc., to measure the state of all qubits.
+
+7. Applying a Hadamard gate to any other adjacent qubits, which is equivalent to applying a π/4 angle (π/8) on all qubits. This operation ensures that the quantum state remains uniform over all qubits.
+
+8. Measuring each qubit in the register using measurements on the first qubit (q[0]), followed by measuring the second qubit (q[1]), etc., to measure the state of all qubits.
+
+9. Measuring the first qubit (q[0]) using measurements on the third qubit (q[2]), then measuring the second qubit (q[1]), etc., to measure the state of all qubits.
+
+This benchmark is designed to demonstrate the effectiveness and efficiency of quantum algorithms, such as the CNOT gate and Hadamard gate. It includes a range of tasks that can be used to test quantum algorithms' performance on different systems and for different input states. The benchmark also includes a comprehensive set of measurements and error correction checks to ensure the validity of the results.

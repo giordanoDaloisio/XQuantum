@@ -1,0 +1,7 @@
+This code is a benchmarking script for the MQT Bench quantum algorithm on a quantum register of size 2, as well as the associated circuit for implementing it. The Qiskit version is also included in this code.
+
+The OPENQASM 2.0 standard defines the MQT Bench algorithm for entangling two qubits and measuring a third one to obtain an output state of |0> (for the error correction part). The circuit is represented as a quantum register consisting of four qubits, with each qubit being associated with its corresponding measurement outcome (i.e., 0 or 1). The circuit is also encoded in a QASM register to represent the quantum registers and measurements.
+
+The benchmarking script first initializes the quantum registers with random states using `qreg` and `creg`, respectively, then applies the MQT Bench algorithm on these initializations. It measures the final state of the qubits using the corresponding measurement operations (`measure` and `barrier`). The output is then compared against the expected output by calculating the probability of getting a 0 or 1 output.
+
+This benchmarking script also includes a high-level explanation of the MQT Bench algorithm in the code comments, which should help users understand how the circuit works.

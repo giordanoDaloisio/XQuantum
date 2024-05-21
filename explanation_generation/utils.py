@@ -34,7 +34,21 @@ def genPrompt(previousPrompt, previousExplanation):
     return optimizedPrompt.split('"')[1]
 
 
-def runPrompt(complexPrompt, iterative, iterations, base_model):
+def getImprovePrompt(filename, code):
+    algorithmName, cubits, desc = parseAlgorithmCharacteristics(filename)
+    prompt = (
+        "Can you improve the following explanation:"
+        + desc
+        + "\nfor the following quantum algorithm:"
+        + code
+        + "\nnamed"
+        + algorithmName
+        + "\nmaking it more informative but also keeping it simple?"
+    )
+    return prompt
+
+
+def runPrompt(complexPrompt, improve, iterative, iterations, base_model):
     ollama.pull(base_model)
 
     for filename in os.listdir(os.getcwd() + "/quantum_code/Code"):
@@ -57,6 +71,9 @@ def runPrompt(complexPrompt, iterative, iterations, base_model):
                     prompt += "The code includes " + cubits + " cubits" + "\n"
                 messages = [{"role": "user", "content": prompt}]
 
+                if improve:
+                    prompt = getImprovePrompt(filename, code)
+
                 if iterative and i > 0:
                     prompt = genPrompt(previousPrompt, previousExplanation) + code
                     print("Optimized prompt is: " + prompt)
@@ -74,6 +91,13 @@ def runPrompt(complexPrompt, iterative, iterations, base_model):
                     + "_"
                     + str(complexPrompt)
                 )
+
+                if improve:
+                    os.makedirs("explanation_improved/" + base_model, exist_ok=True)
+                    path = (
+                        os.getcwd() + f"/explanation_improved/{base_model}/" + filename
+                    )
+
                 if iterative:
                     os.makedirs("explanation_iterative_new", exist_ok=True)
                     os.makedirs(

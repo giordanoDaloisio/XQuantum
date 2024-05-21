@@ -1,0 +1,11 @@
+This code defines a Qiskit Quantum Engine (QE) simulation that simulates a quantum circuit based on the benchmark named "MQT Bench" by MQT Bench. It uses MQT Bench's QE version 1.1.0 and Qiskit version 1.0.2 for creating and running this simulation.
+
+The code starts with opening Qiskit's Quantum Engine (QE) library, which includes the necessary tools to perform quantum simulations on quantum hardware. It then declares two QRegisters (qregs), one for controlling the qubits (0, 1, and 2) and another register for storing qubit states (psi). It also defines two additional registers (c) for counting operations and a shared register (psi) for storing intermediate quantum states.
+
+The next step is to create the quantum circuit using Qiskit's qreg(), psi(), creg() and cp() functions, respectively. The "h" command is used to add qubit hopping terms between the control qubits, while the "-pi/2" and "pi/4" terms are used for swapping the qubits when computing the final state of the circuit.
+
+The code then defines a barrier operation that separates each quantum gate in the circuit and sets the control qubit to "0". The circuit is then optimized using Qiskit's qobj() function, which generates a classical job file for executing the circuit on a quantum computer. The program then prints the optimized circuit.
+
+The optimization process involves several steps, such as creating a quantum circuit by connecting quantum registers and performing gates. In this case, it uses MQT Bench's QE version 1.1.0, which provides optimized gate sequences for various quantum circuits. The code then implements the optimization procedure using the qobj() function of Qiskit's Quantum Engine library.
+
+Finally, the simulated circuit is measured on the quantum register c and the results are stored in a shared register ps. Finally, the program prints the final state of the circuit (the quantum state that corresponds to the optimal computational basis), which can be used for various tasks such as measuring and processing qubit states or finding ground-state energy and eigenvectors.

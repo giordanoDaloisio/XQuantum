@@ -1,0 +1,7 @@
+This code is a basic benchmark of a quantum circuit using the Qiskit library. It consists of two subroutines, one for classical computation (i.e., measurement and output) and one for quantum computing (i.e., creating and controlling qubits). The main purpose of this benchmark is to compare its performance against other quantum computing libraries such as MQT Bench or Qiskit.
+
+The code performs two tasks: 1. Quantum circuit creation using a Qiskit library, and 2. Classical simulation and measurement. It consists of two subroutines that measure the output of the circuit with the help of a Measurement class. The Measurement object has three states: `0`, `-pi/2` (for X rotation), and `pi/2` (for Y rotation).
+
+The benchmark uses OpenQASM 2.0, Qiskit version 1.0.2, and MQT Bench version 1.1.0 for comparison. The OPENQASM library is used to create the quantum circuit, while the Qiskit library performs the necessary classical computation.
+
+The code is written in an easy-to-read format that is suitable for visualizing the benchmark results.

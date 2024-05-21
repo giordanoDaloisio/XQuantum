@@ -1,0 +1,27 @@
+This is a quantum circuit written in OpenQASM, a quantum programming language. The code defines a 5-qubit quantum register `q` and a set of classical registers `meas`. The circuit performs the following operations:
+
+1. Opens a quantum channel using the `OPENQASM 2.0;` line.
+2. Includes the `qelib1.inc` file, which provides various quantum gates and other functions used in the code.
+3. Declares the quantum register `q` and the classical registers `meas`.
+4. Applies a series of quantum gates to the qubits:
+	* `cx q[4],q[3];`: Swaps the 4th and 5th qubits.
+	* `cx q[3],q[2];`: Swaps the 3rd and 4th qubits.
+	* `cx q[2],q[1];`: Swaps the 2nd and 3rd qubits.
+	* `cx q[1],q[0];`: Swaps the 1st and 2nd qubits.
+	* `h q[4];`: Applies a Hadamard gate to the 4th qubit.
+	* `cp(pi/2) q[4],q[3];`: Applies a controlled-phase gate to the 4th qubit and the 5th qubit, with the phase of the control qubit being pi/2.
+	* `h q[3];`: Applies a Hadamard gate to the 3rd qubit.
+	* `cp(pi/4) q[4],q[2];`: Applies a controlled-phase gate to the 4th qubit and the 5th qubit, with the phase of the control qubit being pi/4.
+	* `cp(pi/2) q[3],q[2];`: Applies a controlled-phase gate to the 3rd qubit and the 5th qubit, with the phase of the control qubit being pi/2.
+	* `h q[2];`: Applies a Hadamard gate to the 2nd qubit.
+	* `cp(pi/8) q[4],q[1];`: Applies a controlled-phase gate to the 4th qubit and the 5th qubit, with the phase of the control qubit being pi/8.
+	* `cp(pi/4) q[3],q[1];`: Applies a controlled-phase gate to the 3rd qubit and the 5th qubit, with the phase of the control qubit being pi/4.
+	* `cp(pi/2) q[2],q[1];`: Applies a controlled-phase gate to the 2nd qubit and the 5th qubit, with the phase of the control qubit being pi/2.
+	* `h q[1];`: Applies a Hadamard gate to the 1st qubit.
+	* `swap q[0],q[4];`: Swaps the 0th and 4th qubits.
+	* `swap q[1],q[3];`: Swaps the 1st and 3rd qubits.
+5. Applies a barrier to the quantum register, which prevents any further evolution of the state until the measurement is performed.
+6. Measures the 0th qubit and stores the result in the `meas[0]` register.
+7. Repeats steps 1-6 for each of the remaining qubits (i.e., measurements are performed on the 1st, 2nd, 3rd, and 4th qubits).
+
+In summary, this code applies a series of quantum gates to a 5-qubit register, followed by a barrier that prevents any further evolution of the state until measurements are performed. The measurements are then performed on each of the qubits in turn, and the results are stored in classical registers.

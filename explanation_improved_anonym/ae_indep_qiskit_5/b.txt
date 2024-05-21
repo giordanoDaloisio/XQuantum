@@ -1,0 +1,25 @@
+This is a benchmark code for the MQT Bench quantum simulator, developed by the Qiskit project. It simulates a 5-qubit circuit with an error-corrected quantum algorithm for calculating the discrete Fourier transform (DFT). The code consists of four main blocks: a quantum register containing input values, a classical register containing intermediate and output results, a measurement operation, and a barrier between the qubits and the final state. 
+
+The Qiskit version of this code is available on Github at https://github.com/Qiskit/qiskit-terra/tree/master/quantum_benchmarks/bench/2024-03-17/mqt_bench. The benchmark was created by MQT Bench, with further information provided in the Qiskit documentation on https://docs.qiskit.org/qiskit/tutorial/quantum-benchmarks.
+
+To run the benchmark, follow these steps:
+
+1. Install Qiskit and its dependencies (e.g., Python, C++ compiler, etc.). 
+
+2. Clone or download this repository to your local machine, then navigate to the directory containing the benchmark code.
+
+3. Run `pip install -r requirements.txt` to install any necessary packages.
+
+4. Create a QuantumRegister object with 5 qubits and initialize its contents with input values using `qreg` method.
+
+5. Initialize an empty ClassicalRegister object (`meas`) and add its contents to the output register using `qreg` method.
+
+6. Define the circuit operations, i.e., apply gates to the input register and measure the output register. The `circuit` function accepts a list of circuits, each consisting of multiple gates and measurement instructions, as its only argument. You can customize this list to your liking, depending on the specific problem you are solving.
+
+7. Initialize a Measurement object (`meas`) to store intermediate results and measure all qubits with an error-corrected quantum algorithm for calculating the DFT using MQT Bench.
+
+8. Call `run()` on the benchmark object to run the benchmark.
+
+The benchmark will automatically open a QISKit qobj file containing the circuit and measurements. You can download this file or view it in Qiskit's online notebook explorer (https://qiskit.org/documentation/notebooks/).
+
+To modify the benchmark, you need to modify the code itself and customize the circuit operations. The specific methods used for simulation depend on your specific quantum algorithm, but they typically involve applying gates like adiabatic evolution or unitary transformations, and measuring all qubits at the end of a circuit step.
