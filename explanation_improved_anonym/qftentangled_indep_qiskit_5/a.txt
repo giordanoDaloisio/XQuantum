@@ -1,21 +1,60 @@
-This is a high-level explanation of the code used in the benchmark provided by MQT Bench on 2024-03-18. The code is based on Qiskit version 1.0.2 and includes the following steps:
+Certainly! Here's an improved explanation for the "Quantum Fourier Transform with entanglement" along with the corresponding quantum code:
 
-1. Creating a quantum register containing qubits labeled "4", "3", "2", "1", and "0".
+---
 
-2. Applying a Hadamard gate to each qubit in this register, which is equivalent to applying a π/2 angle (π/4) on all qubits. This ensures that the quantum state of the system remains uniform over all qubits.
+The "Quantum Fourier Transform with entanglement" algorithm applies the Quantum Fourier Transform (QFT) to a set of qubits that are entangled.
 
-3. Applying a CNOT gate between any two adjacent qubits, which is equivalent to exchanging qubits one and two in this register. This operation is important because it allows for measurement of the state of the first qubit (q[0]) using measurements on the second qubit (q[1]), followed by measurements on the third qubit (q[2]), etc., to measure the state of all qubits.
+In this algorithm, entangled qubits are subjected to the regular QFT operation, which transforms them into a superposition of frequency states, preserving their entanglement throughout the process.
 
-4. Applying a CNOT gate between any two adjacent qubits, which is equivalent to exchanging qubits one and two in this register. This operation is important because it allows for measurement of the state of the first qubit (q[0]) using measurements on the second qubit (q[1]), followed by measurements on the third qubit (q[2]), etc., to measure the state of all qubits.
+Here's the corresponding quantum code:
 
-5. Applying a Hadamard gate to any other adjacent qubits, which is equivalent to applying a π/8 angle (π/4) on all qubits. This operation ensures that the quantum state remains uniform over all qubits.
+```
+// Benchmark was created by MQT Bench on 2024-03-18
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
 
-6. Applying a CNOT gate between any two adjacent qubits, which is equivalent to exchanging qubits one and two in this register. This operation is important because it allows for measurement of the state of the first qubit (q[0]) using measurements on the second qubit (q[1]), followed by measurements on the third qubit (q[2]), etc., to measure the state of all qubits.
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[5];
+creg meas[5];
+h q[4];
+cx q[4],q[3];
+cx q[3],q[2];
+cx q[2],q[1];
+cx q[1],q[0];
+h q[4];
+cp(pi/2) q[4],q[3];
+h q[3];
+cp(pi/4) q[4],q[2];
+cp(pi/2) q[3],q[2];
+h q[2];
+cp(pi/8) q[4],q[1];
+cp(pi/4) q[3],q[1];
+cp(pi/2) q[2],q[1];
+h q[1];
+cp(pi/16) q[4],q[0];
+cp(pi/8) q[3],q[0];
+cp(pi/4) q[2],q[0];
+cp(pi/2) q[1],q[0];
+h q[0];
+swap q[0],q[4];
+swap q[1],q[3];
+barrier q[0],q[1],q[2],q[3],q[4];
+measure q[0] -> meas[0];
+measure q[1] -> meas[1];
+measure q[2] -> meas[2];
+measure q[3] -> meas[3];
+measure q[4] -> meas[4];
+```
 
-7. Applying a Hadamard gate to any other adjacent qubits, which is equivalent to applying a π/4 angle (π/8) on all qubits. This operation ensures that the quantum state remains uniform over all qubits.
+---
 
-8. Measuring each qubit in the register using measurements on the first qubit (q[0]), followed by measuring the second qubit (q[1]), etc., to measure the state of all qubits.
+Explanation:
 
-9. Measuring the first qubit (q[0]) using measurements on the third qubit (q[2]), then measuring the second qubit (q[1]), etc., to measure the state of all qubits.
+1. **Initialization**: The qubits are prepared with Hadamard gates (`h`) to create an equal superposition of all possible states.
+2. **Entanglement**: Controlled-NOT gates (`cx`) are used to entangle the qubits.
+3. **QFT Operation**: The regular Quantum Fourier Transform (QFT) is applied to the entangled qubits, utilizing controlled phase gates (`cp`) to perform the necessary phase shifts.
+4. **Measurement**: Finally, the qubits are measured to extract the quantum state information.
 
-This benchmark is designed to demonstrate the effectiveness and efficiency of quantum algorithms, such as the CNOT gate and Hadamard gate. It includes a range of tasks that can be used to test quantum algorithms' performance on different systems and for different input states. The benchmark also includes a comprehensive set of measurements and error correction checks to ensure the validity of the results.
+This algorithm is valuable for tasks requiring the analysis of entangled states in the frequency domain, such as quantum signal processing and quantum error correction.

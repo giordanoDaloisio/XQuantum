@@ -3,25 +3,25 @@ llama2.txt,c
 tinyllama.txt,b
 
 gpt.txt,c
-llama2.txt,b
-tinyllama.txt,a
+llama2.txt,a
+tinyllama.txt,b
+
+gpt.txt,a
+llama2.txt,c
+tinyllama.txt,b
+
+gpt.txt,a
+llama2.txt,c
+tinyllama.txt,b
 
 gpt.txt,b
 llama2.txt,c
 tinyllama.txt,a
 
-gpt.txt,b
-llama2.txt,c
-tinyllama.txt,a
+gpt.txt,c
+llama2.txt,a
+tinyllama.txt,b
 
 gpt.txt,a
 llama2.txt,b
-tinyllama.txt,c
-
-gpt.txt,b
-llama2.txt,c
-tinyllama.txt,a
-
-gpt.txt,b
-llama2.txt,a
 tinyllama.txt,c

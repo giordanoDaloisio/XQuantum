@@ -1,61 +1,7 @@
-This is a high-level explanation of the benchmark code for MQT Bench version 1.1.0 and Qiskit version 1.0.2. The code consists of three main subprograms:
+This code implements a Qiskit quantum circuit that can be used to perform a Bell state measurement on a given qubit (node) and a coin (coin) in a quantum circuit. The circuit uses multiple control-U gates to measure the coin, followed by an additional U2 gate to measure the node with the same qubit. The code includes both Qiskit-specific instructions and OpenQASM constructs for better readability and clarity.
 
-1. OpenQASM 2.0 (Qasm) subprogram, which defines a quantum register named "node" with two qubits, and a quantum register named "coin" with one bit. The user-defined variable named "meas" is used to hold the results of measurements on the registers.
+The code defines three registers, "node" (with 3 qubits), "coin" (with 1 qubit), and "meas" (with 2 qubits), which are initialized with random values before each step of the circuit. The "measure" operation is implemented using a controlled-U gate, which takes a target qubit (node) as input and measures it along with a control qubit (coin). Finally, the results of the measurement are stored in "meas" registers.
 
-2. Qiskit's "qreg" and "ccx" subprograms are called in the subprogram for creating initial quantum states. In this case, two qubits (nodes) and one bit coin (coin) are initialized as follows:
+The main part of the code consists of the `circuit` function, which takes the desired number of qubits, their initial states, and a list of Qiskit instructions as arguments. In this case, it simply runs the quantum circuit defined above and measures all four qubits. The `run_qiskit` function is used to execute the given circuit using Qiskit's `execute` method.
 
-```
-qreg node[2];
-qreg coin[1];
-creg meas[3];
-h coin[0];
-ccx coin[0],node[1],node[0];
-cx coin[0],node[1];
-x node[1];
-x coin[0];
-ccx coin[0],node[1],node[0];
-cx coin[0],node[1];
-x node[1];
-```
-
-3. The main subprogram (which is defined in the benchmark code) uses a series of quantum operations to simulate a single-qubit rotations, two-qubit gate "CNOT"s, and three-qubit gates such as "H" or "RX". In this case, the initial state of the qubits is controlled by a measurement on register "meas", which is used to determine the outcome of the quantum operation. The results are stored in the user-defined variable named "meas".
-
-To benchmark MQT Bench version 1.1.0 and Qiskit version 1.0.2, run the code as follows:
-
-```
-#! /usr/bin/env python3
-import qiskit
-from qiskit.tools.monitor import monitor
-
-# initialize qubits
-qreg node[2];
-qreg coin[1];
-creg meas = qreg(1);
-h coin[0];
-ccx coin[0],node[1],node[0];
-cx coin[0],node[1];
-x node[1];
-x coin[0];
-ccx coin[0],node[1],node[0];
-cx coin[0],node[1];
-x node[1];
-
-# create initial quantum state
-qreg node[2];
-qreg coin[1];
-creg meas = qreg(1);
-h coin[0];
-ccx coin[0],node[1],node[0];
-cx coin[0],node[1];
-x node[1];
-x coin[0];
-ccx coin[0],node[1],node[0];
-cx coin[0],node[1];
-x node[1];
-```
-
-This code defines two qubits (nodes) and one bit coin (coin). It creates initial quantum states for the qubits using controlled-CNOTs and H gates. Then, it simulates a single-qubit rotation using CNOTs, then performs a two-qubit gate "CNOT" followed by three-qubit gates ("H", "RX") on each qubit. The results are stored in the user-defined variable named "meas".
-
-The benchmark code uses Qiskit's "measure" function to measure the outcomes of the quantum operations using the corresponding measurement operators. The user can choose how many qubits and bit coins to use for the benchmark, and which two qubits (nodes) and one bit coin (coin) are simulated at a time.
-
-This code can be run using Python's "qiskit" module, or in the Jupyter notebook environment in Qiskit's "jupyter" module.
+This code can be easily adapted for other use cases by customizing the number of qubits in each register, changing the initial states, or using a different Qiskit interface such as QuantumCircuit or QuantumRegister. Additionally, this code could be further optimized by removing unused gates and optimizing the circuit for better performance and shorter execution times.

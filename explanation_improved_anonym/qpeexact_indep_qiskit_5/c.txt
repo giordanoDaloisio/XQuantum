@@ -1,32 +1,59 @@
-This is a quantum circuit written in the OpenQASM format, which is a standardized format for representing quantum circuits. The code defines a quantum register of size 4 (qreg), a quantum state (psi), and some classical registers (creg). The circuit performs a sequence of operations on these registers using the following instructions:
+Certainly! Here's an improved explanation for "Quantum Phase Estimation" along with the corresponding quantum code:
 
-1. `OPENQASM 2.0`: This line specifies that the code is written in OpenQASM version 2.0.
-2. `include "qelib1.inc";`: This line includes a library file (qelib1.inc) that provides some useful functions for working with quantum circuits.
-3. `qreg q[4];`: This line defines a quantum register of size 4.
-4. `qreg psi[1];`: This line defines a quantum state (psi) of size 1.
-5. `creg c[4];`: This line defines some classical registers (c) of size 4.
-6. `h q[0];`: This line initializes the first qubit (q[0]) to the Hadamard gate.
-7. `h q[1];`: This line initializes the second qubit (q[1]) to the Hadamard gate.
-8. `h q[2];`: This line initializes the third qubit (q[2]) to the Hadamard gate.
-9. `h q[3];`: This line initializes the fourth qubit (q[3]) to the Hadamard gate.
-10. `x psi[0];`: This line applies the bit flip operation to the quantum state (psi[0]).
-11. `cp(-7*pi/8) psi[0],q[0];`: This line applies a controlled phase shift of -7π/8 to the quantum state (psi[0]) and the first qubit (q[0]).
-12. `cp(pi/4) psi[0],q[1];`: This line applies a controlled phase shift of pi/4 to the quantum state (psi[0]) and the second qubit (q[1]).
-13. `cp(pi/2) psi[0],q[2];`: This line applies a controlled phase shift of pi/2 to the quantum state (psi[0]) and the third qubit (q[2]).
-14. `swap q[1],q[2];`: This line swaps the second and third qubits (q[1] and q[2]).
-15. `cp(pi) psi[0],q[3];`: This line applies a controlled phase shift of pi to the quantum state (psi[0]) and the fourth qubit (q[3]).
-16. `swap q[0],q[3];`: This line swaps the first and fourth qubits (q[0] and q[3]).
-17. `h q[0];`: This line applies the Hadamard gate to the first qubit (q[0]).
-18. `cp(-pi/2) q[1],q[0];`: This line applies a controlled phase shift of -pi/2 to the second qubit (q[1]) and the first qubit (q[0]).
-19. `h q[1];`: This line applies the Hadamard gate to the second qubit (q[1]).
-20. `cp(-pi/4) q[2],q[0];`: This line applies a controlled phase shift of -pi/4 to the third qubit (q[2]) and the first qubit (q[0]).
-21. `h q[2];`: This line applies the Hadamard gate to the third qubit (q[2]).
-22. `cp(-pi/8) q[3],q[0];`: This line applies a controlled phase shift of -pi/8 to the fourth qubit (q[3]) and the first qubit (q[0]).
-23. `h q[3];`: This line applies the Hadamard gate to the fourth qubit (q[3]).
-24. `barrier q[0],q[1],q[2],q[3],psi[0];`: This line applies a barrier operation to all the qubits and the quantum state (psi[0]).
-25. `measure q[0] -> c[0];`: This line measures the first qubit (q[0]) and stores the result in a classical register (c[0]).
-26. `measure q[1] -> c[1];`: This line measures the second qubit (q[1]) and stores the result in a classical register (c[1]).
-27. `measure q[2] -> c[2];`: This line measures the third qubit (q[2]) and stores the result in a classical register (c[2]).
-28. `measure q[3] -> c[3];`: This line measures the fourth qubit (q[3]) and stores the result in a classical register (c[3]).
+---
 
-The circuit performs a quantum Fourier transform on the input state psi, using the Hadamard gates to entangle the qubits. The barrier operation then measures the output states of each qubit, which are stored in the classical registers c[0], c[1], c[2], and c[3].
+Quantum Phase Estimation (QPE) is a fundamental quantum algorithm used to estimate the phase of a quantum operation. It serves as a critical component in many quantum algorithms, particularly in tasks involving phase estimation and quantum state preparation.
+
+In QPE, a quantum circuit is designed to estimate the phase angle of a given quantum state transformation. The accuracy of the estimation depends on the number of qubits used in the estimation register. In the exact case, the phase applied is exactly representable by the number of qubits used in the estimation process.
+
+Here's the corresponding quantum code:
+
+```
+// Benchmark was created by MQT Bench on 2024-03-18
+// For more information about MQT Bench, please visit https://www.cda.cit.tum.de/mqtbench/
+// MQT Bench version: 1.1.0
+// Qiskit version: 1.0.2
+
+OPENQASM 2.0;
+include "qelib1.inc";
+qreg q[4];
+qreg psi[1];
+creg c[4];
+h q[0];
+h q[1];
+h q[2];
+h q[3];
+x psi[0];
+cp(-7*pi/8) psi[0],q[0];
+cp(pi/4) psi[0],q[1];
+cp(pi/2) psi[0],q[2];
+swap q[1],q[2];
+cp(pi) psi[0],q[3];
+swap q[0],q[3];
+h q[0];
+cp(-pi/2) q[1],q[0];
+h q[1];
+cp(-pi/4) q[2],q[0];
+cp(-pi/2) q[2],q[1];
+h q[2];
+cp(-pi/8) q[3],q[0];
+cp(-pi/4) q[3],q[1];
+cp(-pi/2) q[3],q[2];
+h q[3];
+barrier q[0],q[1],q[2],q[3],psi[0];
+measure q[0] -> c[0];
+measure q[1] -> c[1];
+measure q[2] -> c[2];
+measure q[3] -> c[3];
+```
+
+---
+
+Explanation:
+
+1. **Initialization**: The qubits in the estimation register are prepared in a superposition state using Hadamard gates (`h`).
+2. **Phase Application**: The quantum operation phase is applied to the state `psi[0]` using controlled-phase gates (`cp`).
+3. **Quantum Circuit**: The quantum circuit manipulates the qubits to encode the phase information into the state of the estimation register.
+4. **Measurement**: Finally, the qubits in the estimation register are measured to obtain the estimated phase angle.
+
+Quantum Phase Estimation is a foundational algorithm in quantum computing, playing a crucial role in various quantum algorithms and protocols, including quantum factorization and quantum simulation.
