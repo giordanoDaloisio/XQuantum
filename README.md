@@ -14,13 +14,13 @@ This repository contains the replication package for the experiments conducted i
 
 ## Project Structure
 
-- `explanation_generation/`: Contains the code for generating quantum code explanations using LLMs.
-- `explanation_human/` and `explanation_human_anonym/`: Contains the explanations from human-written prompts.
-- `explanation_iterative/` and `explanation_iterative_anonym/`: Contains the explanations from iterative generated prompts.
+- `explanation_generation/`: Contains the code for generating quantum code explanations using LLMs. Refer to the [README](explanation_generation/README.md) in the folder for more details.
+- `explanation_human/` and `explanation_human_anonym/`: Contain the explanations from human-written prompts.
+- `explanation_improved/` and `explanation_improved_anonym/`: Contain the LLM-improved explanations.
 - `figures/`: Contains the figures used in the paper.
 - `forms/`: Contains the forms used for the evaluation of explanations.
 - `quantum_code/`: Contains the quantum algorithms used to obtain the explanations.
 - `analysis.ipynb`: Jupyter notebook for the analysis of the evaluation results and to generate the figures in the paper.
 - `anonym_data.ipynb`: Jupyter notebook for anonymizing the explanations before the evaluation.
 - `results.csv`: The evaluation results for RQ1, RQ2, and RQ3.
-- `results_iterative.csv`: The evaluation results for RQ4.
+- `rq4_eval.csv`: The evaluation results for RQ4.

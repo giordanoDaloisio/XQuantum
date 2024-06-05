@@ -2,6 +2,7 @@ import openai
 import open_ai_key
 import pandas as pd
 import os
+from argparse import ArgumentParser
 
 from utils import getImprovePrompt
 
@@ -60,8 +61,12 @@ def runPrompt(complexPrompt, improve):
             print(content)
 
 
-# Prompt 1: Basic
-# runPrompt(False)
+parser = ArgumentParser()
+parser.add_argument("--complex", action="store_true")
+parser.add_argument("--iterative", action="store_true")
+parser.add_argument("--iterations", type=int, default=3)
+parser.add_argument("--improve", action="store_true")
+args = parser.parse_args()
 
-# Prompt 2: Include algorithm name and number of cubits
-runPrompt(False, True)
+
+runPrompt(args.complex, args.improve)
