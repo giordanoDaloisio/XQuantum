@@ -1,6 +1,7 @@
-# LLM Prompt Exploration for The Automatic Generation of Quantum Algorithm Explanations
+# Exploring LLM-Driven Explanations for Quantum Algorithms, Are We There Yet?
 
-This repository contains the replication package for the experiments conducted in the paper "LLM Prompt Exploration for The Automatic Generation of Quantum Algorithm Explanations".
+This repository contains the replication package for the experiments conducted in the paper "Exploring LLM-Driven Explanations for Quantum Algorithms,
+Are We There Yet?".
 
 ## Requirements
 
