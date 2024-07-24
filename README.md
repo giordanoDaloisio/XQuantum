@@ -1,7 +1,6 @@
-# Exploring LLM-Driven Explanations for Quantum Algorithms, Are We There Yet?
+# Exploring LLM-Driven Explanations for Quantum Algorithms
 
-This repository contains the replication package for the experiments conducted in the paper "Exploring LLM-Driven Explanations for Quantum Algorithms,
-Are We There Yet?".
+This repository contains the replication package for the experiments conducted in the paper "Exploring LLM-Driven Explanations for Quantum Algorithms".
 
 ## Requirements
 
